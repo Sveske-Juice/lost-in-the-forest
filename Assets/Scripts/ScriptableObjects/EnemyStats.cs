@@ -20,4 +20,20 @@ public class EnemyStats : ScriptableObject
 
     [SerializeField]
     public bool canMoveWhileAttacking = false;
+
+
+    // Har givet Enemysne liv
+    // Ville gerne have at den nedarvet fra IDamageable men kunne ikke få det til at virke
+    // Har ikke arbejdet med Interfaces før
+    // -Morgan
+    [SerializeField]
+    public int health = 10;
+    [SerializeField]
+    public int maxHealth = 10;
+
+    [SerializeField]
+    public void TakeDamage(int _damage)
+    {
+        health -= _damage;
+    }
 }

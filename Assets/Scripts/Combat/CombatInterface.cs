@@ -6,7 +6,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public int health { get; set; } //Her skal i lade som om at set er private. I MÅ IKKE SÆTTE health UDEN FOR TakeDamage() OG Heal().
+    public int health { get; } 
 
     public void TakeDamage(int _damage);
     public bool Heal(int _heal);
