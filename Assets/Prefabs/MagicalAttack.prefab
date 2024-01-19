@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1459915654554301686}
   - component: {fileID: 7294070740518666935}
   m_Layer: 0
-  m_Name: PhysicalAttack
+  m_Name: MagicalAttack
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2566673134468739787}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.64, y: 0.06, z: 0}
+  m_LocalPosition: {x: -5.837033, y: -2.065862, z: 0}
   m_LocalScale: {x: 0.65, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.2735849, g: 0.052910283, b: 0.052910283, a: 1}
+  m_Color: {r: 0.6769943, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

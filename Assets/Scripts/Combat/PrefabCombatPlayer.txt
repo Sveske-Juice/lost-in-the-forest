@@ -1,0 +1,79 @@
+// Dette er prefabløsningen som jeg kom op til med combat
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// Dette script bliver brugt til at spawne playerens attack
+// -Morgan
+
+public class PlayerAttack : MonoBehaviour
+{
+    private CombatPlayer player;
+    private bool isAttacking = false;
+    private float attackTime = 0;
+
+    public GameObject physicalAttack;
+    public GameObject magicalAttack;
+
+    private Transform transform;
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GetComponent<CombatPlayer>();
+        transform = GetComponent<Transform>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!isAttacking)
+            {
+                Vector3 mousePos = Input.mousePosition-transform.position;
+                mousePos = mousePos.normalized;
+                Transform attackTransform = physicalAttack.GetComponent<Transform>();
+                isAttacking = true;
+                attackTime = 0;
+                Instantiate(physicalAttack, transform.position, Quaternion.Euler(0, 0, AngleBetweenMouseAndPlayer()+90)); // JEg har abselut ingen ide om hvordan jeg sørger for at attacket spawner på enden af playeren -Morgan
+                Debug.Log(AngleBetweenMouseAndPlayer() + 90);
+            }
+            
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            if(!isAttacking)
+            {
+                Vector3 mousePos = Input.mousePosition - transform.position;
+                mousePos = mousePos.normalized;
+                Transform attackTransform = physicalAttack.GetComponent<Transform>();
+                isAttacking = true;
+                attackTime = 0;
+                Instantiate(magicalAttack, transform.position, Quaternion.Euler(0, 0, AngleBetweenMouseAndPlayer())); // JEg har abselut ingen ide om hvordan jeg sørger for at attacket spawner på enden af playeren -Morgan
+                Debug.Log(AngleBetweenMouseAndPlayer() + 90);
+            }
+        }
+
+        attackTime += Time.deltaTime;
+
+        if (isAttacking && attackTime >= player.attackSpeed)
+        {
+            isAttacking = false;
+        }
+    }
+
+    float AngleBetweenMouseAndPlayer()
+    {
+        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
+
+        float angle = AngleBetweenPoints(transform.position, mouseWorldPosition);
+
+        return angle;
+    }
+
+    float AngleBetweenPoints(Vector2 a, Vector2 b)
+    {
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+    }
+}

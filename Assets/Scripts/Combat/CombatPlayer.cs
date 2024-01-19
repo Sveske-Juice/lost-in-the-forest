@@ -5,7 +5,7 @@ using UnityEngine;
 // Skrevet af Morgan ud fra Snorres klasse diagram
 // Disse to scripts er for at holde data på Playeren og Enemyen
 
-public class CombatPlayer : IDamageable
+public class CombatPlayer : MonoBehaviour, IDamageable
 {
     private int speed;
     private int intelligence;
@@ -67,14 +67,3 @@ public class CombatPlayer : IDamageable
         return damage;
     }
 }
-/*
-public class CombatEnemy : IDamageable
-{
-    public int health { get; private set; }
-
-    public void TakeDamage(int _damage)
-    {
-
-    }
-    public bool Heal(int _heal);
-}*/

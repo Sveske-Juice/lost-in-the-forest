@@ -27,13 +27,10 @@ public class EnemyStats : ScriptableObject
     // Har ikke arbejdet med Interfaces før
     // -Morgan
     [SerializeField]
+    public int strenght = 1;
+
+    [SerializeField]
     public int health = 10;
     [SerializeField]
     public int maxHealth = 10;
-
-    [SerializeField]
-    public void TakeDamage(int _damage)
-    {
-        health -= _damage;
-    }
 }

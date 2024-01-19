@@ -16,3 +16,6 @@ MonoBehaviour:
   attackRange: 4
   attackDelay: 1
   canMoveWhileAttacking: 0
+  strenght: 1
+  health: 10
+  maxHealth: 10
