@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 // Denne sørger for at attacket kun er på skermen i 1 sekundt
@@ -8,18 +9,16 @@ using UnityEngine;
 
 public class RangedAttack : MonoBehaviour
 {
-    private float AttackUpTime;
-    public string Name;
-
-    private Transform transform;
+    [SerializeField] private float AttackUpTime;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float projectileSpeed;
 
     private bool hasHit;
     // Start is called before the first frame update
     void Start()
     {
-        AttackUpTime = 0.25f;
-        transform = GetComponent<Transform>();
         hasHit = false;
+        rb.velocity = transform.forward * projectileSpeed;
     }
 
     // Update is called once per frame
@@ -34,20 +33,21 @@ public class RangedAttack : MonoBehaviour
 
         if (!hasHit)
         {
-            MeleeAttack();
+            AttackHit();
         }
     }
 
-    void MeleeAttack()
+    void AttackHit()
     {
-        Collider2D collider = Physics2D.OverlapCapsule(transform.position, transform.lossyScale, CapsuleDirection2D.Horizontal, transform.rotation.y);
+        Collider2D collider = Physics2D.OverlapCapsule(transform.position, transform.localScale, CapsuleDirection2D.Horizontal, transform.rotation.y);
         if (collider == null) return;
         IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
-        if (damageable != null)
+        if (damageable != null && damageable != (CombatPlayer.combatPlayer as IDamageable))
         {
-            damageable.TakeDamage(1);
+            damageable.TakeDamage(1); // ændre dette så den tage combatPlayerens magical attack
             hasHit = true;
             Debug.Log(damageable.health);
+            Destroy(gameObject);
         }
     }
 }

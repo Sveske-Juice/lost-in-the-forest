@@ -401,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftAttack: {fileID: 11400000, guid: 435da973ef7bc0244af5cb783391d5c6, type: 2}
+  rightAttack: {fileID: 11400000, guid: 09c34b0949c56c846819570ebe9c5a07, type: 2}
 --- !u!114 &983878309
 MonoBehaviour:
   m_ObjectHideFlags: 0

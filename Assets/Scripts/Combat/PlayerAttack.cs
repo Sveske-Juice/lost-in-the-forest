@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     private float attackTime = 0;
 
     [SerializeField] private AttackStrategy leftAttack;
+    [SerializeField] private AttackStrategy rightAttack;
 
     void Start()
     {
@@ -32,6 +33,14 @@ public class PlayerAttack : MonoBehaviour
             }
             
         }
+        if (Input.GetMouseButtonDown(1)) {  
+            if (!isAttacking)
+            {
+                isAttacking = true;
+                attackTime = 0;
+                Shoot();
+            }
+        }
         attackTime += Time.deltaTime;
 
         if (isAttacking && attackTime >= player.AttackSpeed)
@@ -44,6 +53,11 @@ public class PlayerAttack : MonoBehaviour
     {
         AttackContext context = new AttackContext(transform, player);
         leftAttack.Attack(context);
+    }
+    void Shoot()
+    {
+        AttackContext context = new AttackContext(transform, player);
+        rightAttack.Attack(context);
     }
     /*
     void OnDrawGizmos()
