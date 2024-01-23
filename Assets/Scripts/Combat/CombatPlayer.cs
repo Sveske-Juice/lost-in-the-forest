@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class CombatPlayer : MonoBehaviour, IDamageable
 {
+    public static CombatPlayer combatPlayer { get; private set; }
+
     [SerializeField] private int speed;
     [SerializeField] private int intelligence;
     [SerializeField] private int strength;
@@ -21,6 +23,11 @@ public class CombatPlayer : MonoBehaviour, IDamageable
     private void Awake()
     {
         this.health = this.MaxHealth;
+
+        if (combatPlayer != null && combatPlayer != this)
+            Destroy(this);
+        else
+            combatPlayer = this;
     }
     /*
     public bool GiveItem(item _item)
@@ -29,6 +36,19 @@ public class CombatPlayer : MonoBehaviour, IDamageable
         //Jeg lader den forblive tom for nu
     }*/
 
+    public void ModifyHealth(int _healAmount, int _maxHealthInc, bool _regenItem,int _regenAmount, int _regenRate) 
+    { 
+        health += _healAmount; 
+        maxhealth += _maxHealthInc;
+        if (_regenItem)
+            StartCoroutine(Regenerate(_regenAmount, _regenRate));
+
+        IEnumerator Regenerate(int _regenAmount, int _regenRate)
+        {
+                health += _regenAmount;
+                yield return new WaitForSeconds(_regenRate);
+        }
+    }
     public void TakeDamage(int _damage)
     {
         this.health -= _damage;
