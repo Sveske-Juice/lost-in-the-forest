@@ -27,7 +27,7 @@ public class EnemyStats : ScriptableObject
     // Har ikke arbejdet med Interfaces før
     // -Morgan
     [SerializeField]
-    public int strenght = 1;
+    public int strength = 1;
 
     [SerializeField]
     public int health = 10;

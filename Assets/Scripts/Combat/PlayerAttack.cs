@@ -11,14 +11,11 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttacking = false;
     private float attackTime = 0;
 
-    public float attackDistance = 5f;
-    public int attackDamage = 5;
-    public Vector2 attackSize = new Vector2(1, 1);
+    [SerializeField] private AttackStrategy leftAttack;
 
     void Start()
     {
         player = GetComponent<CombatPlayer>();
-        attackDamage = player.GetPhysicalDamage(0);
     }
 
     // Update is called once per frame
@@ -37,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
         }
         attackTime += Time.deltaTime;
 
-        if (isAttacking && attackTime >= player.attackSpeed)
+        if (isAttacking && attackTime >= player.AttackSpeed)
         {
             isAttacking = false;
         }
@@ -45,20 +42,10 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, attackSize, 0f, dir.normalized, attackDistance);
-        if (hit.collider == null) return;
-
-        Debug.Log($"hit: {hit.collider.name}");
-        IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
-
-        // The hit object can be damaged
-        if (damageable != null)
-        {
-            damageable.TakeDamage(attackDamage);
-        }
+        AttackContext context = new AttackContext(transform, player);
+        leftAttack.Attack(context);
     }
-
+    /*
     void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
@@ -73,5 +60,5 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + dir * attackDistance);
 
         Gizmos.DrawWireCube(transform.position + dir * attackDistance, attackSize);
-    }
+    }*/
 }

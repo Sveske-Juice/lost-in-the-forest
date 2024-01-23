@@ -6,7 +6,7 @@ using UnityEngine;
 // ændre AttackUpTime for at ændre hvor langt tid den er på skærmen
 // -Morgan
 
-public class MeleAttack : MonoBehaviour
+public class RangedAttack : MonoBehaviour
 {
     private float AttackUpTime;
     public string Name;

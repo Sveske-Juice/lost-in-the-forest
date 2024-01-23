@@ -7,34 +7,21 @@ using UnityEngine;
 
 public class CombatPlayer : MonoBehaviour, IDamageable
 {
-    private int speed;
-    private int intelligence;
-    private int strength;
-    public float attackSpeed { get; private set; } // dette vil være hvor lang tid der er imellem vert angreb
+    [SerializeField] private int speed;
+    [SerializeField] private int intelligence;
+    [SerializeField] private int strength;
+    [SerializeField] private float attackSpeed;
+    public float AttackSpeed => attackSpeed; // dette vil være hvor lang tid der er imellem vert angreb
     //private List<Item> inventory = new List<Item> (); // dette er en arrayliste. Skal bruge en klasse kaldt Item
+    [SerializeField] private int maxhealth;
+    public int MaxHealth => health; //Her skal i lade som om at set er private. I MÅ IKKE SÆTTE health UDEN FOR TakeDamage() OG Heal().
+    public int health { get; private set; } // Det er ikke meningen at maxHealth skal manipuleres så ofte. Kun med Items og/eller level up 
 
-    public int health { get; private set; } //Her skal i lade som om at set er private. I MÅ IKKE SÆTTE health UDEN FOR TakeDamage() OG Heal().
-    public int maxHealth { get; private set; } // Det er ikke meningen at maxHealth skal manipuleres så ofte. Kun med Items og/eller level up 
 
-    public CombatPlayer(int _speed, int _intelligence, int _strenght,int _health, float _attackSpeed)
+    private void Awake()
     {
-        this.speed = _speed;
-        this.intelligence = _intelligence;
-        this.strength = _strenght;
-        this.health = _health;
-        this.maxHealth = _health;
-        this.attackSpeed = _attackSpeed;
+        this.health = this.MaxHealth;
     }
-    public CombatPlayer() //statsne her er for at teste
-    {
-        speed = 5;
-        intelligence = 1;
-        strength = 1;
-        health = 3;
-        maxHealth = 3;
-        attackSpeed = 1.0f;
-    }
-
     /*
     public bool GiveItem(item _item)
     {

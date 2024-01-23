@@ -11,7 +11,7 @@ public class CombatEnemy : MonoBehaviour, IDamageable
     public int health { get; private set; }
     private int maxHealth;
     private float speed;
-    private int strenght;
+    private int strength;
 
     public EnemyStats Enemy;
 
@@ -32,7 +32,7 @@ public class CombatEnemy : MonoBehaviour, IDamageable
         this.health = Enemy.health;
         this.maxHealth = Enemy.maxHealth;
         this.speed = Enemy.moveSpeed;
-        this.strenght = Enemy.strenght;
+        this.strength = Enemy.strength;
     }
 
     void Update()

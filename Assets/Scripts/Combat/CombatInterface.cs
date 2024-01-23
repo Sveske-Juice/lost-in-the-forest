@@ -15,7 +15,7 @@ public interface IDamageable
 public interface IEnemy : IDamageable
 {
     private int speed;
-    private int strenght;
+    private int strength;
 }
 */
 /*

@@ -400,9 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68f7b30d6c62f741adc1187aad07e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 5
-  attackDamage: 5
-  attackSize: {x: 1, y: 1}
+  leftAttack: {fileID: 11400000, guid: 435da973ef7bc0244af5cb783391d5c6, type: 2}
 --- !u!114 &983878309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f07e3d0a9a27746aaa356272008204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  intelligence: 1
+  strength: 1
+  attackSpeed: 1
+  maxhealth: 5
 --- !u!1 &2052232457
 GameObject:
   m_ObjectHideFlags: 0
