@@ -26,15 +26,24 @@ public class CombatPlayer
     private float attackSpeed;
     public float AttackSpeed => attackSpeed; // dette vil være hvor lang tid der er imellem vert angreb
 
-    //private List<Item> inventory = new List<Item> (); // dette er en arrayliste. Skal bruge en klasse kaldt Item
     [SerializeField]
-    private int maxhealth;
-    public int MaxHealth => health; //Her skal i lade som om at set er private. I MÅ IKKE SÆTTE health UDEN FOR TakeDamage() OG Heal().
-    public int health { get; private set; } // Det er ikke meningen at maxHealth skal manipuleres så ofte. Kun med Items og/eller level up
+    private int maxHealth;
+    public int MaxHealth => maxHealth;
+
+    private int health;
+
+    public int Health
+    {
+        get { return health; }
+
+        // Clamp to max health
+        private set { health = (int) Mathf.Clamp(value, 0f, MaxHealth); }
+    }
 
     private void Awake()
     {
-        this.health = this.MaxHealth;
+        // Start health at max
+        this.Health = this.MaxHealth;
 
         if (combatPlayer != null && combatPlayer != this)
             Destroy(this);
@@ -49,42 +58,14 @@ public class CombatPlayer
         //Jeg lader den forblive tom for nu
     }*/
 
-    // FIXME: outdated
-    public void ModifyHealth(
-        int _healAmount,
-        int _maxHealthInc,
-        bool _regenItem,
-        int _regenAmount,
-        int _regenRate,
-        int _regenDur
-    )
-    {
-        health += _healAmount;
-        maxhealth += _maxHealthInc;
-
-        if (_regenItem)
-            StartCoroutine(Regenerate(_regenAmount, _regenRate, _regenDur));
-
-        IEnumerator Regenerate(int _regenAmount, int _regenRate, float _regenDur)
-        {
-            float timeHealed = 0f;
-            while (timeHealed < _regenDur)
-            {
-                health += _regenAmount;
-                yield return new WaitForSeconds(_regenRate);
-                timeHealed += _regenRate;
-            }
-        }
-    }
-
     public void TakeDamage(int _damage)
     {
-        this.health -= _damage;
+        this.Health -= _damage;
     }
 
     public bool Heal(int _heal)
     {
-        this.health += _heal;
+        this.Health += _heal;
 
         return true; //temp
     }
@@ -105,11 +86,22 @@ public class CombatPlayer
 
     public void InstantHeal(int amount)
     {
-        throw new System.NotImplementedException();
+        this.Health += amount;
     }
 
     public void Regeneration(int regenAmount, int regenRate, int regenDuration)
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(Regen());
+
+        IEnumerator Regen()
+        {
+            float time = 0f;
+            while (time < regenDuration)
+            {
+                this.Health += regenAmount;
+                yield return new WaitForSeconds(regenRate);
+                time += regenRate;
+            }
+        }
     }
 }

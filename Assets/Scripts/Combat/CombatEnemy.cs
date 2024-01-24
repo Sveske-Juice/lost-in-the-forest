@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Dette vil være klassen som holder enemystats når spillet køre
@@ -8,28 +6,33 @@ using UnityEngine;
 
 public class CombatEnemy : MonoBehaviour, IDamageable
 {
-    public int health { get; private set; }
+    private int health;
     private int maxHealth;
     private float speed;
     private int strength;
+    [SerializeField] private EnemyStats Enemy;
 
-    public EnemyStats Enemy;
+    public int Health
+    {
+        get { return health; }
+        private set { health = (int)Mathf.Clamp(value, 0f, maxHealth); }
+    }
 
     public void TakeDamage(int _damage)
     {
-        this.health -= _damage;
+        this.Health -= _damage;
     }
 
     public bool Heal(int _heal)
     {
-        this.health += _heal;
+        this.Health += _heal;
 
         return true; //temp
     }
 
     void Start()
     {
-        this.health = Enemy.health;
+        this.Health = Enemy.health;
         this.maxHealth = Enemy.maxHealth;
         this.speed = Enemy.moveSpeed;
         this.strength = Enemy.strength;
@@ -37,7 +40,7 @@ public class CombatEnemy : MonoBehaviour, IDamageable
 
     void Update()
     {
-        if (this.health <= 0) //virker ikke helt
+        if (this.Health <= 0) //virker ikke helt
         {
             Destroy(this);
         }

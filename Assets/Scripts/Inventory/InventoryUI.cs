@@ -18,6 +18,9 @@ public class InventoryUI : MonoBehaviour
 
             clickHandler.OnElementUp -= ItemSlotClick;
 
+        clickHandler.OnElementEnter -= OnItemSlotEnter;
+        clickHandler.OnElementExit -= OnItemSlotExit;
+
             Destroy(t.gameObject);
         }
 
@@ -44,6 +47,9 @@ public class InventoryUI : MonoBehaviour
         ImageCickHandler clickHandler = obj.AddComponent<ImageCickHandler>();
 
         clickHandler.OnElementUp += ItemSlotClick;
+
+        clickHandler.OnElementEnter += OnItemSlotEnter;
+        clickHandler.OnElementExit += OnItemSlotExit;
     }
 
     public void ItemSlotClick(ImageCickHandler imageElement)
@@ -56,5 +62,26 @@ public class InventoryUI : MonoBehaviour
             .Build();
 
         slot.Item.data.UseAbility(modifierContext);
+    }
+
+    // TODO:: Markus, brug følgende to funktioner til at vise en item hover menu
+    // du kan bruge enter funktion til at spawne en prefab, og exit funktionen til at
+    // destroy den.
+
+    // kaldt når mus enter over et item slot
+    public void OnItemSlotEnter(ImageCickHandler imageElement)
+    {
+        StackNumber slot = imageElement.gameObject.GetComponent<StackNumber>();
+
+        // TODO: spawn item hover prefab
+        // kald funktion på instantied prefab til at loade det item (brug slot variabel)
+    }
+
+    // kaldt når mus bliver fjernet fra item slot
+    public void OnItemSlotExit(ImageCickHandler imageElement)
+    {
+        StackNumber slot = imageElement.gameObject.GetComponent<StackNumber>();
+
+        // TODO: slet item hover menu
     }
 }

@@ -326,7 +326,7 @@ MonoBehaviour:
   intelligence: 1
   strength: 1
   attackSpeed: 0
-  maxhealth: 0
+  maxHealth: 100
 --- !u!114 &633109594
 MonoBehaviour:
   m_ObjectHideFlags: 0

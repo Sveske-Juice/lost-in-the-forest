@@ -46,7 +46,7 @@ public class RangedAttack : MonoBehaviour
         {
             damageable.TakeDamage(1); // ændre dette så den tage combatPlayerens magical attack
             hasHit = true;
-            Debug.Log(damageable.health);
+            Debug.Log(damageable.Health);
             Destroy(gameObject);
         }
     }

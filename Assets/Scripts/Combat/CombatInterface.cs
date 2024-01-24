@@ -6,7 +6,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public int health { get; } 
+    public int Health { get; }
 
     public void TakeDamage(int _damage);
     public bool Heal(int _heal);
