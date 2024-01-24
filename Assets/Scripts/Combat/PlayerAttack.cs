@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Dette script bliver brugt til at spawne playerens attack
@@ -7,19 +5,12 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private CombatPlayer player;
     private bool isAttacking = false;
     private float attackTime = 0;
 
     [SerializeField] private AttackStrategy leftAttack;
     [SerializeField] private AttackStrategy rightAttack;
 
-    void Start()
-    {
-        player = GetComponent<CombatPlayer>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -28,35 +19,44 @@ public class PlayerAttack : MonoBehaviour
             {
                 isAttacking = true;
                 attackTime = 0;
-                // Instantiate(physicalAttack, transform.position, transform.rotation);
-                Attack();
+                PhysicalAttack();
             }
-            
         }
         if (Input.GetMouseButtonDown(1)) {  
             if (!isAttacking)
             {
                 isAttacking = true;
                 attackTime = 0;
-                Shoot();
+                RangeAttack();
             }
         }
         attackTime += Time.deltaTime;
 
-        if (isAttacking && attackTime >= player.AttackSpeed)
+        if (isAttacking && attackTime >= CombatPlayer.combatPlayer.AttackSpeed)
         {
             isAttacking = false;
         }
     }
 
-    void Attack()
+    void PhysicalAttack()
     {
-        AttackContext context = new AttackContext(transform, player);
+        AttackContextBuilder builder = new();
+        AttackContext context = builder
+            .WithOrigin(transform)
+            .WithPlayer(CombatPlayer.combatPlayer)
+            .Build();
+
         leftAttack.Attack(context);
     }
-    void Shoot()
+
+    void RangeAttack()
     {
-        AttackContext context = new AttackContext(transform, player);
+        AttackContextBuilder builder = new();
+        AttackContext context = builder
+            .WithOrigin(transform)
+            .WithPlayer(CombatPlayer.combatPlayer)
+            .Build();
+
         rightAttack.Attack(context);
     }
     /*
