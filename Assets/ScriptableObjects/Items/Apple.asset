@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e8b825b9747b9418cc2ab13588c952, type: 3}
-  m_Name: apple
+  m_Script: {fileID: 11500000, guid: 62dca4beb08c955458731f4a1e23e3d3, type: 3}
+  m_Name: Apple
   m_EditorClassIdentifier: 
-  id: Inventoryitem_apple
+  id: apple
   displayName: Apple
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  prefab: {fileID: 0}
+  itemStrategies: []
+  uses: 1
+  icon: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}

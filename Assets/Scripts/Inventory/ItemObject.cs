@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    public InventoryTestItem referenceItem;
+    public ItemScriptableObject referenceItem;
 
     public void OnHandlePickupItem()
     {

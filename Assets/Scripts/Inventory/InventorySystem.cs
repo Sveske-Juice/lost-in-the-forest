@@ -11,12 +11,12 @@ public class InventorySystem : MonoBehaviour
 
     public event Action onInventoryChangedEvent;
 
-    private Dictionary<InventoryTestItem, InventoryItem> m_itemDictionary;
+    private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory { get; private set; }
     public void Awake()
     {
         inventory = new List<InventoryItem>();
-        m_itemDictionary = new Dictionary<InventoryTestItem, InventoryItem>();
+        m_itemDictionary = new Dictionary<ItemScriptableObject, InventoryItem>();
 
         if(instance != null && instance != this)//Singleton
         {
@@ -28,7 +28,7 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public InventoryItem Get(InventoryTestItem refenceData)
+    public InventoryItem Get(ItemScriptableObject refenceData)
     {
         if (m_itemDictionary.TryGetValue(refenceData, out InventoryItem value))
         {
@@ -39,7 +39,7 @@ public class InventorySystem : MonoBehaviour
         }
 
 
-    public void Add(InventoryTestItem refenceData) //Add items til inventory
+    public void Add(ItemScriptableObject refenceData) //Add items til inventory
     {
         if (m_itemDictionary.TryGetValue(refenceData, out InventoryItem value)) //Tjekker om item er i inventory
         {
@@ -55,7 +55,7 @@ public class InventorySystem : MonoBehaviour
         onInventoryChangedEvent?.Invoke();
     }
 
-    public void Remove(InventoryTestItem refenceData) //Fjerner item fra inventory
+    public void Remove(ItemScriptableObject refenceData) //Fjerner item fra inventory
     {
         if (m_itemDictionary.TryGetValue(refenceData, out InventoryItem value)) //Tjekker om item er i inventory
         {
