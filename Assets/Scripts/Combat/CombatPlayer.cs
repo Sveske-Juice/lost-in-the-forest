@@ -36,17 +36,23 @@ public class CombatPlayer : MonoBehaviour, IDamageable
         //Jeg lader den forblive tom for nu
     }*/
 
-    public void ModifyHealth(int _healAmount, int _maxHealthInc, bool _regenItem,int _regenAmount, int _regenRate) 
+    public void ModifyHealth(int _healAmount, int _maxHealthInc, bool _regenItem, int _regenAmount, int _regenRate, int _regenDur) 
     { 
         health += _healAmount; 
         maxhealth += _maxHealthInc;
-        if (_regenItem)
-            StartCoroutine(Regenerate(_regenAmount, _regenRate));
 
-        IEnumerator Regenerate(int _regenAmount, int _regenRate)
+        if (_regenItem)
+            StartCoroutine(Regenerate(_regenAmount, _regenRate, _regenDur));
+
+        IEnumerator Regenerate(int _regenAmount, int _regenRate, float _regenDur)
         {
+            float timeHealed = 0f;
+            while (timeHealed < _regenDur)
+            {
                 health += _regenAmount;
                 yield return new WaitForSeconds(_regenRate);
+                timeHealed += _regenRate;
+            }
         }
     }
     public void TakeDamage(int _damage)
