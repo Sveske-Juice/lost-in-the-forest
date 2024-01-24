@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -13,8 +11,13 @@ public class InventoryUI : MonoBehaviour
 
     private void OnUpdateInventory()
     {
-        foreach(Transform t in transform)
+        foreach (Transform t in transform)
         {
+            // Remove click handlers
+            ImageCickHandler clickHandler = t.gameObject.GetComponent<ImageCickHandler>();
+
+            clickHandler.OnElementUp -= ItemSlotClick;
+
             Destroy(t.gameObject);
         }
 
@@ -23,7 +26,7 @@ public class InventoryUI : MonoBehaviour
 
     public void DrawInventory()
     {
-        foreach(InventoryItem item in InventorySystem.instance.inventory)
+        foreach (InventoryItem item in InventorySystem.instance.inventory)
         {
             AddInventorySlot(item);
         }
@@ -36,11 +39,22 @@ public class InventoryUI : MonoBehaviour
 
         StackNumber slot = obj.GetComponent<StackNumber>();
         slot.Set(item);
+
+        // Setup click listener
+        ImageCickHandler clickHandler = obj.AddComponent<ImageCickHandler>();
+
+        clickHandler.OnElementUp += ItemSlotClick;
     }
 
-
-    void Update()
+    public void ItemSlotClick(ImageCickHandler imageElement)
     {
-        
+        StackNumber slot = imageElement.gameObject.GetComponent<StackNumber>();
+
+        UseModifierContext modifierContext = new UseModifierContextBuilder()
+            .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
+            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
+            .Build();
+
+        slot.Item.data.UseAbility(modifierContext);
     }
 }

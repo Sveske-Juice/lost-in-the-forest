@@ -11,8 +11,12 @@ public class StackNumber : MonoBehaviour
     [SerializeField] private GameObject m_stackObj;
     [SerializeField] private TextMeshProUGUI m_stackLabel;
 
+    public InventoryItem Item { get; private set; }
+
     public void Set(InventoryItem item)
     {
+        this.Item = item;
+
         m_icon.texture = item.data.Icon;
         m_label.text = item.data.DisplayName;
         if (item.stackSize <= 1)
