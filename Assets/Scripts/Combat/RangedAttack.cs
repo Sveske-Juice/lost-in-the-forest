@@ -11,9 +11,8 @@ public class RangedAttack : MonoBehaviour
 {
     [SerializeField] private float AttackUpTime;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] public float projectileSpeed;
-
     private bool hasHit;
+
     // Start is called before the first frame update
     void Start()
     {

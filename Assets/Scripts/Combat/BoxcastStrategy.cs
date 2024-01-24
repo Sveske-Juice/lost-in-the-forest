@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
-[CreateAssetMenu (menuName = "attackStrategy/boxcast", fileName = "boxcastStrategy")]
+[CreateAssetMenu (menuName = "Attacks/Box Cast Attack", fileName = "boxcastStrategy")]
 public class BoxcastStrategy : AttackStrategy
 {
     [SerializeField] private Vector2 attackSize = new Vector2 (1, 1);
@@ -14,8 +11,12 @@ public class BoxcastStrategy : AttackStrategy
     public override void Attack(AttackContext _context)
     {
         Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _context.origin.position;
-        SpawnVisual(dir.normalized, _context);
-        RaycastHit2D hit = Physics2D.BoxCast(_context.origin.position, attackSize, 0f, dir.normalized, attackDistance);
+        dir.z = 0f;
+        dir.Normalize();
+
+        SpawnVisual(dir, _context);
+
+        RaycastHit2D hit = Physics2D.BoxCast(_context.origin.position, attackSize, 0f, dir, attackDistance);
         if (hit.collider == null) return;
 
         Debug.Log($"hit: {hit.collider.name}");
@@ -32,20 +33,6 @@ public class BoxcastStrategy : AttackStrategy
     {
         Vector3 attackPos = _context.origin.position + _dir * offset;
         GameObject projectile = Instantiate(visualAttack, attackPos, Quaternion.identity);
-        projectile.transform.rotation = Quaternion.Euler(0, 0, AngleBetweenMouseAndPlayer(_context)+90);
-    }
-
-    private float AngleBetweenMouseAndPlayer(AttackContext _context)
-    {
-        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward * 10f);
-
-        float angle = AngleBetweenPoints(_context.origin.transform.position, mouseWorldPosition);
-
-        return angle;
-    }
-
-    private float AngleBetweenPoints(Vector2 a, Vector2 b)
-    {
-        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+        projectile.transform.up = _dir;
     }
 }
