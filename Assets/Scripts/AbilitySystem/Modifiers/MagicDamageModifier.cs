@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenuAttribute(menuName = "Modifier/damage", fileName = "damageModifier")]
-public class DamageItemModifier : Modifier
+public class MagicDamageModifier : Modifier
 {
     [Header("Item Type")]
     [SerializeField] bool consumable = false;
@@ -32,14 +32,12 @@ public class DamageItemModifier : Modifier
     [Header("Magic Modifier")]
     [SerializeField] int projectileScale = 0;
 
-
-
-    public override void Apply()
+    public override void Apply(UseModifierContext context)
     {
         throw new System.NotImplementedException();
     }
 
-    public override void Unapply()
+    public override void Unapply(UseModifierContext context)
     {
         throw new System.NotImplementedException();
     }

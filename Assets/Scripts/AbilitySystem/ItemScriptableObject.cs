@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 
 [CreateAssetMenu(fileName = "ItemScriptableObject", menuName = "ScriptableObjects/Item")]
 public class ItemScriptableObject : ScriptableObject
@@ -15,13 +14,13 @@ public class ItemScriptableObject : ScriptableObject
     public string DisplayName => displayName;
     public Texture2D Icon => icon;
 
-    public bool UseAbility()
+    public bool UseAbility(UseModifierContext useItemContext)
     {
         if (uses > 0)
         {
             for (int i = 0; i < itemStrategies.Length; i++)
             {
-                itemStrategies[i].UseItem();
+                itemStrategies[i].UseItem(useItemContext);
             }
             return true;
         }

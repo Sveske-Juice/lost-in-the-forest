@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: apple
   displayName: Apple
-  itemStrategies: []
+  itemStrategies:
+  - {fileID: 11400000, guid: 866f9cb9d4b12576f88cd307c1dbccc8, type: 2}
   uses: 1
   icon: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
