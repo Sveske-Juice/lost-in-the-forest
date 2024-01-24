@@ -59,6 +59,7 @@ public class InventoryUI : MonoBehaviour
         UseModifierContext modifierContext = new UseModifierContextBuilder()
             .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
             .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
+            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer as IAttackSpeedReceiver)
             .Build();
 
         slot.Item.data.UseAbility(modifierContext);

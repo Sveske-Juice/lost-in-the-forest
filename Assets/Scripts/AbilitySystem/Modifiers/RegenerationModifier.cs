@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 public interface IRegenerationReceiver
 {
-    public void Regeneration(int regenAmount, int regenRate, int regenDuration);
+    public void Regeneration(int regenAmount, float regenRate, int regenDuration);
 }
 
 [CreateAssetMenuAttribute(
@@ -16,7 +16,7 @@ public class RegenerationModifier : Modifier
     private int regenAmount = 5;
 
     [SerializeField]
-    private int regenRate = 5;
+    private float regenRate = 5;
 
     [SerializeField]
     private int regenDuration = 5;

@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 // Skrevet af Morgan ud fra Snorres klasse diagram
 // Disse to scripts er for at holde data på Playeren og Enemyen
@@ -9,7 +9,8 @@ public class CombatPlayer
     : MonoBehaviour,
         IDamageable,
         IInstantHealthReceiver,
-        IRegenerationReceiver
+        IRegenerationReceiver,
+        IAttackSpeedReceiver
 {
     public static CombatPlayer combatPlayer { get; private set; }
 
@@ -24,7 +25,14 @@ public class CombatPlayer
 
     [SerializeField]
     private float attackSpeed;
-    public float AttackSpeed => attackSpeed; // dette vil være hvor lang tid der er imellem vert angreb
+
+    [SerializeField]
+    private AnimationCurve attackSpeedToDelay;
+
+    /// <summary>
+    /// The delay in seconds before it's possible to attack again
+    /// </summary>
+    public float AttackDelay => attackSpeedToDelay.Evaluate(attackSpeed);
 
     [SerializeField]
     private int maxHealth;
@@ -35,9 +43,8 @@ public class CombatPlayer
     public int Health
     {
         get { return health; }
-
         // Clamp to max health
-        private set { health = (int) Mathf.Clamp(value, 0f, MaxHealth); }
+        private set { health = (int)Mathf.Clamp(value, 0f, MaxHealth); }
     }
 
     private void Awake()
@@ -89,8 +96,11 @@ public class CombatPlayer
         this.Health += amount;
     }
 
-    public void Regeneration(int regenAmount, int regenRate, int regenDuration)
+    public void Regeneration(int regenAmount, float regenRate, int regenDuration)
     {
+        Assert.IsTrue(regenDuration > 0, $"regen duration must be above 0");
+        Assert.IsTrue(regenRate > 0, $"regen rate must be above 0");
+
         StartCoroutine(Regen());
 
         IEnumerator Regen()
@@ -103,5 +113,10 @@ public class CombatPlayer
                 time += regenRate;
             }
         }
+    }
+
+    public void AddAttackSpeed(float amount)
+    {
+        attackSpeed += amount;
     }
 }

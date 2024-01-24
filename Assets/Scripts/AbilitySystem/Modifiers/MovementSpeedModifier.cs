@@ -1,7 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenuAttribute(menuName = "Modifier/Attack Speed Modifer", fileName = "Attack Speed Modifier")]
-public class AttackSpeedItemModifier : Modifier
+[CreateAssetMenuAttribute(menuName = "Modifier/Movement Speed Modifier", fileName = "Movement Speed Modifier")]
+public class MovementSpeedModifier : Modifier
 {
     public override void Apply(UseModifierContext context)
     {

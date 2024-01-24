@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
         }
         attackTime += Time.deltaTime;
 
-        if (isAttacking && attackTime >= CombatPlayer.combatPlayer.AttackSpeed)
+        if (isAttacking && attackTime >= CombatPlayer.combatPlayer.AttackDelay)
         {
             isAttacking = false;
         }
