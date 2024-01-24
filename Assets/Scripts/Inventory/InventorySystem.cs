@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+//Ændre InventoryTestItem til noget andet
 
 public class InventorySystem : MonoBehaviour
 {
     public static InventorySystem instance { get; private set; }
+
+    public event Action onInventoryChangedEvent;
 
     private Dictionary<InventoryTestItem, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory { get; private set; }
@@ -47,6 +52,7 @@ public class InventorySystem : MonoBehaviour
             m_itemDictionary.Add(refenceData, newItem);
             print($"Pick up: ¨{refenceData.name}");
         }
+        onInventoryChangedEvent?.Invoke();
     }
 
     public void Remove(InventoryTestItem refenceData) //Fjerner item fra inventory
@@ -61,6 +67,9 @@ public class InventorySystem : MonoBehaviour
                 m_itemDictionary.Remove(refenceData);
 
             }
+            onInventoryChangedEvent?.Invoke();
+
         }
+
     }
 }
