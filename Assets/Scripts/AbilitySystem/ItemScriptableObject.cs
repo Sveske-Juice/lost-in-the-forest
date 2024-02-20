@@ -8,11 +8,13 @@ public class ItemScriptableObject : ScriptableObject
     [SerializeField] ItemStrategy[] itemStrategies;
     [SerializeField] int uses = 1;
     [SerializeField] Texture2D icon;
-    public bool IsActive => itemStrategies != null;
+    [SerializeField] bool isActive;
 
     public string Id => id;
     public string DisplayName => displayName;
     public Texture2D Icon => icon;
+    public bool IsActive => isActive;
+    public bool IsPassive => !isActive;
 
     public bool UseAbility(UseModifierContext useItemContext)
     {
@@ -25,5 +27,13 @@ public class ItemScriptableObject : ScriptableObject
             return true;
         }
         return false;
+    }
+
+    public void LoseItem(UseModifierContext context)
+    {
+        for (int i = 0; i < itemStrategies.Length; i++)
+        {
+            itemStrategies[i].UnUseItem(context);
+        }
     }
 }

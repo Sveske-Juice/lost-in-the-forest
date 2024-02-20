@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c10172e0539a84186e0456b2e05428, type: 3}
   m_Name: Attack Speed Modifier
   m_EditorClassIdentifier: 
-  speedAmount: 10
+  speedAmount: 100
