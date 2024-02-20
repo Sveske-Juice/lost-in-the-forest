@@ -417,8 +417,32 @@ MonoBehaviour:
   speed: 5
   intelligence: 1
   strength: 1
-  attackSpeed: 1
-  maxhealth: 5
+  attackSpeed: 0
+  attackSpeedToDelay:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1.0000538
+      outSlope: -1.0000538
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99334717
+      value: 0.0065994263
+      inSlope: -1.0000538
+      outSlope: -1.0000538
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxHealth: 100
 --- !u!1 &2052232457
 GameObject:
   m_ObjectHideFlags: 0
