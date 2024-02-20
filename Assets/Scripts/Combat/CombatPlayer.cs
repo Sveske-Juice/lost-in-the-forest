@@ -79,17 +79,17 @@ public class CombatPlayer
         return true; //temp
     }
 
-    public float GetPhysicalDamage(int _modifiers)
+    public float GetPhysicalDamage()
     {
         float damage;
-        damage = this.strength + _modifiers;
+        damage = this.strength;
         return damage;
     }
 
-    public float GetMagicalDamage(int _modifiers)
+    public float GetMagicalDamage()
     {
         float damage;
-        damage = this.intelligence + _modifiers;
+        damage = this.intelligence;
         return damage;
     }
 
