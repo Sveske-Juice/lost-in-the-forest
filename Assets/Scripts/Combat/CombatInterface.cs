@@ -8,7 +8,7 @@ public interface IDamageable
 {
     public int Health { get; }
 
-    public void TakeDamage(int _damage);
+    public void TakeDamage(float _damage);
     public bool Heal(int _heal);
 }
 /*

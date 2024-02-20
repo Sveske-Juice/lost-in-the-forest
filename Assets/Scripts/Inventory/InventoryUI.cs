@@ -60,6 +60,7 @@ public class InventoryUI : MonoBehaviour
             .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
             .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
             .WithAttackSpeedReceiver(CombatPlayer.combatPlayer as IAttackSpeedReceiver)
+            .WithDamageReceiver(CombatPlayer.combatPlayer as IDamageReceiver)
             .Build();
 
         slot.Item.data.UseAbility(modifierContext);

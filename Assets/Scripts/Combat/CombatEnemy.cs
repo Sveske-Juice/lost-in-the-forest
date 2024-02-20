@@ -33,9 +33,9 @@ public class CombatEnemy : MonoBehaviour, IDamageable
         private set { health = (int)Mathf.Clamp(value, 0f, MaxHealth); }
     }
 
-    public void TakeDamage(int _damage)
+    public void TakeDamage(float _damage)
     {
-        this.Health -= _damage;
+        this.Health -= (int)_damage;
     }
 
     public bool Heal(int _heal)

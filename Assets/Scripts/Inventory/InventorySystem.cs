@@ -10,6 +10,7 @@ public class InventorySystem : MonoBehaviour
     public static InventorySystem instance { get; private set; }
 
     public event Action onInventoryChangedEvent;
+    private UseModifierContext modifierCtx;
 
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory { get; private set; }
@@ -26,6 +27,13 @@ public class InventorySystem : MonoBehaviour
         {
             instance = this;
         }
+
+        modifierCtx = new UseModifierContextBuilder()
+            .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
+            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
+            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer as IAttackSpeedReceiver)
+            .WithDamageReceiver(CombatPlayer.combatPlayer as IDamageReceiver)
+            .Build();
     }
 
     public InventoryItem Get(ItemScriptableObject refenceData)
@@ -51,6 +59,12 @@ public class InventorySystem : MonoBehaviour
             inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
             print($"Pick up: ¨{refenceData.name}");
+
+            // add passive
+            if (newItem.data.IsPassive)
+            {
+                newItem.data.UseAbility(modifierCtx);
+            }
         }
         onInventoryChangedEvent?.Invoke();
     }
@@ -67,6 +81,13 @@ public class InventorySystem : MonoBehaviour
                 m_itemDictionary.Remove(refenceData);
 
             }
+
+            // remove passive
+            if (value.data.IsPassive)
+            {
+                value.data.LoseItem(modifierCtx);
+            }
+
             onInventoryChangedEvent?.Invoke();
 
         }
