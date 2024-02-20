@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a226c24a43cfb440b2672ddf4fb0787, type: 3}
-  m_Name: TestMeleeEnemy Stats
+  m_Script: {fileID: 11500000, guid: 15d27484b05c5b8e58b4824b4e4c4713, type: 3}
+  m_Name: AppleInstantHealing
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  attackRange: 4
-  attackDelay: 1
-  canMoveWhileAttacking: 0
-  strenght: 1
-  health: 10
-  maxHealth: 10
+  healing: 5
