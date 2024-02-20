@@ -10,18 +10,20 @@ public class CombatPlayer
         IDamageable,
         IInstantHealthReceiver,
         IRegenerationReceiver,
-        IAttackSpeedReceiver
+        IAttackSpeedReceiver,
+        IDamageReceiver,
+        IMoveSpeedReceiver
 {
     public static CombatPlayer combatPlayer { get; private set; }
 
     [SerializeField]
-    private int speed;
+    private float speed;
 
     [SerializeField]
-    private int intelligence;
+    private float intelligence;
 
     [SerializeField]
-    private int strength;
+    private float strength;
 
     [SerializeField]
     private float attackSpeed;
@@ -65,9 +67,9 @@ public class CombatPlayer
         //Jeg lader den forblive tom for nu
     }*/
 
-    public void TakeDamage(int _damage)
+    public void TakeDamage(float _damage)
     {
-        this.Health -= _damage;
+        this.Health -= (int) _damage;
     }
 
     public bool Heal(int _heal)
@@ -77,17 +79,17 @@ public class CombatPlayer
         return true; //temp
     }
 
-    public int GetPhysicalDamage(int _modifiers)
+    public float GetPhysicalDamage()
     {
-        int damage;
-        damage = this.strength + _modifiers;
+        float damage;
+        damage = this.strength;
         return damage;
     }
 
-    public int GetMagicalDamage(int _modifiers)
+    public float GetMagicalDamage()
     {
-        int damage;
-        damage = this.intelligence + _modifiers;
+        float damage;
+        damage = this.intelligence;
         return damage;
     }
 
@@ -118,5 +120,16 @@ public class CombatPlayer
     public void AddAttackSpeed(float amount)
     {
         attackSpeed += amount;
+    }
+
+    public void DamageIncrease(float physicalDamage, float magicDamage)
+    {
+        strength += physicalDamage;  // Apply physical damage increase
+        intelligence += magicDamage; //Apply magic damage increase
+    }
+
+    public void MoveSpeedIncrease(float _moveSpeed)
+    {
+        speed += _moveSpeed;
     }
 }

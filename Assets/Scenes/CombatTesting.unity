@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 2052232459}
   - component: {fileID: 2052232458}
   - component: {fileID: 2052232460}
+  - component: {fileID: 2052232464}
   - component: {fileID: 2052232462}
   - component: {fileID: 2052232463}
   m_Layer: 0
@@ -478,7 +479,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40ed9af2af50fa4696ae023a4135705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 11400000, guid: 1f5e8073878ac5840928f241c7d9698e, type: 2}
+  moveSpeed: 0
+  attackRange: 0
+  attackDelay: 0
+  canMoveWhileAttacking: 0
+  strength: 1
+  health: 10
+  maxHealth: 10
+--- !u!114 &2052232464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052232457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40ed9af2af50fa4696ae023a4135705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  attackRange: 0
+  attackDelay: 0
+  canMoveWhileAttacking: 0
+  strength: 1
+  health: 10
+  maxHealth: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

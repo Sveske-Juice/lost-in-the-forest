@@ -25,7 +25,7 @@ public class BoxcastStrategy : AttackStrategy
         // The hit object can be damaged
         if (damageable != null && damageable != (CombatPlayer.combatPlayer as IDamageable))
         {
-            damageable.TakeDamage(_context.player.GetPhysicalDamage(0));
+            damageable.TakeDamage(_context.player.GetPhysicalDamage());
         }
     }
 

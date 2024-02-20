@@ -2,8 +2,8 @@
 // -Gabriel
 
 using UnityEngine;
-
-
+//  not being used due to the fact it didnt work with the ranged attack script
+// -Lukas (most up to date comment) 20-02-2024 
 [CreateAssetMenu(fileName = "New Enemy Statblock", menuName = "ScriptableObjects/Enemy Statblock")]
 public class EnemyStats : ScriptableObject
 {
@@ -23,8 +23,8 @@ public class EnemyStats : ScriptableObject
 
 
     // Har givet Enemysne liv
-    // Ville gerne have at den nedarvet fra IDamageable men kunne ikke få det til at virke
-    // Har ikke arbejdet med Interfaces før
+    // Ville gerne have at den nedarvet fra IDamageable men kunne ikke fï¿½ det til at virke
+    // Har ikke arbejdet med Interfaces fï¿½r
     // -Morgan
     [SerializeField]
     public int strength = 1;

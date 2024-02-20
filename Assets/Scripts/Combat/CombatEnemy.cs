@@ -1,26 +1,41 @@
 using UnityEngine;
 
-// Dette vil være klassen som holder enemystats når spillet køre
+// Dette vil vï¿½re klassen som holder enemystats nï¿½r spillet kï¿½re
 // Scriptet som Gabriel har lavet vil holde de enemysne som ikke er blevet intansiatet i nu
 // -Morgan
 
 public class CombatEnemy : MonoBehaviour, IDamageable
 {
-    private int health;
-    private int maxHealth;
-    private float speed;
-    private int strength;
-    [SerializeField] private EnemyStats Enemy;
+
+    [SerializeField]
+    public float moveSpeed = 0;
+
+    [SerializeField]
+    public float attackRange = 0;
+
+    [SerializeField]
+    public float attackDelay = 0;
+
+    [SerializeField]
+    public bool canMoveWhileAttacking = false;
+    [SerializeField]
+    public int strength = 1;
+
+    [SerializeField]
+    public int health = 10;
+    [SerializeField]
+    public int maxHealth = 10;
+    public int MaxHealth => maxHealth;
 
     public int Health
     {
         get { return health; }
-        private set { health = (int)Mathf.Clamp(value, 0f, maxHealth); }
+        private set { health = (int)Mathf.Clamp(value, 0f, MaxHealth); }
     }
 
-    public void TakeDamage(int _damage)
+    public void TakeDamage(float _damage)
     {
-        this.Health -= _damage;
+        this.Health -= (int)_damage;
     }
 
     public bool Heal(int _heal)
@@ -28,14 +43,6 @@ public class CombatEnemy : MonoBehaviour, IDamageable
         this.Health += _heal;
 
         return true; //temp
-    }
-
-    void Start()
-    {
-        this.Health = Enemy.health;
-        this.maxHealth = Enemy.maxHealth;
-        this.speed = Enemy.moveSpeed;
-        this.strength = Enemy.strength;
     }
 
     void Update()

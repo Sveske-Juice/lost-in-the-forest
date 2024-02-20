@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8538e1ed4178e404eba0341bb40919cc, type: 3}
-  m_Name: Spark
+  m_Script: {fileID: 11500000, guid: 2431b1bd934fb4f4ab1d0c7d2f2815a5, type: 3}
+  m_Name: FlurryDamageModifier
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 593997200621683044, guid: 698490b57e4006b4695f92e615aceebc, type: 3}
-  projectileSpeed: 1
+  magicDmg: 100
+  physicialDmg: 100

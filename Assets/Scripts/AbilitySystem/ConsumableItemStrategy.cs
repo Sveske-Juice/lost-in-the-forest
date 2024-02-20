@@ -11,6 +11,5 @@ public class ConsumableItemStrategy : ItemStrategy
         {
             modifiers[i].Apply(useItemContext);
         }
-        //TODO: Unapply 
     }
 }

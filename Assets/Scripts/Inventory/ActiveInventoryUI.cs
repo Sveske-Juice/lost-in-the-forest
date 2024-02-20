@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class ActiveInventoryUI : MonoBehaviour
 {
+    [SerializeField] InventorySystem connectedInventory;
     public GameObject m_slotPrefab;
 
     void Start()
     {
-        InventorySystem.instance.onInventoryChangedEvent += OnUpdateInventory;
+        connectedInventory.onInventoryChangedEvent += OnUpdateInventory;
     }
 
     private void OnUpdateInventory()
@@ -29,7 +30,7 @@ public class InventoryUI : MonoBehaviour
 
     public void DrawInventory()
     {
-        foreach (InventoryItem item in InventorySystem.instance.inventory)
+        foreach (InventoryItem item in connectedInventory.Inventory)
         {
             AddInventorySlot(item);
         }
@@ -40,7 +41,7 @@ public class InventoryUI : MonoBehaviour
         GameObject obj = Instantiate(m_slotPrefab);
         obj.transform.SetParent(transform, false);
 
-        StackNumber slot = obj.GetComponent<StackNumber>();
+        ItemSlot slot = obj.GetComponent<ItemSlot>();
         slot.Set(item);
 
         // Setup click listener
@@ -54,12 +55,13 @@ public class InventoryUI : MonoBehaviour
 
     public void ItemSlotClick(ImageCickHandler imageElement)
     {
-        StackNumber slot = imageElement.gameObject.GetComponent<StackNumber>();
+        ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
 
         UseModifierContext modifierContext = new UseModifierContextBuilder()
             .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
             .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
             .WithAttackSpeedReceiver(CombatPlayer.combatPlayer as IAttackSpeedReceiver)
+            .WithDamageReceiver(CombatPlayer.combatPlayer as IDamageReceiver)
             .Build();
 
         slot.Item.data.UseAbility(modifierContext);
@@ -72,7 +74,7 @@ public class InventoryUI : MonoBehaviour
     // kaldt når mus enter over et item slot
     public void OnItemSlotEnter(ImageCickHandler imageElement)
     {
-        StackNumber slot = imageElement.gameObject.GetComponent<StackNumber>();
+        ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
 
         // TODO: spawn item hover prefab
         // kald funktion på instantied prefab til at loade det item (brug slot variabel)
@@ -81,7 +83,7 @@ public class InventoryUI : MonoBehaviour
     // kaldt når mus bliver fjernet fra item slot
     public void OnItemSlotExit(ImageCickHandler imageElement)
     {
-        StackNumber slot = imageElement.gameObject.GetComponent<StackNumber>();
+        ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
 
         // TODO: slet item hover menu
     }

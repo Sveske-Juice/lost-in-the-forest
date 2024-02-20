@@ -15,6 +15,7 @@ public class ProjectileStrategy : AttackStrategy
         dir.Normalize();
 
         GameObject projectile = Instantiate(projectilePrefab, _context.origin.position, Quaternion.identity);
+        Debug.DrawRay(_context.origin.position, dir, Color.magenta, 5f);
 
         projectile.transform.up = dir;
         projectile.GetComponent<Rigidbody2D>().AddForce(dir * projectileSpeed);
