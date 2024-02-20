@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PickUpItemController : MonoBehaviour
 {
-    public InventorySystem Inventory;
+    [SerializeField] InventorySystem passiveInventory;
+    [SerializeField] InventorySystem activeInventory;
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Collectable"))
+        ItemObject itemObject = collider.gameObject.GetComponent<ItemObject>();
+        if (itemObject == null) return; // Did not collide with item object
+
+        // Add to correct inventory based on item type
+        Debug.Log($"Acquired: {itemObject.ReferenceItem.DisplayName} (active: {itemObject.ReferenceItem.IsActive})");
+        if (itemObject.ReferenceItem.IsActive)
         {
-            ItemObject item = collider.gameObject.GetComponent<ItemObject>();
-            Inventory.Add(item.referenceItem);
+            activeInventory.Add(itemObject.ReferenceItem);
+        }
+        else
+        {
+            passiveInventory.Add(itemObject.ReferenceItem);
         }
     }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        
-    }
-
 }

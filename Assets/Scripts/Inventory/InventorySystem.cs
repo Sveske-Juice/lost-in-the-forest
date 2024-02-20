@@ -7,32 +7,24 @@ using System;
 
 public class InventorySystem : MonoBehaviour
 {
-    public static InventorySystem instance { get; private set; }
-
     public event Action onInventoryChangedEvent;
     private UseModifierContext modifierCtx;
 
-    private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary;
-    public List<InventoryItem> inventory { get; private set; }
-    public void Awake()
+    private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
+    public List<InventoryItem> Inventory { get; private set; } = new();
+
+    private void Awake()
     {
-        inventory = new List<InventoryItem>();
-        m_itemDictionary = new Dictionary<ItemScriptableObject, InventoryItem>();
+    }
 
-        if(instance != null && instance != this)//Singleton
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-        }
-
+    private void Start()
+    {
         modifierCtx = new UseModifierContextBuilder()
-            .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
-            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
-            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer as IAttackSpeedReceiver)
-            .WithDamageReceiver(CombatPlayer.combatPlayer as IDamageReceiver)
+            .WithInstantHealthReceiver(CombatPlayer.combatPlayer)
+            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer)
+            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer)
+            .WithDamageReceiver(CombatPlayer.combatPlayer)
+            .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
             .Build();
     }
 
@@ -55,10 +47,10 @@ public class InventorySystem : MonoBehaviour
         else // laver en ny item, og add til inventory
         {
             InventoryItem newItem = new InventoryItem(refenceData);
-            inventory.Add(newItem);
+            Inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
 
-            // add passive
+            // Notify item thats its been acquired - apply passives etc.
             newItem.data.ItemAcquired(modifierCtx);
         }
         onInventoryChangedEvent?.Invoke();
@@ -72,7 +64,7 @@ public class InventorySystem : MonoBehaviour
 
             if (value.stackSize == 0) //Hvis stack er 0, fjern item fra inventory
             {
-                inventory.Remove(value);
+                Inventory.Remove(value);
                 m_itemDictionary.Remove(refenceData);
             }
 

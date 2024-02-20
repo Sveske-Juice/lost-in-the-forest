@@ -13,7 +13,7 @@ public class ItemScriptableObject : ScriptableObject
     public string Id => id;
     public string DisplayName => displayName;
     public Texture2D Icon => icon;
-    public bool IsActive => itemStrategies != null;
+    public bool IsActive => itemStrategies != null && itemStrategies.Length > 0;
     public bool IsPassive => !IsActive;
 
     public bool UseAbility(UseModifierContext useItemContext)
@@ -36,8 +36,16 @@ public class ItemScriptableObject : ScriptableObject
     /// <param name="context"> The context for the person/enemy who acquired the item </param>
     public void ItemAcquired(UseModifierContext context)
     {
-        Debug.Log($"Acquired: {displayName}");
         ApplyModifiers(context);
+    }
+
+    /// <summary>
+    /// Called when the person/enemy loses this item from their inventory
+    /// </summary>
+    /// <param name="context"> The context for the person/enemy who lost the item </param>
+    public void LoseItem(UseModifierContext context)
+    {
+        UnapplyModifiers(context);
     }
 
     private void ApplyModifiers(UseModifierContext context)
@@ -55,14 +63,5 @@ public class ItemScriptableObject : ScriptableObject
         {
             modifier.Unapply(context);
         }
-    }
-
-    /// <summary>
-    /// Called when the person/enemy loses this item from their inventory
-    /// </summary>
-    /// <param name="context"> The context for the person/enemy who lost the item </param>
-    public void LoseItem(UseModifierContext context)
-    {
-        UnapplyModifiers(context);
     }
 }

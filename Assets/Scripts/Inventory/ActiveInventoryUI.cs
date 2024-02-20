@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class ActiveInventoryUI : MonoBehaviour
 {
+    [SerializeField] InventorySystem connectedInventory;
     public GameObject m_slotPrefab;
 
     void Start()
     {
-        InventorySystem.instance.onInventoryChangedEvent += OnUpdateInventory;
+        connectedInventory.onInventoryChangedEvent += OnUpdateInventory;
     }
 
     private void OnUpdateInventory()
@@ -29,7 +30,7 @@ public class InventoryUI : MonoBehaviour
 
     public void DrawInventory()
     {
-        foreach (InventoryItem item in InventorySystem.instance.inventory)
+        foreach (InventoryItem item in connectedInventory.Inventory)
         {
             AddInventorySlot(item);
         }

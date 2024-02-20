@@ -14,13 +14,13 @@ public class AttackSpeedModifier : Modifier
 
     public override void Apply(UseModifierContext context)
     {
-        Assert.IsNotNull(context.attackSpeedReceiver, "No attack speed receiver when trying to apply attack speed modifier");
+        Assert.IsNotNull(context?.attackSpeedReceiver, "No attack speed receiver when trying to apply attack speed modifier");
         context.attackSpeedReceiver.AddAttackSpeed(speedAmount);
     }
 
     public override void Unapply(UseModifierContext context)
     {
-        Assert.IsNotNull(context.attackSpeedReceiver, "No attack speed receiver when trying to un-apply attack speed modifier");
+        Assert.IsNotNull(context?.attackSpeedReceiver, "No attack speed receiver when trying to un-apply attack speed modifier");
         context.attackSpeedReceiver.AddAttackSpeed(-speedAmount);
     }
 }

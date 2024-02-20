@@ -20,6 +20,11 @@ public class UseModifierContext
         this.damageReceiver = damageReceiver;
         this.moveSpeedReceiver = moveSpeedReceiver;
     }
+
+    public override string ToString()
+    {
+        return $"{instantHealtReceiver}, {regenerationReceiver}, {attackSpeedReceiver},{damageReceiver}, {moveSpeedReceiver}";
+    }
 }
 
 public class UseModifierContextBuilder
