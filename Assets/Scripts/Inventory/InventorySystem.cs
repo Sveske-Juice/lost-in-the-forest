@@ -44,8 +44,7 @@ public class InventorySystem : MonoBehaviour
         }
         return null;
 
-        }
-
+    }
 
     public void Add(ItemScriptableObject refenceData) //Add items til inventory
     {
@@ -58,13 +57,9 @@ public class InventorySystem : MonoBehaviour
             InventoryItem newItem = new InventoryItem(refenceData);
             inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
-            print($"Pick up: ¨{refenceData.name}");
 
             // add passive
-            if (newItem.data.IsPassive)
-            {
-                newItem.data.UseAbility(modifierCtx);
-            }
+            newItem.data.ItemAcquired(modifierCtx);
         }
         onInventoryChangedEvent?.Invoke();
     }
@@ -79,18 +74,12 @@ public class InventorySystem : MonoBehaviour
             {
                 inventory.Remove(value);
                 m_itemDictionary.Remove(refenceData);
-
             }
 
             // remove passive
-            if (value.data.IsPassive)
-            {
-                value.data.LoseItem(modifierCtx);
-            }
+            value.data.LoseItem(modifierCtx);
 
             onInventoryChangedEvent?.Invoke();
-
         }
-
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StackNumber : MonoBehaviour
+public class ItemSlot : MonoBehaviour
 {
     [SerializeField] private RawImage m_icon;
     [SerializeField] private TextMeshProUGUI m_label; 

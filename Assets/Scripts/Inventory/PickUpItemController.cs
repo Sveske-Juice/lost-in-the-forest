@@ -6,7 +6,6 @@ public class PickUpItemController : MonoBehaviour
 {
     public InventorySystem Inventory;
 
-
     public void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Collectable"))

@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefb271b0178f9f43b3df1e8008f425a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referenceItem: {fileID: 11400000, guid: 60193e8aacbfb884ebf3a53ca0a16ed6, type: 2}
+  referenceItem: {fileID: 11400000, guid: 1147af510fbb7254296c04f1b9169a75, type: 2}
 --- !u!1 &350660359
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefb271b0178f9f43b3df1e8008f425a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referenceItem: {fileID: 11400000, guid: 1147af510fbb7254296c04f1b9169a75, type: 2}
+  referenceItem: {fileID: 11400000, guid: 60193e8aacbfb884ebf3a53ca0a16ed6, type: 2}
 --- !u!1 &1234168285
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1315753476793573683, guid: a8607460eebd31243ba6826adebee779, type: 3}
       propertyPath: m_Name
-      value: TestItem_Sword - Copy (1)
+      value: apple
       objectReference: {fileID: 0}
     - target: {fileID: 2374011811101313532, guid: a8607460eebd31243ba6826adebee779, type: 3}
       propertyPath: m_LocalPosition.x
@@ -853,7 +853,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1315753476793573683, guid: a8607460eebd31243ba6826adebee779, type: 3}
       propertyPath: m_Name
-      value: TestItem_Sword - Copy
+      value: sword
       objectReference: {fileID: 0}
     - target: {fileID: 2374011811101313532, guid: a8607460eebd31243ba6826adebee779, type: 3}
       propertyPath: m_LocalPosition.x

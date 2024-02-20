@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2431b1bd934fb4f4ab1d0c7d2f2815a5, type: 3}
-  m_Name: Damage Modifier
+  m_Script: {fileID: 11500000, guid: 7cbfcbfa92ff2c84ab98469ed56b4d13, type: 3}
+  m_Name: AppleActive
   m_EditorClassIdentifier: 
-  magicDmg: 100
-  physicialDmg: 100
+  modifiers:
+  - {fileID: 11400000, guid: aea61587237ff355b9445ca9cc4e7fb2, type: 2}
