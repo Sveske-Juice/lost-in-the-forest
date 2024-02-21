@@ -9,8 +9,8 @@ public interface IDamageReceiver{
 public class DamageModifier : Modifier
 {
     [Header("Damage")]
-    [SerializeField,Range(0,100)] float magicDmg = 0;
-    [SerializeField,Range(0,100)] float physicialDmg = 0;
+    [SerializeField,Range(-100,100)] float magicDmg = 0;
+    [SerializeField,Range(-100,100)] float physicialDmg = 0;
 
 
     public override void Apply(UseModifierContext context)
