@@ -5,6 +5,9 @@ public class ItemScriptableObject : ScriptableObject
 {
     [SerializeField] string id;
     [SerializeField] string displayName;
+    [SerializeField]
+    [TextArea]
+    string description;
     [SerializeField] ItemStrategy[] itemStrategies;
     [SerializeField] int uses = 1;
     [SerializeField] Texture2D icon;
@@ -12,6 +15,7 @@ public class ItemScriptableObject : ScriptableObject
 
     public string Id => id;
     public string DisplayName => displayName;
+    public string Description => description;
     public Texture2D Icon => icon;
     public bool IsActive => itemStrategies != null && itemStrategies.Length > 0;
     public bool IsPassive => !IsActive;

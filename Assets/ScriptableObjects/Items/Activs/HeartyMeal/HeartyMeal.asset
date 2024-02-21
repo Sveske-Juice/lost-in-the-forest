@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: hearty_meal
   displayName: Hearty Meal
+  description: Food so good, it makes your tommy feal good
   itemStrategies:
   - {fileID: 11400000, guid: 4288ef1dac2aec140a264ac182e13d56, type: 2}
   uses: 1

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: flurry
   displayName: Flurry
+  description: Ora ora ora ora ora ora ora ora ...
   itemStrategies: []
   uses: 1
   icon: {fileID: -3604256930052969394, guid: d03ed43fc9d8a4f2e9fa70c1c7916eb9, type: 2}

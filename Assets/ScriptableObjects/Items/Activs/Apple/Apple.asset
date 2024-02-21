@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: apple
   displayName: Apple
+  description: A apple a day keeps doctor away
   itemStrategies:
   - {fileID: 11400000, guid: 866f9cb9d4b12576f88cd307c1dbccc8, type: 2}
   uses: 1

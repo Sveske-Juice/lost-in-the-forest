@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: heavy_hitter
   displayName: Heavy Hitter
+  description: Risk it for the biscuit
   itemStrategies: []
   uses: 1
   icon: {fileID: 0}
