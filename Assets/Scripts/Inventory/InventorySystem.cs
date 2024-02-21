@@ -13,6 +13,9 @@ public class InventorySystem : MonoBehaviour
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
     public List<InventoryItem> Inventory { get; private set; } = new();
 
+    public int inventorySize = 3;
+    public int currentInvenotorySize = 0;
+
     private void Awake()
     {
     }
@@ -38,22 +41,30 @@ public class InventorySystem : MonoBehaviour
 
     }
 
-    public void Add(ItemScriptableObject refenceData) //Add items til inventory
+    public bool Add(ItemScriptableObject refenceData) //Add items til inventory
     {
         if (m_itemDictionary.TryGetValue(refenceData, out InventoryItem value)) //Tjekker om item er i inventory
         {
             value.AddToStack(); //Adder til en stack
+            onInventoryChangedEvent?.Invoke();
+
+            return true;
         }
-        else // laver en ny item, og add til inventory
+        else if(inventorySize > currentInvenotorySize)// laver en ny item, og add til inventory
         {
             InventoryItem newItem = new InventoryItem(refenceData);
             Inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
+            currentInvenotorySize++;
 
             // Notify item thats its been acquired - apply passives etc.
             newItem.data.ItemAcquired(modifierCtx);
+            onInventoryChangedEvent?.Invoke();
+
+            return true;
         }
-        onInventoryChangedEvent?.Invoke();
+        return false;
+        
     }
 
     public void Remove(ItemScriptableObject refenceData) //Fjerner item fra inventory
@@ -66,6 +77,7 @@ public class InventorySystem : MonoBehaviour
             {
                 Inventory.Remove(value);
                 m_itemDictionary.Remove(refenceData);
+                currentInvenotorySize--;
             }
 
             // remove passive
