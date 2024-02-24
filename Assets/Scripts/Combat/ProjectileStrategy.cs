@@ -10,7 +10,7 @@ public class ProjectileStrategy : AttackStrategy
 
     public override void Attack(AttackContext _context)
     {
-        Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _context.origin.position;
+        Vector3 dir = Camera.main.ScreenToViewportPoint(Input.mousePosition) - Camera.main.WorldToViewportPoint(_context.origin.position);
         dir.z = 0;
         dir.Normalize();
 
