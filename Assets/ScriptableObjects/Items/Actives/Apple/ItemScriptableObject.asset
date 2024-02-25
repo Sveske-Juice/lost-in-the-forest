@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cbfcbfa92ff2c84ab98469ed56b4d13, type: 3}
-  m_Name: AppleActive
+  m_Script: {fileID: 11500000, guid: 62dca4beb08c955458731f4a1e23e3d3, type: 3}
+  m_Name: ItemScriptableObject
   m_EditorClassIdentifier: 
-  modifiers:
-  - {fileID: 11400000, guid: aea61587237ff355b9445ca9cc4e7fb2, type: 2}
+  id: 
+  displayName: 
+  description: 
+  itemStrategies: []
+  uses: 1
+  icon: {fileID: 0}
+  passiveModifiers: []
