@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1735597895077280094}
   - component: {fileID: 7297959258593926723}
   - component: {fileID: 3153810980220846611}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RealPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4960585394640593101}
   - component: {fileID: 6897987584117062413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PassiveInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5600156009078754393}
   - component: {fileID: 5202291138702727949}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ActiveInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
