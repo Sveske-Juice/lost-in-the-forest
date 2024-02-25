@@ -20,5 +20,6 @@ public class PickUpItemController : MonoBehaviour
         {
             passiveInventory.Add(itemObject.ReferenceItem);
         }
+        itemObject.PickedUp();
     }
 }
