@@ -21,3 +21,4 @@ public class ThornsModifier : Modifier
     {
         context.thornsReceiver.ThornsIncrease(-thornsScale);
     }
+}
