@@ -7,6 +7,7 @@ using System;
 public class InventoryItem 
 {
     public ItemScriptableObject data { get; private set; }
+    
     public int stackSize { get; private set; }
 
     public InventoryItem(ItemScriptableObject source)

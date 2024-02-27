@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ItemObject : MonoBehaviour
 {
-    public ItemScriptableObject referenceItem;
+    // TODO: implement this
+    // [SerializeField, Range(1, 64)] int quantity = 1;
+    [SerializeField] ItemScriptableObject referenceItem;
 
-    public void OnHandlePickupItem()
+    public ItemScriptableObject ReferenceItem => referenceItem;
+
+    public UnityEvent OnPickup;
+
+    public void PickedUp()
     {
-        InventorySystem.instance.Add(referenceItem);
-        Destroy(gameObject);
+        OnPickup?.Invoke();
     }
-  
 }

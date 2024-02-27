@@ -22,6 +22,8 @@ public class EnemyAI : MonoBehaviour
     NavMeshAgent agent;
     NavMeshObstacle obstacle;
 
+    float damage;
+    [SerializeField] private AttackStrategy[] attacks;
 
     private void Start()
     {
@@ -35,9 +37,10 @@ public class EnemyAI : MonoBehaviour
         attackRange = enemyStats.attackRange;
         attackDelay = enemyStats.attackDelay;
         canMoveWhileAttacking = enemyStats.canMoveWhileAttacking;
+        damage = enemyStats.strength;
 
         //NavMesh
-        target = GameManager.instance.player.transform;
+        target = CombatPlayer.combatPlayer.transform;
         agent = GetComponent<NavMeshAgent>();
         obstacle = GetComponent<NavMeshObstacle>();
         agent.updateRotation = false;
@@ -86,7 +89,13 @@ public class EnemyAI : MonoBehaviour
     private void Attack()
     {
         //TODO attack:
+        AttackContextBuilder builder = new();
+        AttackContext context = builder
+            .WithOrigin(transform)
+            .WithEnemy(this)
+            .Build();
 
+        attacks[(int)Random.Range(0, attacks.Length-1)].Attack(context);
 
         attacking = false;
         secondsDelayed = 0;
@@ -110,5 +119,11 @@ public class EnemyAI : MonoBehaviour
         moving = false;
         agent.enabled = false;
         obstacle.enabled = true;
+    }
+
+
+    public float GetDamage()
+    {
+        return damage;
     }
 }

@@ -7,32 +7,28 @@ using System;
 
 public class InventorySystem : MonoBehaviour
 {
-    public static InventorySystem instance { get; private set; }
-
     public event Action onInventoryChangedEvent;
     private UseModifierContext modifierCtx;
 
-    private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary;
-    public List<InventoryItem> inventory { get; private set; }
-    public void Awake()
+    private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
+    public List<InventoryItem> Inventory { get; private set; } = new();
+    public GameObject tooltipPrefab;
+
+    public int inventorySize = 3;
+    static public int currentInvenotorySize = 0;
+
+    private void Awake()
     {
-        inventory = new List<InventoryItem>();
-        m_itemDictionary = new Dictionary<ItemScriptableObject, InventoryItem>();
+    }
 
-        if(instance != null && instance != this)//Singleton
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-        }
-
+    private void Start()
+    {
         modifierCtx = new UseModifierContextBuilder()
-            .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
-            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
-            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer as IAttackSpeedReceiver)
-            .WithDamageReceiver(CombatPlayer.combatPlayer as IDamageReceiver)
+            .WithInstantHealthReceiver(CombatPlayer.combatPlayer)
+            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer)
+            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer)
+            .WithDamageReceiver(CombatPlayer.combatPlayer)
+            .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
             .Build();
     }
 
@@ -44,29 +40,32 @@ public class InventorySystem : MonoBehaviour
         }
         return null;
 
-        }
+    }
 
-
-    public void Add(ItemScriptableObject refenceData) //Add items til inventory
+    public bool Add(ItemScriptableObject refenceData) //Add items til inventory
     {
         if (m_itemDictionary.TryGetValue(refenceData, out InventoryItem value)) //Tjekker om item er i inventory
         {
             value.AddToStack(); //Adder til en stack
+            onInventoryChangedEvent?.Invoke();
+
+            return true;
         }
-        else // laver en ny item, og add til inventory
+        else if(inventorySize > currentInvenotorySize)// laver en ny item, og add til inventory
         {
             InventoryItem newItem = new InventoryItem(refenceData);
-            inventory.Add(newItem);
+            Inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
-            print($"Pick up: ¨{refenceData.name}");
+            currentInvenotorySize++;
 
-            // add passive
-            if (newItem.data.IsPassive)
-            {
-                newItem.data.UseAbility(modifierCtx);
-            }
-        }
-        onInventoryChangedEvent?.Invoke();
+            // Notify item thats its been acquired - apply passives etc.
+            newItem.data.ItemAcquired(modifierCtx);
+            onInventoryChangedEvent?.Invoke();
+
+            return true;
+        }   
+        return false;
+        
     }
 
     public void Remove(ItemScriptableObject refenceData) //Fjerner item fra inventory
@@ -77,20 +76,15 @@ public class InventorySystem : MonoBehaviour
 
             if (value.stackSize == 0) //Hvis stack er 0, fjern item fra inventory
             {
-                inventory.Remove(value);
+                Inventory.Remove(value);
                 m_itemDictionary.Remove(refenceData);
-
+                currentInvenotorySize--;
             }
 
             // remove passive
-            if (value.data.IsPassive)
-            {
-                value.data.LoseItem(modifierCtx);
-            }
+            value.data.LoseItem(modifierCtx);
 
             onInventoryChangedEvent?.Invoke();
-
         }
-
     }
 }

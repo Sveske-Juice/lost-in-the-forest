@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSize: {x: 1, y: 2}
   attackDistance: 5
-  visualAttack: {fileID: 7098422817836053392, guid: 78cdcebee4887c44f972243e490decd7, type: 3}
+  visualAttack: {fileID: 7098422817836053392, guid: 5c203a6c402f070a199394c7296620e8, type: 3}
   offset: 1
+  attackLayers:
+    serializedVersion: 2
+    m_Bits: 192
