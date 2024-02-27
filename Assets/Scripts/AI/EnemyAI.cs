@@ -88,11 +88,13 @@ public class EnemyAI : MonoBehaviour
 
     private void Attack()
     {
-        //TODO attack:
         AttackContextBuilder builder = new();
         AttackContext context = builder
             .WithOrigin(transform)
-            .WithEnemy(this)
+            .WithInitiator(GetComponent<CombatEnemy>())
+            .WithAttackDir(CombatPlayer.combatPlayer.transform.position -  transform.position)
+            .WithPhysicalDamge(enemyStats.strength)
+            .WithMagicalDamage(enemyStats.strength)
             .Build();
 
         attacks[(int)Random.Range(0, attacks.Length-1)].Attack(context);

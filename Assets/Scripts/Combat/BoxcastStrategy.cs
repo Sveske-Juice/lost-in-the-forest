@@ -13,15 +13,7 @@ public class BoxcastStrategy : AttackStrategy
 
     public override void Attack(AttackContext _context)
     {
-        Vector3 dir;
-        if (_context.enemyAI != null)
-        {
-            dir = CombatPlayer.combatPlayer.transform.position-_context.enemyAI.transform.position;
-        }
-        else
-        {
-            dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _context.origin.position;
-        }
+        Vector3 dir = _context.attackDir;
         dir.z = 0f;
         dir.Normalize();
 
@@ -29,10 +21,9 @@ public class BoxcastStrategy : AttackStrategy
 
         //attackLayers |= LayerMask.NameToLayer(_context.player != null ? "Player" : "Enemy");
         RaycastHit2D[] hits = Physics2D.BoxCastAll(_context.origin.position, attackSize, 0f, dir, attackDistance, attackLayers);
-        Transform initiator = _context.player == null ? _context.enemyAI.transform : _context.player.transform;
         foreach (var hit in hits)
         {
-            if (hit.transform == initiator) continue;
+            if (hit.transform == _context.initiator.Transform) continue;
 
             Debug.Log($"hit: {hit.collider.name}");
             IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
@@ -40,8 +31,7 @@ public class BoxcastStrategy : AttackStrategy
             // The hit object can be damaged
             if (damageable != null)
             {
-                float damage = _context.player == null ? _context.enemyAI.GetDamage() : _context.player.GetPhysicalDamage();
-                damageable.TakeDamage(damage);
+                damageable.TakeDamage(_context.physicalDamage, _context.initiator);
             }
         }
     }

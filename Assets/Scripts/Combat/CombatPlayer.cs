@@ -53,6 +53,8 @@ public class CombatPlayer
         private set { health = (int)Mathf.Clamp(value, 0f, MaxHealth); }
     }
 
+    public Transform Transform => transform;
+
     private void Awake()
     {
         // Start health at max
@@ -71,8 +73,11 @@ public class CombatPlayer
         //Jeg lader den forblive tom for nu
     }*/
 
-    public void TakeDamage(float _damage)
+    public void TakeDamage(float _damage, IDamageable initiator)
     {
+        // Apply thorns
+        // TODO: fix thorns cycle if enemy also has thorns
+        initiator.TakeDamage(_damage * thornsScale, this);
         this.Health -= (int) _damage;
     }
 
