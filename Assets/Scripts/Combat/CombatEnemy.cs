@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 // Dette vil v�re klassen som holder enemystats n�r spillet k�re
 // Scriptet som Gabriel har lavet vil holde de enemysne som ikke er blevet intansiatet i nu
 // -Morgan
 
-public class CombatEnemy : MonoBehaviour, IDamageable
+public class CombatEnemy : MonoBehaviour, IDamageable, IHealthComponent
 {
 
     [SerializeField]
@@ -27,10 +28,14 @@ public class CombatEnemy : MonoBehaviour, IDamageable
     public int maxHealth = 10;
     public int MaxHealth => maxHealth;
 
+    UnityEvent<float, float> IHealthComponent.OnHealthChanged { get { return OnHealthChanged; } }
+
+    public UnityEvent<float, float> OnHealthChanged;
+
     public int Health
     {
         get { return health; }
-        private set { health = (int)Mathf.Clamp(value, 0f, MaxHealth); }
+        private set { OnHealthChanged?.Invoke(health, value);  health = (int)Mathf.Clamp(value, 0f, MaxHealth); }
     }
 
     public Transform Transform => transform;
@@ -53,5 +58,10 @@ public class CombatEnemy : MonoBehaviour, IDamageable
         {
             Destroy(gameObject);
         }
+    }
+
+    public float getMaxHealth()
+    {
+        return maxHealth;
     }
 }

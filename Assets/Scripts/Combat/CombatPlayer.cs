@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 // Skrevet af Morgan ud fra Snorres klasse diagram
 // Disse to scripts er for at holde data på Playeren og Enemyen
@@ -8,6 +9,7 @@ using UnityEngine.Assertions;
 public class CombatPlayer
     : MonoBehaviour,
         IDamageable,
+        IHealthComponent,
         IInstantHealthReceiver,
         IRegenerationReceiver,
         IAttackSpeedReceiver,
@@ -50,10 +52,19 @@ public class CombatPlayer
     {
         get { return health; }
         // Clamp to max health
-        private set { health = (int)Mathf.Clamp(value, 0f, MaxHealth); }
+        private set
+        {
+            OnHealthChanged?.Invoke(health, value);
+            health = (int)Mathf.Clamp(value, 0f, MaxHealth);
+        }
     }
 
     public Transform Transform => transform;
+
+    UnityEvent<float, float> IHealthComponent.OnHealthChanged {  get { return OnHealthChanged; } }
+
+    public UnityEvent<float, float> OnHealthChanged;
+
 
     private void Awake()
     {
@@ -145,5 +156,10 @@ public class CombatPlayer
     public void ThornsIncrease(float _thornsScale)
     {
         thornsScale += _thornsScale;
+    }
+
+    public float getMaxHealth()
+    {
+        return maxHealth;
     }
 }
