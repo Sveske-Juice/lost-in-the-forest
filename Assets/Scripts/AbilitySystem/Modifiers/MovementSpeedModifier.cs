@@ -9,7 +9,7 @@ public interface IMoveSpeedReceiver
 [CreateAssetMenuAttribute(menuName = "Modifier/Move Speed Modifier", fileName = "Move Speed Modifier")]
 public class MovementSpeedModifier : Modifier
 {
-    [Header("MoveSpeedModifier"), Range(0, 100)]
+    [Header("MoveSpeedModifier"), Range(-100, 100)]
     [SerializeField] float moveSpeed = 0;
     public override void Apply(UseModifierContext context)
     {

@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         canMoveWhileAttacking = enemyStats.canMoveWhileAttacking;
 
         //NavMesh
-        target = GameManager.instance.player.transform;
+        target = CombatPlayer.combatPlayer.transform;
         agent = GetComponent<NavMeshAgent>();
         obstacle = GetComponent<NavMeshObstacle>();
         agent.updateRotation = false;

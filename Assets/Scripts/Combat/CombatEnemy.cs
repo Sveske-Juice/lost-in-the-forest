@@ -49,7 +49,7 @@ public class CombatEnemy : MonoBehaviour, IDamageable
     {
         if (this.Health <= 0) //virker ikke helt
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
