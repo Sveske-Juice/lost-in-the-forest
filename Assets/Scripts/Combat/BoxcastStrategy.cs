@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 [CreateAssetMenu (menuName = "Attacks/Box Cast Attack", fileName = "boxcastStrategy")]
 public class BoxcastStrategy : AttackStrategy
@@ -26,17 +27,22 @@ public class BoxcastStrategy : AttackStrategy
 
         SpawnVisual(dir, _context);
 
-        RaycastHit2D hit = Physics2D.BoxCast(_context.origin.position, attackSize, 0f, dir, attackDistance, attackLayers);
-        if (hit.collider == null) return;
-
-        Debug.Log($"hit: {hit.collider.name}");
-        IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
-
-        // The hit object can be damaged
-        if (damageable != null)
+        //attackLayers |= LayerMask.NameToLayer(_context.player != null ? "Player" : "Enemy");
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(_context.origin.position, attackSize, 0f, dir, attackDistance, attackLayers);
+        Transform initiator = _context.player == null ? _context.enemyAI.transform : _context.player.transform;
+        foreach (var hit in hits)
         {
-            float damage = _context.player == null ? _context.enemyAI.GetDamage() : _context.player.GetPhysicalDamage();
-            damageable.TakeDamage(damage);
+            if (hit.transform == initiator) continue;
+
+            Debug.Log($"hit: {hit.collider.name}");
+            IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
+
+            // The hit object can be damaged
+            if (damageable != null)
+            {
+                float damage = _context.player == null ? _context.enemyAI.GetDamage() : _context.player.GetPhysicalDamage();
+                damageable.TakeDamage(damage);
+            }
         }
     }
 
