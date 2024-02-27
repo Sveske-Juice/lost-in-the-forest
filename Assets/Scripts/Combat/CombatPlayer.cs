@@ -12,7 +12,8 @@ public class CombatPlayer
         IRegenerationReceiver,
         IAttackSpeedReceiver,
         IDamageReceiver,
-        IMoveSpeedReceiver
+        IMoveSpeedReceiver,
+        IThornsReceiver
 {
     public static CombatPlayer combatPlayer { get; private set; }
 
@@ -27,6 +28,9 @@ public class CombatPlayer
 
     [SerializeField]
     private float attackSpeed;
+
+    [SerializeField]
+    private float thornsScale;
 
     [SerializeField]
     private AnimationCurve attackSpeedToDelay;
@@ -131,5 +135,10 @@ public class CombatPlayer
     public void MoveSpeedIncrease(float _moveSpeed)
     {
         speed += _moveSpeed;
+    }
+
+    public void ThornsIncrease(float _thornsScale)
+    {
+        thornsScale += _thornsScale;
     }
 }
