@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu (menuName = "Attacks/Box Cast Attack", fileName = "boxcastStrategy")]
@@ -11,7 +12,15 @@ public class BoxcastStrategy : AttackStrategy
 
     public override void Attack(AttackContext _context)
     {
-        Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _context.origin.position;
+        Vector3 dir;
+        if (_context.enemyAI != null)
+        {
+            dir = CombatPlayer.combatPlayer.transform.position-_context.enemyAI.transform.position;
+        }
+        else
+        {
+            dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _context.origin.position;
+        }
         dir.z = 0f;
         dir.Normalize();
 
@@ -26,7 +35,8 @@ public class BoxcastStrategy : AttackStrategy
         // The hit object can be damaged
         if (damageable != null)
         {
-            damageable.TakeDamage(_context.player.GetPhysicalDamage());
+            float damage = _context.player == null ? _context.enemyAI.GetDamage() : _context.player.GetPhysicalDamage();
+            damageable.TakeDamage(damage);
         }
     }
 
