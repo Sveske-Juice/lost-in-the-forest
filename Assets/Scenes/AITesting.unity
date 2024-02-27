@@ -499,6 +499,14 @@ PrefabInstance:
       propertyPath: enemyStats
       value: 
       objectReference: {fileID: 11400000, guid: 1f5e8073878ac5840928f241c7d9698e, type: 2}
+    - target: {fileID: 4796053889106884967, guid: 218a7d8939ff58f409bd2ce153ab83ac, type: 3}
+      propertyPath: attacks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796053889106884967, guid: 218a7d8939ff58f409bd2ce153ab83ac, type: 3}
+      propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 435da973ef7bc0244af5cb783391d5c6, type: 2}
     - target: {fileID: 5200239925235671653, guid: 218a7d8939ff58f409bd2ce153ab83ac, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
