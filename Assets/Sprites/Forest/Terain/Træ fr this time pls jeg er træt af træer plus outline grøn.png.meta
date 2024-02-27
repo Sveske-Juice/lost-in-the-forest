@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 89c835f8b7bf9cb4b9650163d5e9d63c
+guid: 3345a61f8098d884da559f56c12ea39f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_0"
+      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_0"
       rect:
         serializedVersion: 2
         x: 32
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae453ac15e5e27844810f160624106e1
-      internalID: 85991285
+      spriteID: 9e2daed6dcaedc4449c6a8e1bba6d7ce
+      internalID: -1236993401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_1"
+      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_1"
       rect:
         serializedVersion: 2
         x: 64
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ba904d01d352024ab2cf52e8d0f6945
-      internalID: 52726396
+      spriteID: 9db49d1f94ebb914198caa9484138efe
+      internalID: 2128731041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_2"
+      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_2"
       rect:
         serializedVersion: 2
         x: 96
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fb76c29e957f2c4b99f3a189bfd5d81
-      internalID: -559577722
+      spriteID: e215232dd33a7be4f959d6fea01c4503
+      internalID: 1607450554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_3"
+      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_3"
       rect:
         serializedVersion: 2
         x: 128
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ff5241ee98295f448b58d31e311c654
-      internalID: -529882756
+      spriteID: a66077f9c2678744893593091a91a6ae
+      internalID: 1268745271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_4"
+      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_4"
       rect:
         serializedVersion: 2
         x: 160
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77fdf354d7e1ec34aa43cb011d7dd461
-      internalID: -38441707
+      spriteID: 82056d982463cb643a284c5e0bab5a2f
+      internalID: -1720892195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_5"
+      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_5"
       rect:
         serializedVersion: 2
         x: 192
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fac670d1b4e61042a3a6c8d6e0a3811
-      internalID: 17849462
+      spriteID: 20090d5b2f539bf41a90b578e4d5348e
+      internalID: 2141442971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_6"
+      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_6"
       rect:
         serializedVersion: 2
         x: 224
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd9d90c2ade7cfa42b2a6cf95b439a91
-      internalID: 265936930
+      spriteID: 287d069fd30fd224d8b5309470a7cf3f
+      internalID: 590120441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_7"
+      name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_7"
       rect:
         serializedVersion: 2
         x: 256
@@ -310,8 +310,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f3d7ceb3c0c33a45885b92409e36ff9
-      internalID: -537391038
+      spriteID: ec58545fc13b11d41942e1c586868f72
+      internalID: -1452645441
       vertices: []
       indices: 
       edges: []
@@ -327,14 +327,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_0": 85991285
-      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_1": 52726396
-      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_2": -559577722
-      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_3": -529882756
-      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_4": -38441707
-      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_5": 17849462
-      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_6": 265936930
-      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_7": -537391038
+      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_0": -1236993401
+      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_1": 2128731041
+      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_2": 1607450554
+      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_3": 1268745271
+      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_4": -1720892195
+      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_5": 2141442971
+      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_6": 590120441
+      "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_7": -1452645441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

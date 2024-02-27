@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er_4"
+  m_Name: "Tr\xE6 fr this time pls jeg er tr\xE6t af tr\xE6er plus outline gr\xF8n_7"
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -38441707, guid: 89c835f8b7bf9cb4b9650163d5e9d63c, type: 3}
+  m_Sprite: {fileID: -1452645441, guid: 3345a61f8098d884da559f56c12ea39f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
