@@ -43,7 +43,10 @@ public class PlayerAttack : MonoBehaviour
         AttackContextBuilder builder = new();
         AttackContext context = builder
             .WithOrigin(transform)
-            .WithPlayer(CombatPlayer.combatPlayer)
+            .WithInitiator(CombatPlayer.combatPlayer)
+            .WithAttackDir(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)
+            .WithPhysicalDamge(CombatPlayer.combatPlayer.GetPhysicalDamage())
+            .WithMagicalDamage(CombatPlayer.combatPlayer.GetMagicalDamage())
             .Build();
 
         leftAttack.Attack(context);
@@ -54,7 +57,10 @@ public class PlayerAttack : MonoBehaviour
         AttackContextBuilder builder = new();
         AttackContext context = builder
             .WithOrigin(transform)
-            .WithPlayer(CombatPlayer.combatPlayer)
+            .WithInitiator(CombatPlayer.combatPlayer)
+            .WithAttackDir(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)
+            .WithPhysicalDamge(CombatPlayer.combatPlayer.GetPhysicalDamage())
+            .WithMagicalDamage(CombatPlayer.combatPlayer.GetMagicalDamage())
             .Build();
 
         rightAttack.Attack(context);
