@@ -5,6 +5,8 @@ public class ActiveInventoryUI : MonoBehaviour
     [SerializeField] InventorySystem connectedInventory;
     public GameObject m_slotPrefab;
 
+   
+
     void Start()
     {
         connectedInventory.onInventoryChangedEvent += OnUpdateInventory;
@@ -43,6 +45,7 @@ public class ActiveInventoryUI : MonoBehaviour
 
         ItemSlot slot = obj.GetComponent<ItemSlot>();
         slot.Set(item);
+        slot.SetTooltip(connectedInventory.tooltipPrefab);
 
         // Setup click listener
         ImageCickHandler clickHandler = obj.AddComponent<ImageCickHandler>();

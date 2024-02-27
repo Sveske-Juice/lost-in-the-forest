@@ -12,9 +12,10 @@ public class InventorySystem : MonoBehaviour
 
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
     public List<InventoryItem> Inventory { get; private set; } = new();
+    public GameObject tooltipPrefab;
 
     public int inventorySize = 3;
-    public int currentInvenotorySize = 0;
+    static public int currentInvenotorySize = 0;
 
     private void Awake()
     {
@@ -62,7 +63,7 @@ public class InventorySystem : MonoBehaviour
             onInventoryChangedEvent?.Invoke();
 
             return true;
-        }
+        }   
         return false;
         
     }

@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipPrefab: {fileID: 0}
   inventorySize: 999999
-  currentInvenotorySize: 0
 --- !u!1 &2383324612331588295
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,5 +353,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipPrefab: {fileID: 3432900237536628667, guid: f895f2888c582eb4ea0e84881373f239, type: 3}
   inventorySize: 8
-  currentInvenotorySize: 0
