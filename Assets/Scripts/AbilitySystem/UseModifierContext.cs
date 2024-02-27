@@ -5,13 +5,15 @@ public class UseModifierContext
     public IAttackSpeedReceiver attackSpeedReceiver { get; private set; }
     public IDamageReceiver damageReceiver { get; private set; }
     public IMoveSpeedReceiver moveSpeedReceiver { get; private set; }
+    public IThornsReceiver thornsReceiver { get; private set; }
 
     public UseModifierContext(
         IInstantHealthReceiver instantHealtReceiver,
         IRegenerationReceiver regenerationReceiver,
         IAttackSpeedReceiver attackSpeedReceiver,
         IDamageReceiver damageReceiver,
-        IMoveSpeedReceiver moveSpeedReceiver
+        IMoveSpeedReceiver moveSpeedReceiver,
+        IThornsReceiver thornsReceiver
     )
     {
         this.instantHealtReceiver = instantHealtReceiver;
@@ -19,11 +21,12 @@ public class UseModifierContext
         this.attackSpeedReceiver = attackSpeedReceiver;
         this.damageReceiver = damageReceiver;
         this.moveSpeedReceiver = moveSpeedReceiver;
+        this.thornsReceiver = thornsReceiver;
     }
 
     public override string ToString()
     {
-        return $"{instantHealtReceiver}, {regenerationReceiver}, {attackSpeedReceiver},{damageReceiver}, {moveSpeedReceiver}";
+        return $"{instantHealtReceiver}, {regenerationReceiver}, {attackSpeedReceiver},{damageReceiver}, {moveSpeedReceiver}, {thornsReceiver}";
     }
 }
 
@@ -34,6 +37,7 @@ public class UseModifierContextBuilder
     private IAttackSpeedReceiver attackSpeedReceiver;
     private IDamageReceiver damageReceiver;
     private IMoveSpeedReceiver moveSpeedReceiver;
+    private IThornsReceiver thornsReceiver;
 
     public UseModifierContextBuilder WithInstantHealthReceiver(
         IInstantHealthReceiver instantHealtReceiver
@@ -73,6 +77,14 @@ public class UseModifierContextBuilder
         return this;
     }
 
+    public UseModifierContextBuilder WithThornsReceiver(
+        IThornsReceiver thornsReceiver
+    )
+    {
+        this.thornsReceiver = thornsReceiver;
+        return this;
+    }
+
     public UseModifierContext Build()
     {
         return new UseModifierContext(
@@ -80,7 +92,8 @@ public class UseModifierContextBuilder
             regenerationReceiver,
             attackSpeedReceiver,
             damageReceiver,
-            moveSpeedReceiver
+            moveSpeedReceiver,
+            thornsReceiver
         );
     }
 }
