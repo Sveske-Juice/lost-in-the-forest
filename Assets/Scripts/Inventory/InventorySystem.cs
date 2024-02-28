@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//Ændre InventoryTestItem til noget andet
 
 public class InventorySystem : MonoBehaviour
 {
     public event Action onInventoryChangedEvent;
-    private UseModifierContext modifierCtx;
 
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
     public List<InventoryItem> Inventory { get; private set; } = new();
@@ -19,17 +17,6 @@ public class InventorySystem : MonoBehaviour
 
     private void Awake()
     {
-    }
-
-    private void Start()
-    {
-        modifierCtx = new UseModifierContextBuilder()
-            .WithInstantHealthReceiver(CombatPlayer.combatPlayer)
-            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer)
-            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer)
-            .WithDamageReceiver(CombatPlayer.combatPlayer)
-            .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
-            .Build();
     }
 
     public InventoryItem Get(ItemScriptableObject refenceData)
@@ -59,13 +46,25 @@ public class InventorySystem : MonoBehaviour
             currentInvenotorySize++;
 
             // Notify item thats its been acquired - apply passives etc.
-            newItem.data.ItemAcquired(modifierCtx);
+            newItem.data.ItemAcquired(ModifierCtx(refenceData));
             onInventoryChangedEvent?.Invoke();
 
             return true;
         }   
         return false;
         
+    }
+
+    private UseModifierContext ModifierCtx(ItemScriptableObject item)
+    {
+        return new UseModifierContextBuilder()
+    .WithItem(item)
+    .WithInstantHealthReceiver(CombatPlayer.combatPlayer)
+    .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer)
+    .WithAttackSpeedReceiver(CombatPlayer.combatPlayer)
+    .WithDamageReceiver(CombatPlayer.combatPlayer)
+    .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
+    .Build();
     }
 
     public void Remove(ItemScriptableObject refenceData) //Fjerner item fra inventory
@@ -82,7 +81,7 @@ public class InventorySystem : MonoBehaviour
             }
 
             // remove passive
-            value.data.LoseItem(modifierCtx);
+            value.data.LoseItem(ModifierCtx(refenceData));
 
             onInventoryChangedEvent?.Invoke();
         }

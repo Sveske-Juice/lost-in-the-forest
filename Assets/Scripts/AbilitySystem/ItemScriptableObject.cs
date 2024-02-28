@@ -12,7 +12,11 @@ public class ItemScriptableObject : ScriptableObject
     [SerializeField] int uses = 1;
     [SerializeField] Texture2D icon;
     [SerializeField] Modifier[] passiveModifiers;
+    [SerializeField] int level = 1;
+    [SerializeField] int maxLevel = 5;
 
+    public int Level => level;
+    public int MaxLevel => maxLevel;
     public string Id => id;
     public string DisplayName => displayName;
     public string Description => description;

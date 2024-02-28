@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3914499571747287247}
   - component: {fileID: 4316065963454305646}
   m_Layer: 0
-  m_Name: Particle System Leaf
+  m_Name: Trail particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4630927790905329333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 396, y: 254.19997, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
