@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//Ændre InventoryTestItem til noget andet
 
 public class InventorySystem : MonoBehaviour
 {
