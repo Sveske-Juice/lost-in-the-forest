@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 00ab608a3b9124341ad7c74814c3de54
+guid: 164e9d032268e2247bdc777769449912
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "manorD\xF8r_0"
+      name: "manorD\xF8r 1_0"
       rect:
         serializedVersion: 2
         x: 32
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2129d40836bbe5b44a36ef789462b6ce
-      internalID: 1683664724
+      spriteID: 530dfc0bfee4c7946b5be7b9ba23e0d8
+      internalID: -1305472101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "manorD\xF8r_1"
+      name: "manorD\xF8r 1_1"
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b32b336ae3979d46b9a3dd6edaf3eb4
-      internalID: -2112827737
+      spriteID: 9387d804e71552644b1633eec065a92c
+      internalID: 67479267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "manorD\xF8r_2"
+      name: "manorD\xF8r 1_2"
       rect:
         serializedVersion: 2
         x: 96
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e38ee1e6a8365a4dbb5d62a93b5f190
-      internalID: 785613462
+      spriteID: a44db8a85d92778479a23e8c12ec0273
+      internalID: 502990637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "manorD\xF8r_3"
+      name: "manorD\xF8r 1_3"
       rect:
         serializedVersion: 2
         x: 128
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02c9c257bab2a474592e9bdef98ad50d
-      internalID: -640606387
+      spriteID: a729a733f59456c42a7ca4efc076f892
+      internalID: 1834075683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "manorD\xF8r_4"
+      name: "manorD\xF8r 1_4"
       rect:
         serializedVersion: 2
         x: 160
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dafe09fe78f16dc49b6dd0e1701e3ad5
-      internalID: 1559922436
+      spriteID: 3d6b366f28ff52749b74739b317cc8cf
+      internalID: -806948229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "manorD\xF8r_5"
+      name: "manorD\xF8r 1_5"
       rect:
         serializedVersion: 2
         x: 192
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0f464bccb217c94ea5b0c1933a6bf33
-      internalID: 1719847387
+      spriteID: ba9d31e017bbe484ebd04e023aa237b4
+      internalID: 1447466939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "manorD\xF8r_6"
+      name: "manorD\xF8r 1_6"
       rect:
         serializedVersion: 2
         x: 224
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 196616a74e2742e429780c80a501b8a0
-      internalID: -485173679
+      spriteID: 900f043288108914a9c33fcede176a16
+      internalID: -2038541046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "manorD\xF8r_7"
+      name: "manorD\xF8r 1_7"
       rect:
         serializedVersion: 2
         x: 256
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74252342d8e6dec4398097206dd51d3a
-      internalID: 1179187199
+      spriteID: 10a414ae1f6809543abb770bc5778d39
+      internalID: -142879745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "manorD\xF8r_8"
+      name: "manorD\xF8r 1_8"
       rect:
         serializedVersion: 2
         x: 288
@@ -292,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7c916076da7e6146a161ef492963d68
-      internalID: 1212351240
+      spriteID: 2afb91016aae2504fa00f59ac850adb3
+      internalID: -726626965
       vertices: []
       indices: 
       edges: []
@@ -309,15 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "manorD\xF8r_0": 1683664724
-      "manorD\xF8r_1": -2112827737
-      "manorD\xF8r_2": 785613462
-      "manorD\xF8r_3": -640606387
-      "manorD\xF8r_4": 1559922436
-      "manorD\xF8r_5": 1719847387
-      "manorD\xF8r_6": -485173679
-      "manorD\xF8r_7": 1179187199
-      "manorD\xF8r_8": 1212351240
+      "manorD\xF8r 1_0": -1305472101
+      "manorD\xF8r 1_1": 67479267
+      "manorD\xF8r 1_2": 502990637
+      "manorD\xF8r 1_3": 1834075683
+      "manorD\xF8r 1_4": -806948229
+      "manorD\xF8r 1_5": 1447466939
+      "manorD\xF8r 1_6": -2038541046
+      "manorD\xF8r 1_7": -142879745
+      "manorD\xF8r 1_8": -726626965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
