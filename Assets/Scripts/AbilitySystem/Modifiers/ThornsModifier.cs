@@ -10,15 +10,15 @@ public interface IThornsReceiver
 public class ThornsModifier : Modifier
 {
     [Header("Thorns")]
-    [SerializeField, Range(0, 2)] float thornsScale = 0;
+    [SerializeField] AnimationCurve thornsScale;
 
     public override void Apply(UseModifierContext context)
     {
-        context.thornsReceiver.ThornsIncrease(thornsScale);
+        context.thornsReceiver.ThornsIncrease(thornsScale.Evaluate(context.item.Level));
     }
 
     public override void Unapply(UseModifierContext context)
     {
-        context.thornsReceiver.ThornsIncrease(-thornsScale);
+        context.thornsReceiver.ThornsIncrease(-thornsScale.Evaluate(context.item.Level));
     }
 }

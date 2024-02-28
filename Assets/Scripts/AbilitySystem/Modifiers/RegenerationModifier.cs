@@ -13,13 +13,13 @@ public interface IRegenerationReceiver
 public class RegenerationModifier : Modifier
 {
     [SerializeField]
-    private int regenAmount = 5;
+    private AnimationCurve regenAmount;
 
     [SerializeField]
-    private float regenRate = 5;
+    private AnimationCurve regenRate;
 
     [SerializeField]
-    private int regenDuration = 5;
+    private AnimationCurve regenDuration;
 
     public override void Apply(UseModifierContext context)
     {
@@ -27,9 +27,9 @@ public class RegenerationModifier : Modifier
         context
             .regenerationReceiver
             .Regeneration(
-                regenAmount: regenAmount,
-                regenRate: regenRate,
-                regenDuration: regenDuration
+                regenAmount: (int)regenAmount.Evaluate(context.item.Level),
+                regenRate: regenRate.Evaluate(context.item.Level),
+                regenDuration: (int)regenDuration.Evaluate(context.item.Level)
             );
     }
 

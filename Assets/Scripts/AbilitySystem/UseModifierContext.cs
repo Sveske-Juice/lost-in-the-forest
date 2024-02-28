@@ -1,5 +1,6 @@
 public class UseModifierContext
 {
+    public ItemScriptableObject item;
     public IInstantHealthReceiver instantHealtReceiver { get; private set; }
     public IRegenerationReceiver regenerationReceiver { get; private set; }
     public IAttackSpeedReceiver attackSpeedReceiver { get; private set; }
@@ -8,6 +9,7 @@ public class UseModifierContext
     public IThornsReceiver thornsReceiver { get; private set; }
 
     public UseModifierContext(
+        ItemScriptableObject item,
         IInstantHealthReceiver instantHealtReceiver,
         IRegenerationReceiver regenerationReceiver,
         IAttackSpeedReceiver attackSpeedReceiver,
@@ -16,6 +18,7 @@ public class UseModifierContext
         IThornsReceiver thornsReceiver
     )
     {
+        this.item = item;
         this.instantHealtReceiver = instantHealtReceiver;
         this.regenerationReceiver = regenerationReceiver;
         this.attackSpeedReceiver = attackSpeedReceiver;
@@ -32,6 +35,7 @@ public class UseModifierContext
 
 public class UseModifierContextBuilder
 {
+    private ItemScriptableObject item;
     private IInstantHealthReceiver instantHealtReceiver;
     private IRegenerationReceiver regenerationReceiver;
     private IAttackSpeedReceiver attackSpeedReceiver;
@@ -39,6 +43,13 @@ public class UseModifierContextBuilder
     private IMoveSpeedReceiver moveSpeedReceiver;
     private IThornsReceiver thornsReceiver;
 
+    public UseModifierContextBuilder WithItem(
+        ItemScriptableObject item
+    )
+    {  
+        this.item = item; 
+        return this;
+    }
     public UseModifierContextBuilder WithInstantHealthReceiver(
         IInstantHealthReceiver instantHealtReceiver
     )
@@ -88,6 +99,7 @@ public class UseModifierContextBuilder
     public UseModifierContext Build()
     {
         return new UseModifierContext(
+            item,
             instantHealtReceiver,
             regenerationReceiver,
             attackSpeedReceiver,

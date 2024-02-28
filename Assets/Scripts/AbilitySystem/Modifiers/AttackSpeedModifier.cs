@@ -9,18 +9,18 @@ public interface IAttackSpeedReceiver
 [CreateAssetMenuAttribute(menuName = "Modifier/Attack Speed Modifer", fileName = "Attack Speed Modifier")]
 public class AttackSpeedModifier : Modifier
 {
-    [SerializeField, Range(-100,100)]
-    private float speedAmount = 0;
+    [SerializeField]
+    private AnimationCurve speedAmount;
 
     public override void Apply(UseModifierContext context)
     {
         Assert.IsNotNull(context?.attackSpeedReceiver, "No attack speed receiver when trying to apply attack speed modifier");
-        context.attackSpeedReceiver.AddAttackSpeed(speedAmount);
+        context.attackSpeedReceiver.AddAttackSpeed(speedAmount.Evaluate(context.item.Level));
     }
 
     public override void Unapply(UseModifierContext context)
     {
         Assert.IsNotNull(context?.attackSpeedReceiver, "No attack speed receiver when trying to un-apply attack speed modifier");
-        context.attackSpeedReceiver.AddAttackSpeed(-speedAmount);
+        context.attackSpeedReceiver.AddAttackSpeed(-speedAmount.Evaluate(context.item.Level));
     }
 }
