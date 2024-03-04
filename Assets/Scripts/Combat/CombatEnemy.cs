@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 // Dette vil v�re klassen som holder enemystats n�r spillet k�re
 // Scriptet som Gabriel har lavet vil holde de enemysne som ikke er blevet intansiatet i nu
 // -Morgan
 
-public class CombatEnemy : MonoBehaviour, IDamageable
+[RequireComponent(typeof(HealthComponent))]
+public class CombatEnemy : MonoBehaviour, IDamageable, IThornsReceiver
 {
-
     [SerializeField]
     public float moveSpeed = 0;
 
@@ -20,36 +21,39 @@ public class CombatEnemy : MonoBehaviour, IDamageable
     public bool canMoveWhileAttacking = false;
     [SerializeField]
     public int strength = 1;
+    public Transform Transform => transform;
 
-    [SerializeField]
-    public int health = 10;
-    [SerializeField]
-    public int maxHealth = 10;
-    public int MaxHealth => maxHealth;
+    public int Health => (int) this.healthComponent.CurrentHealth;
 
-    public int Health
+    [Header("Modifier values")]
+    [SerializeField]
+    private float thornsScale = 0;
+
+    private HealthComponent healthComponent;
+
+    private void Awake()
     {
-        get { return health; }
-        private set { health = (int)Mathf.Clamp(value, 0f, MaxHealth); }
+        healthComponent = GetComponent<HealthComponent>();
     }
 
-    public void TakeDamage(float _damage)
+    public void TakeDamage(float _damage, IDamageable initiator)
     {
-        this.Health -= (int)_damage;
+        this.healthComponent.Modify(_damage);
+
+        // reason for initiator is null is to avoid cyclic thorns being applied
+        if (initiator != null)
+            initiator.TakeDamage(_damage * thornsScale, initiator: null);
     }
 
     public bool Heal(int _heal)
     {
-        this.Health += _heal;
+        this.healthComponent.Modify(-_heal);
 
         return true; //temp
     }
 
-    void Update()
+    public void ThornsIncrease(float thornsScale)
     {
-        if (this.Health <= 0) //virker ikke helt
-        {
-            Destroy(gameObject);
-        }
+        this.thornsScale += thornsScale;
     }
 }

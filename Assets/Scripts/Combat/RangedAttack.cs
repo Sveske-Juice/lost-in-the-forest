@@ -47,7 +47,7 @@ public class RangedAttack : MonoBehaviour
         // Assuming you want to access the CombatPlayer's magical attack value, you need to reference it directly
         // For example, let's say CombatPlayer has a public property or field called 'MagicalAttack'
         float damage = CombatPlayer.combatPlayer.GetMagicalDamage();
-        damageable.TakeDamage(damage);
+        damageable.TakeDamage(damage, CombatPlayer.combatPlayer);
 
         Debug.Log($"Hit {collider.gameObject.name} with {damage} magical damage");
 

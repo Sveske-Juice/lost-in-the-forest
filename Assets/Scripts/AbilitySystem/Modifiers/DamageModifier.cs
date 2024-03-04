@@ -9,17 +9,17 @@ public interface IDamageReceiver{
 public class DamageModifier : Modifier
 {
     [Header("Damage")]
-    [SerializeField,Range(-100,100)] float magicDmg = 0;
-    [SerializeField,Range(-100,100)] float physicialDmg = 0;
+    [SerializeField] AnimationCurve magicDmg;
+    [SerializeField] AnimationCurve physicialDmg;
 
 
     public override void Apply(UseModifierContext context)
     {
-        context.damageReceiver.DamageIncrease(physicialDmg, magicDmg);
+        context.damageReceiver.DamageIncrease(physicialDmg.Evaluate(context.item.Level), magicDmg.Evaluate(context.item.Level));
     }
 
     public override void Unapply(UseModifierContext context)
     {
-        context.damageReceiver.DamageIncrease(-physicialDmg, -magicDmg);
+        context.damageReceiver.DamageIncrease(-physicialDmg.Evaluate(context.item.Level), -magicDmg.Evaluate(context.item.Level));
     }
 }
