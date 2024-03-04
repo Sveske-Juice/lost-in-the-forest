@@ -58,13 +58,14 @@ public class InventorySystem : MonoBehaviour
     private UseModifierContext ModifierCtx(ItemScriptableObject item)
     {
         return new UseModifierContextBuilder()
-    .WithItem(item)
-    .WithInstantHealthReceiver(CombatPlayer.combatPlayer)
-    .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer)
-    .WithAttackSpeedReceiver(CombatPlayer.combatPlayer)
-    .WithDamageReceiver(CombatPlayer.combatPlayer)
-    .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
-    .Build();
+            .WithItem(item)
+            .WithInstantHealthReceiver(CombatPlayer.combatPlayer)
+            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer)
+            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer)
+            .WithDamageReceiver(CombatPlayer.combatPlayer)
+            .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
+            .WithThornsReceiver(CombatPlayer.combatPlayer)
+            .Build();
     }
 
     public void Remove(ItemScriptableObject refenceData) //Fjerner item fra inventory

@@ -20,3 +20,5 @@ MonoBehaviour:
   uses: 1
   icon: {fileID: 2800000, guid: b61695a4cfaac6e46851d2c08c78ef2a, type: 3}
   passiveModifiers: []
+  level: 1
+  maxLevel: 5
