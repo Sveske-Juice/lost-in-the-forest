@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField]
-    private IHealthComponent attachedHealth;
+    private HealthComponent attachedHealth;
 
     [SerializeField]
     private Image healthBarImg;
@@ -17,7 +17,9 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        attachedHealth = GetComponentInParent<IHealthComponent>();
+        if (attachedHealth == null)
+            attachedHealth = GetComponentInParent<HealthComponent>();
+
         attachedHealth.OnHealthChanged.AddListener(UpdateHealthBar);
     }
 
@@ -28,7 +30,7 @@ public class HealthBar : MonoBehaviour
 
     private void UpdateHealthBar(float prevHealth, float newHealth)
     {
-        float percent = newHealth / attachedHealth.getMaxHealth();
+        float percent = newHealth / attachedHealth.GetMaxHealth();
         healthBarImg.fillAmount = percent;
         if (disableOnDeath && percent <= 0)
         {

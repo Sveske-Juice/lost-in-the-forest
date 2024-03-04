@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 2269369055360433011}
   - component: {fileID: 4899506023002933112}
   - component: {fileID: 5734238458186262737}
+  - component: {fileID: 5189779771513122746}
   m_Layer: 7
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -329,9 +330,37 @@ MonoBehaviour:
   attackDelay: 0
   canMoveWhileAttacking: 0
   strength: 1
-  health: 10
+  thornsScale: 0
+--- !u!114 &5189779771513122746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200239925235671653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3822c9226fc03d4b991fc65d1b18878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyCallZeroHealthOnce: 1
   maxHealth: 10
-  OnHealthChanged:
+  OnHealthZero:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5189779771513122746}
+        m_TargetAssemblyTypeName: HealthComponent, Assembly-CSharp
+        m_MethodName: SimpleKill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &6649042813072952687

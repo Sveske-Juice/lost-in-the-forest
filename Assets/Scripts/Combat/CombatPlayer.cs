@@ -5,11 +5,10 @@ using UnityEngine.Events;
 
 // Skrevet af Morgan ud fra Snorres klasse diagram
 // Disse to scripts er for at holde data på Playeren og Enemyen
-
+[RequireComponent(typeof(HealthComponent))]
 public class CombatPlayer
     : MonoBehaviour,
         IDamageable,
-        IHealthComponent,
         IInstantHealthReceiver,
         IRegenerationReceiver,
         IAttackSpeedReceiver,
@@ -42,34 +41,16 @@ public class CombatPlayer
     /// </summary>
     public float AttackDelay => attackSpeedToDelay.Evaluate(attackSpeed);
 
-    [SerializeField]
-    private int maxHealth;
-    public int MaxHealth => maxHealth;
-
-    private int health;
-
-    public int Health
-    {
-        get { return health; }
-        // Clamp to max health
-        private set
-        {
-            OnHealthChanged?.Invoke(health, value);
-            health = (int)Mathf.Clamp(value, 0f, MaxHealth);
-        }
-    }
-
+    private HealthComponent healthComponent;
+  
     public Transform Transform => transform;
 
-    UnityEvent<float, float> IHealthComponent.OnHealthChanged {  get { return OnHealthChanged; } }
-
-    public UnityEvent<float, float> OnHealthChanged;
-
+    public int Health => (int) healthComponent.CurrentHealth;
 
     private void Awake()
     {
-        // Start health at max
-        this.Health = this.MaxHealth;
+        healthComponent = GetComponent<HealthComponent>();
+        Assert.IsNotNull(healthComponent);
 
         if (combatPlayer != null && combatPlayer != this)
             Destroy(this);
@@ -84,17 +65,9 @@ public class CombatPlayer
         //Jeg lader den forblive tom for nu
     }*/
 
-    public void TakeDamage(float _damage, IDamageable initiator)
-    {
-        // Apply thorns
-        // TODO: fix thorns cycle if enemy also has thorns
-        initiator.TakeDamage(_damage * thornsScale, this);
-        this.Health -= (int) _damage;
-    }
-
     public bool Heal(int _heal)
     {
-        this.Health += _heal;
+        this.healthComponent.Modify(-_heal);
 
         return true; //temp
     }
@@ -115,7 +88,7 @@ public class CombatPlayer
 
     public void InstantHeal(int amount)
     {
-        this.Health += amount;
+        Heal(amount);
     }
 
     public void Regeneration(int regenAmount, float regenRate, int regenDuration)
@@ -130,7 +103,7 @@ public class CombatPlayer
             float time = 0f;
             while (time < regenDuration)
             {
-                this.Health += regenAmount;
+                this.healthComponent.Modify(-regenAmount);
                 yield return new WaitForSeconds(regenRate);
                 time += regenRate;
             }
@@ -158,8 +131,12 @@ public class CombatPlayer
         thornsScale += _thornsScale;
     }
 
-    public float getMaxHealth()
+    public void TakeDamage(float _damage, IDamageable initiator)
     {
-        return maxHealth;
+        healthComponent.Modify(_damage);
+
+        // reason for initiator is null is to avoid cyclic thorns being applied
+        if (initiator != null)
+            initiator.TakeDamage(_damage * thornsScale, initiator: null);
     }
 }

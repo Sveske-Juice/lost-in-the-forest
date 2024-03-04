@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1735597895077280094}
   - component: {fileID: 7297959258593926723}
   - component: {fileID: 3153810980220846611}
+  - component: {fileID: 2170804639958562090}
   m_Layer: 6
   m_Name: RealPlayer
   m_TagString: Player
@@ -163,6 +164,7 @@ MonoBehaviour:
   intelligence: 1
   strength: 1
   attackSpeed: 0
+  thornsScale: 0
   attackSpeedToDelay:
     serializedVersion: 2
     m_Curve:
@@ -187,7 +189,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxHealth: 100
 --- !u!114 &1735597895077280094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +264,38 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &2170804639958562090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779687772605887179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3822c9226fc03d4b991fc65d1b18878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyCallZeroHealthOnce: 1
+  maxHealth: 100
+  OnHealthZero:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2170804639958562090}
+        m_TargetAssemblyTypeName: HealthComponent, Assembly-CSharp
+        m_MethodName: SimpleKill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2177260456851028472
 GameObject:
   m_ObjectHideFlags: 0
