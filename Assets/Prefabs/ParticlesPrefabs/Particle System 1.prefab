@@ -27,7 +27,11 @@ Transform:
   m_GameObject: {fileID: 4630927790905329333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: 396, y: 254.19997, z: 0}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -169,8 +173,13 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
+<<<<<<< Updated upstream
       scalar: 120
       minScalar: 70
+=======
+      scalar: 1
+      minScalar: -1
+>>>>>>> Stashed changes
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -221,9 +230,15 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
+<<<<<<< Updated upstream
       minMaxState: 2
       minColor: {r: 1, g: 0.7072265, b: 0, a: 1}
       maxColor: {r: 0.96981126, g: 0.05570437, b: 0.0054894183, a: 1}
+=======
+      minMaxState: 0
+      minColor: {r: 0, g: 0.97613263, b: 1, a: 1}
+      maxColor: {r: 0.9803163, g: 1, b: 0.78301877, a: 1}
+>>>>>>> Stashed changes
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -287,8 +302,13 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
+<<<<<<< Updated upstream
       scalar: 1.5
       minScalar: 0.4
+=======
+      scalar: 5
+      minScalar: 0.9
+>>>>>>> Stashed changes
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -604,7 +624,11 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
+<<<<<<< Updated upstream
     maxNumParticles: 1000
+=======
+    maxNumParticles: 1000000
+>>>>>>> Stashed changes
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -3877,7 +3901,11 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
+<<<<<<< Updated upstream
     enabled: 0
+=======
+    enabled: 1
+>>>>>>> Stashed changes
     ratio: 0
     light: {fileID: 0}
     randomDistribution: 1
