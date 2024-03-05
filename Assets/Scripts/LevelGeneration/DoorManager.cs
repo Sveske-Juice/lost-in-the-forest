@@ -25,16 +25,25 @@ public class DoorManager : MonoBehaviour
     [SerializeField] private int doorLimitInRooms = 4;
     private int currentDoorsInRoom;
 
+    private void Start()
+    {
+        InitializeGeneration();
+    }
+
     private void InitializeGeneration(int _maxRooms = 40)
     {
+        Debug.Log("Init start");
+        
         Room room = CreateRandomRoom(new Vector3(0,0,0));
         RandomizeDoorStates(room);
 
-        List<Door> doorsList = AddEnabledDoorsToList(room);
+        List<Door> enabledDoorsList = AddEnabledDoorsToList(room);
+        // Debug.Log("enabledDoorsList: " + enabledDoorsList.Count);
 
-        while (doorsList.Count > 1)
+        while (enabledDoorsList.Count > 1)
         {
-            ShuffleEnabledDoorsList();
+            ShuffleEnabledDoorsList(enabledDoorsList);
+            break;
 
             float chanceForNewRoom = 1 - (currentRooms / _maxRooms);
 
@@ -55,21 +64,21 @@ public class DoorManager : MonoBehaviour
     }
 
     [SerializeField] private string roomPrefabPath = "RoomPrefabs";
+    [SerializeField] private List<GameObject> roomPrefabList; 
 
     // Instantiates a random room-prefab with premade door-spawn-position
     private Room CreateRandomRoom(Vector3 _spawnPosition)
     {
-        Room[] roomPrefabList = Resources.LoadAll<Room>(roomPrefabPath);
-        
-        if (roomPrefabList.Length > 0) 
+        if (roomPrefabList.Count > 0)
         {
-            int randomIndex = UnityEngine.Random.Range(0, roomPrefabList.Length);
-            Room randomRoomPrefab = Instantiate(roomPrefabList[randomIndex], _spawnPosition, Quaternion.identity);
-            return randomRoomPrefab;
+            Debug.Log("roomPrefabsList count: " + roomPrefabList.Count);
+            int randomIndex = UnityEngine.Random.Range(0, roomPrefabList.Count);
+            GameObject randomRoomPrefab = Instantiate(roomPrefabList[randomIndex], _spawnPosition, Quaternion.identity);
+            return randomRoomPrefab.GetComponent<Room>();
         }
         else
         {
-            Debug.LogError("No room-prefabs found in the Resources folder");
+            Debug.LogError("No room-prefabs found in Rooms-list");
             return null;
         }
     }
@@ -78,14 +87,17 @@ public class DoorManager : MonoBehaviour
     private void RandomizeDoorStates(Room _targetRoom)
     {
         // List<Door> DoorsInRoom = new List<Door>();
+        Debug.Log("doors.Count: " + _targetRoom.doors.Count);
         foreach (Door door in _targetRoom.doors)
         {
+            Debug.Log("Inside foreach loop");
             float chanceForEnablingDoor = 1 - (currentDoorsInRoom / doorLimitInRooms);
             float randomValue = UnityEngine.Random.value;
 
             if (randomValue < chanceForEnablingDoor)
             {
                 door.enabled = true;
+                currentDoorsInRoom++;
             }
             else
             {
@@ -96,21 +108,32 @@ public class DoorManager : MonoBehaviour
 
     // Adds enaabled doors from RandomizeDoorStates to a list
     // Loop through all doors in room, check state and add to enabledDoorList if door is enabled
-    private List<Door> AddEnabledDoorsToList(Room _currentRoom)
+    private List<Door> AddEnabledDoorsToList(Room _targetRoom)
     {
-        List<Door> enabledDoorsList = new List<Door>();
+        List<Door> enabledDoors = new List<Door>();
 
-        foreach (Door door in _currentRoom.doors)
+        foreach (Door door in _targetRoom.doors)
         {
             if (door.enabled)
-                enabledDoorsList.Add(door);
+                enabledDoors.Add(door);
         }
-        return enabledDoorsList;
+        return enabledDoors;
     }
 
     // Shuffles the enabled doors added to list in AddEnabledDoorsToList
-    private void ShuffleEnabledDoorsList()
+    private void ShuffleEnabledDoorsList(List<Door> _doorList)
     {
+        System.Random rng = new System.Random();
+
+        int n = _doorList.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Door value = _doorList[k];
+            _doorList[k] = _doorList[n];
+            _doorList[n] = value;
+        }
     }
 
     // Coonects _currentDoor in a room to _targetDoor in another room:

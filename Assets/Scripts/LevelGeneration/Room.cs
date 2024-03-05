@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public List<Door> doors { get; private set; }
+    [SerializeField] public List<Door> doors;
 }

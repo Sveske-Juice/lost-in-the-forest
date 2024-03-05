@@ -8,4 +8,6 @@ public class Door : MonoBehaviour
     public Door ConnectedDoor { get; private set; }
     public bool enabled = false;
     public Vector3 positionInRoom { get; private set; }
+
+    public string name;
 }
