@@ -10,7 +10,7 @@ public class ToolTip : MonoBehaviour
     public void set(InventoryItem item)
     {
         title.text = item.data.DisplayName;
-        description.text = item.data.Description;
+       description.text = item.data.Description;
     }
 
 
