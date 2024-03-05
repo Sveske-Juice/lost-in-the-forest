@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1562265316662846170}
   - component: {fileID: 8229458132074441612}
   m_Layer: 0
-  m_Name: ExplosionFireTrail
+  m_Name: RockTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
