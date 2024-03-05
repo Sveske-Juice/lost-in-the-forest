@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 593997200621683044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.41, y: -0.23, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0873fcd8b9e23914ba7c65b74095d95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackUpTime: 1
+  AttackUpTime: 100
   rb: {fileID: 2516849174440841589}
   onHitParticleSystem: {fileID: 3914499571747287247, guid: fe81a7b050b5a424d8407b5f1e15e459, type: 3}
   followParticleSystem: {fileID: 0}
@@ -174,9 +174,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4803355596964218883}
     m_Modifications:
+    - target: {fileID: 1562265316662846170, guid: 1b1aa5290c69f8a4f9a59b4a735cc8bc, type: 3}
+      propertyPath: TrailModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1656406761889176861, guid: 1b1aa5290c69f8a4f9a59b4a735cc8bc, type: 3}
       propertyPath: m_Name
       value: trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661292313252502591, guid: 1b1aa5290c69f8a4f9a59b4a735cc8bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661292313252502591, guid: 1b1aa5290c69f8a4f9a59b4a735cc8bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661292313252502591, guid: 1b1aa5290c69f8a4f9a59b4a735cc8bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3661292313252502591, guid: 1b1aa5290c69f8a4f9a59b4a735cc8bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -217,6 +233,10 @@ PrefabInstance:
     - target: {fileID: 3661292313252502591, guid: 1b1aa5290c69f8a4f9a59b4a735cc8bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229458132074441612, guid: 1b1aa5290c69f8a4f9a59b4a735cc8bc, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
