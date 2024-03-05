@@ -72,7 +72,7 @@ public class DoorManager : MonoBehaviour
     {
         if (roomPrefabList.Count > 0)
         {
-            Debug.Log("roomPrefabsList count: " + roomPrefabList.Count);
+            // Debug.Log("roomPrefabsList count: " + roomPrefabList.Count);
             int randomIndex = UnityEngine.Random.Range(0, roomPrefabList.Count);
             GameObject randomRoomPrefab = Instantiate(roomPrefabList[randomIndex], _spawnPosition, Quaternion.identity);
             Room randomRoomComponent = randomRoomPrefab.GetComponent<Room>();
@@ -89,26 +89,32 @@ public class DoorManager : MonoBehaviour
     private void RandomizeDoorStates(Room _targetRoom)
     {
         // List<Door> DoorsInRoom = new List<Door>();
-        Debug.Log("doors.Count: " + _targetRoom.doors.Count);
+        // Debug.Log("doors.Count: " + _targetRoom.doors.Count);
+        Debug.Log("InitCDoors: " + currentDoorsInRoom);
+
         foreach (Door door in _targetRoom.doors)
         {
             // Debug.Log("Inside foreach loop");
-            float chanceForEnablingDoor = 1 - (currentDoorsInRoom / doorLimitInRooms);
-            float randomValue = UnityEngine.Random.value;
+            Debug.Log(door.name);
 
-            Debug.Log("ChanceForDoor: " + chanceForEnablingDoor);
-            Debug.Log("RandVal: " + randomValue);
+            float chanceForEnablingDoor = 1 - ((float)currentDoorsInRoom / (float)doorLimitInRooms);
+            // Debug.Log("ChanceForDoor: " + chanceForEnablingDoor);
 
+            float randomValue = UnityEngine.Random.Range(0.0f,1.0f);
+            // Debug.Log("RandVal: " + randomValue);
+            
             if (randomValue < chanceForEnablingDoor)
             {
                 door.enabled = true;
-                // door.SetActive(true);
+                door.gameObject.SetActive(true);
                 currentDoorsInRoom++;
             }
             else
             {
                 door.enabled = false;
+                door.gameObject.SetActive(false);
             }
+            Debug.Log("CurrDoors: " + currentDoorsInRoom);
         }
     }
 
