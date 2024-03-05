@@ -27,6 +27,7 @@ public class DoorManager : MonoBehaviour
 
     private void Start()
     {
+        UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
         InitializeGeneration();
     }
 
@@ -74,7 +75,8 @@ public class DoorManager : MonoBehaviour
             Debug.Log("roomPrefabsList count: " + roomPrefabList.Count);
             int randomIndex = UnityEngine.Random.Range(0, roomPrefabList.Count);
             GameObject randomRoomPrefab = Instantiate(roomPrefabList[randomIndex], _spawnPosition, Quaternion.identity);
-            return randomRoomPrefab.GetComponent<Room>();
+            Room randomRoomComponent = randomRoomPrefab.GetComponent<Room>();
+            return randomRoomComponent;
         }
         else
         {
@@ -90,13 +92,17 @@ public class DoorManager : MonoBehaviour
         Debug.Log("doors.Count: " + _targetRoom.doors.Count);
         foreach (Door door in _targetRoom.doors)
         {
-            Debug.Log("Inside foreach loop");
+            // Debug.Log("Inside foreach loop");
             float chanceForEnablingDoor = 1 - (currentDoorsInRoom / doorLimitInRooms);
             float randomValue = UnityEngine.Random.value;
+
+            Debug.Log("ChanceForDoor: " + chanceForEnablingDoor);
+            Debug.Log("RandVal: " + randomValue);
 
             if (randomValue < chanceForEnablingDoor)
             {
                 door.enabled = true;
+                // door.SetActive(true);
                 currentDoorsInRoom++;
             }
             else
