@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScriptedEvent : MonoBehaviour
+public abstract class ScriptedEvent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    protected BoxCollider2D triggerField;
+    [SerializeField] protected Animation introAnimation;
+    protected virtual void PlayEvent() { }
+
+    protected virtual IEnumerator IntroAnimation()
     {
-        
+        introAnimation.Play();
+        yield return new WaitForSeconds(introAnimation.clip.length + 2);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Player"))
+        {
+            print("event");
+            PlayEvent();
+        }
     }
 }
