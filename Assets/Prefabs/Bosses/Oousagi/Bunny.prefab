@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2824d9e302e81429c382ec0af6f4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStats: {fileID: 11400000, guid: 1f5e8073878ac5840928f241c7d9698e, type: 2}
+  enemyStats: {fileID: 11400000, guid: 4a5547fe3f408a0419e0b4f9be14ff0b, type: 2}
   attacks:
   - {fileID: 11400000, guid: 435da973ef7bc0244af5cb783391d5c6, type: 2}
 --- !u!195 &6518117276131038011
@@ -307,7 +307,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlyCallZeroHealthOnce: 1
-  maxHealth: 10
+  maxHealth: 2
   OnHealthZero:
     m_PersistentCalls:
       m_Calls:

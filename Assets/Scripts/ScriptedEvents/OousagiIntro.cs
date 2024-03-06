@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OousagiIntro : ScriptedEvent
 {
+    [SerializeField] OousagiSpawner spawner;
     // Start is called before the first frame update
     void Start()
     {
@@ -11,9 +12,10 @@ public class OousagiIntro : ScriptedEvent
     }
 
      
-    protected override void PlayEvent()
+    protected override IEnumerator PlayEvent()
     {
-        StartCoroutine(IntroAnimation());
+        yield return IntroAnimation(); //Runs Coroutine and waits for it to finish
+        spawner.StartSpawn();
     }
 
 }

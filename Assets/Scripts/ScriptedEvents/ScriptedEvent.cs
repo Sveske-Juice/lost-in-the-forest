@@ -6,12 +6,12 @@ public abstract class ScriptedEvent : MonoBehaviour
 {
     protected BoxCollider2D triggerField;
     [SerializeField] protected Animation introAnimation;
-    protected virtual void PlayEvent() { }
+    protected abstract IEnumerator PlayEvent();
 
     protected virtual IEnumerator IntroAnimation()
     {
-        introAnimation.Play();
-        yield return new WaitForSeconds(introAnimation.clip.length + 2);
+        //introAnimation.Play();
+        yield return new WaitForSeconds(/*introAnimation.clip.length*/ 2);
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +19,7 @@ public abstract class ScriptedEvent : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             print("event");
-            PlayEvent();
+            StartCoroutine(PlayEvent());
         }
     }
 }
