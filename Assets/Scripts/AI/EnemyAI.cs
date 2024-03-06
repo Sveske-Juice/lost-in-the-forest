@@ -67,16 +67,14 @@ public class EnemyAI : MonoBehaviour
                 {
                     if (hasHopTarget == false)
                     {
-                        //obstacle.enabled = false;
-                        agent.enabled = true;
+                        agent.isStopped = false;
                         agent.SetDestination(target.position);
                         hasHopTarget = true;
                     }
 
                     if (hopSecondsDelayed >= hopDelay + 0.5)
                     {
-                        agent.enabled = false;
-                        //obstacle.enabled = true;
+                        agent.isStopped = true;
                         hopSecondsDelayed = 0;
                         hasHopTarget = false;
                     }
@@ -146,8 +144,7 @@ public class EnemyAI : MonoBehaviour
         moving = true;
         if (hopMovement != true)
         {
-            //obstacle.enabled = false;
-            agent.enabled = true;
+            agent.isStopped = false;
         }
     }
 
@@ -155,8 +152,7 @@ public class EnemyAI : MonoBehaviour
     private void StopMovement()
     {
         moving = false;
-        agent.enabled = false;
-        //obstacle.enabled = true;
+        agent.isStopped = true;
     }
 
 
