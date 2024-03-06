@@ -123,6 +123,31 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &79938362
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1543789828922759477, guid: a129e15cb105893f0a5b6bd15747d791, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1543789828922759477, guid: a129e15cb105893f0a5b6bd15747d791, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844638739156658138, guid: a129e15cb105893f0a5b6bd15747d791, type: 3}
+      propertyPath: m_Name
+      value: SacraficialDagger (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a129e15cb105893f0a5b6bd15747d791, type: 3}
 --- !u!1 &224173987
 GameObject:
   m_ObjectHideFlags: 0
@@ -12764,4 +12789,5 @@ SceneRoots:
   - {fileID: 2120155986}
   - {fileID: 1747202168}
   - {fileID: 1635029945}
+  - {fileID: 79938362}
   - {fileID: 318140002}

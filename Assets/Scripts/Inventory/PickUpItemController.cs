@@ -17,16 +17,21 @@ public class PickUpItemController : MonoBehaviour
         if (itemObject == null) return; // Did not collide with item object
 
         // Add to correct inventory based on item type
-        Debug.Log($"Acquired: {itemObject.ReferenceItem.DisplayName} (active: {itemObject.ReferenceItem.IsActive})");
+        bool canPickup;
         if (itemObject.ReferenceItem.IsActive)
         {
-            activeInventory.Add(itemObject.ReferenceItem);
+            canPickup = activeInventory.Add(itemObject.ReferenceItem);
         }
         else
         {
-            passiveInventory.Add(itemObject.ReferenceItem);
+            canPickup = passiveInventory.Add(itemObject.ReferenceItem);
         }
-        itemObject.PickedUp();
+
+        if (canPickup)
+        {
+            Debug.Log($"Acquired: {itemObject.ReferenceItem.DisplayName} (active: {itemObject.ReferenceItem.IsActive})");
+            itemObject.PickedUp();
+        }
     }
 
     private void TryPickCoin(Collider2D collider)

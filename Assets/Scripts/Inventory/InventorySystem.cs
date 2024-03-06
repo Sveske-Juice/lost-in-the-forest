@@ -15,6 +15,8 @@ public class InventorySystem : MonoBehaviour
     public int inventorySize = 3;
     static public int currentInvenotorySize = 0;
 
+    public bool stacking = true;
+
     private void Awake()
     {
     }
@@ -33,10 +35,13 @@ public class InventorySystem : MonoBehaviour
     {
         if (m_itemDictionary.TryGetValue(refenceData, out InventoryItem value)) //Tjekker om item er i inventory
         {
-            value.AddToStack(); //Adder til en stack
-            onInventoryChangedEvent?.Invoke();
+            if (stacking)
+            {
+                value.AddToStack(); //Adder til en stack
+                onInventoryChangedEvent?.Invoke();
 
-            return true;
+                return true;
+            }
         }
         else if(inventorySize > currentInvenotorySize)// laver en ny item, og add til inventory
         {
@@ -50,12 +55,11 @@ public class InventorySystem : MonoBehaviour
             onInventoryChangedEvent?.Invoke();
 
             return true;
-        }   
+        }
         return false;
-        
     }
 
-    private UseModifierContext ModifierCtx(ItemScriptableObject item)
+    public UseModifierContext ModifierCtx(ItemScriptableObject item)
     {
         return new UseModifierContextBuilder()
             .WithItem(item)
