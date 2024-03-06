@@ -18,6 +18,7 @@ public class ItemSaveLoad : MonoBehaviour
 
         ItemsSaves itemsInJson = new ItemsSaves();
         string loadPath = Path.Combine(Application.persistentDataPath, "itemData.json");
+        if (!File.Exists(loadPath)) return;
         StreamReader r = new StreamReader(loadPath);
         string temp = r.ReadToEnd();
         r.Close();
