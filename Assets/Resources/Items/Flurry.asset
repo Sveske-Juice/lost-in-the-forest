@@ -21,3 +21,5 @@ MonoBehaviour:
   passiveModifiers:
   - {fileID: 11400000, guid: 355976eb0deed7d439ffeeddf1a34b47, type: 2}
   - {fileID: 11400000, guid: 394d138ea8b82064283aabd34b63cd36, type: 2}
+  level: 1
+  maxLevel: 5
