@@ -24,6 +24,13 @@ public class ItemScriptableObject : ScriptableObject
     public bool IsActive => itemStrategies != null && itemStrategies.Length > 0;
     public bool IsPassive => !IsActive;
 
+    public void SetLevel(int _level)
+    {
+        this.level = _level;
+        if (_level > maxLevel)
+            this.level = maxLevel;
+    }
+
     public bool UseAbility(UseModifierContext useItemContext)
     {
         if (uses > 0)

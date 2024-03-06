@@ -8,7 +8,35 @@ using UnityEngine;
 
 public class ItemSaveLoad : MonoBehaviour
 {
-    private List<ItemScriptableObject> items = new();
+    private static List<ItemScriptableObject> items = new();
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void LoadItemData()
+    {
+        items.Clear();
+        items.AddRange(Resources.LoadAll<ItemScriptableObject>("Items"));
+
+        ItemsSaves itemsInJson = new ItemsSaves();
+        string loadPath = Path.Combine(Application.persistentDataPath, "itemData.json");
+        if (!File.Exists(loadPath)) return;
+        StreamReader r = new StreamReader(loadPath);
+        string temp = r.ReadToEnd();
+        r.Close();
+        itemsInJson = JsonUtility.FromJson<ItemsSaves>(temp);
+        Debug.Log(itemsInJson);
+        
+        for (int i = 0; i < items.Count(); i++)
+        {
+            for (int j = 0; j < itemsInJson.items.Count(); j++)
+            {
+                if (items[i].Id == itemsInJson.items[j].id)
+                {
+                    items[i].SetLevel(itemsInJson.items[j].level);
+                    break;
+                }
+            }
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +54,7 @@ public class ItemSaveLoad : MonoBehaviour
         items.Clear();
         items.AddRange(Resources.LoadAll<ItemScriptableObject>("Items"));
         ItemsSaves itemsSaves = new ItemsSaves();
-        itemsSaves.items = this.items.Select(i => new ItemSave(i.Id, i.Level)).ToArray();
+        itemsSaves.items = items.Select(i => new ItemSave(i.Id, i.Level)).ToArray();
 
         string json = JsonUtility.ToJson(itemsSaves);
         Debug.Log(json);
