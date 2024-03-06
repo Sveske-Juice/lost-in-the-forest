@@ -5,7 +5,7 @@ public class ActiveInventoryUI : MonoBehaviour
     [SerializeField] InventorySystem connectedInventory;
     public GameObject m_slotPrefab;
 
-   
+
 
     void Start()
     {
@@ -60,14 +60,18 @@ public class ActiveInventoryUI : MonoBehaviour
     {
         ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
 
-        UseModifierContext modifierContext = new UseModifierContextBuilder()
-            .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
-            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
-            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer as IAttackSpeedReceiver)
-            .WithDamageReceiver(CombatPlayer.combatPlayer as IDamageReceiver)
-            .Build();
+        UseModifierContext modCtx = connectedInventory.ModifierCtx(slot.Item.data);
 
-        slot.Item.data.UseAbility(modifierContext);
+        // Activate item
+        if (slot.Item.data.ActivationMethod == ItemActivationMethod.INSTANT)
+        {
+            slot.Item.data.UseAbility(modCtx);
+            connectedInventory.Remove(slot.Item.data);
+        }
+        else
+        {
+            // TODO: handle target method
+        }
     }
 
     // TODO:: Markus, brug følgende to funktioner til at vise en item hover menu

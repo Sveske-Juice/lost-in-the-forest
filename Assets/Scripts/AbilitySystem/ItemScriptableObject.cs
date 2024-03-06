@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [CreateAssetMenu(fileName = "ItemScriptableObject", menuName = "ScriptableObjects/Item")]
 public class ItemScriptableObject : ScriptableObject
 {
+    [SerializeField] ItemActivationMethod activationMethod = ItemActivationMethod.INSTANT;
     [SerializeField] string id;
     [SerializeField] string displayName;
     [SerializeField]
@@ -15,6 +17,7 @@ public class ItemScriptableObject : ScriptableObject
     [SerializeField] int level = 1;
     [SerializeField] int maxLevel = 5;
 
+    public ItemActivationMethod ActivationMethod => activationMethod;
     public int Level => level;
     public int MaxLevel => maxLevel;
     public string Id => id;
@@ -23,6 +26,22 @@ public class ItemScriptableObject : ScriptableObject
     public Texture2D Icon => icon;
     public bool IsActive => itemStrategies != null && itemStrategies.Length > 0;
     public bool IsPassive => !IsActive;
+
+    private void OnValidate()
+    {
+        Assert.IsFalse(IsPassive && activationMethod == ItemActivationMethod.TARGET_SELECTION,
+            "Can not have passive items with target activation method");
+
+        if (string.IsNullOrEmpty(id))
+            Debug.LogWarning($"No id for set {this}!");
+    }
+
+    public void SetLevel(int _level)
+    {
+        this.level = _level;
+        if (_level > maxLevel)
+            this.level = maxLevel;
+    }
 
     public bool UseAbility(UseModifierContext useItemContext)
     {
