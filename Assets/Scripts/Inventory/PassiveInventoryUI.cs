@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PassiveInventoryUI : MonoBehaviour
 {
-  /*  [SerializeField] InventorySystem connectedInventory;
+    [SerializeField] InventorySystem connectedInventory;
     public GameObject m_slotPrefab;
 
     void Start()
@@ -70,5 +70,19 @@ public class PassiveInventoryUI : MonoBehaviour
         slot.Item.data.UseAbility(modifierContext);
     }
 
-    */
+    public void OnItemSlotEnter(ImageCickHandler imageElement)
+    {
+        ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
+
+        // TODO: spawn item hover prefab
+        // kald funktion på instantied prefab til at loade det item (brug slot variabel)
+    }
+
+    // kaldt når mus bliver fjernet fra item slot
+    public void OnItemSlotExit(ImageCickHandler imageElement)
+    {
+        ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
+
+        // TODO: slet item hover menu
+    }
 }
