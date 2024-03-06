@@ -13,8 +13,12 @@ public class EnemyAI : MonoBehaviour
     float attackRange;
     float attackDelay;
     float secondsDelayed;
+    float hopDelay;
+    float hopSecondsDelayed;
     bool attacking;
     bool canMoveWhileAttacking;
+    bool hopMovement;
+    bool hasHopTarget;
 
     public EnemyStats enemyStats;
 
@@ -30,13 +34,17 @@ public class EnemyAI : MonoBehaviour
         //Sætter startværdier
         moving = true;
         secondsDelayed = 0;
+        hopSecondsDelayed = 0;
         attacking = false;
+        hasHopTarget = false;
 
         //Sætter værdier fra statblock
         moveSpeed = enemyStats.moveSpeed;
         attackRange = enemyStats.attackRange;
         attackDelay = enemyStats.attackDelay;
+        hopDelay = enemyStats.hopDelay;
         canMoveWhileAttacking = enemyStats.canMoveWhileAttacking;
+        hopMovement = enemyStats.hopMovement;
         damage = enemyStats.strength;
 
         //NavMesh
@@ -52,8 +60,33 @@ public class EnemyAI : MonoBehaviour
         //Moving state
         if (moving == true)
         {
-            //Sætter bevægelses-målet til spillerens position
-            agent.SetDestination(target.position);
+            if (hopMovement == true)
+            {
+                hopSecondsDelayed += Time.deltaTime;
+                if (hopSecondsDelayed >= hopDelay)
+                {
+                    if (hasHopTarget == false)
+                    {
+                        //obstacle.enabled = false;
+                        agent.enabled = true;
+                        agent.SetDestination(target.position);
+                        hasHopTarget = true;
+                    }
+
+                    if (hopSecondsDelayed >= hopDelay + 0.5)
+                    {
+                        agent.enabled = false;
+                        //obstacle.enabled = true;
+                        hopSecondsDelayed = 0;
+                        hasHopTarget = false;
+                    }
+                }
+            }
+            else
+            {
+                //Sætter bevægelses-målet til spillerens position
+                agent.SetDestination(target.position);
+            }
         }
         
 
@@ -111,8 +144,11 @@ public class EnemyAI : MonoBehaviour
     private void StartMovement()
     {
         moving = true;
-        obstacle.enabled = false;
-        agent.enabled = true;
+        if (hopMovement != true)
+        {
+            //obstacle.enabled = false;
+            agent.enabled = true;
+        }
     }
 
     //Stopper enemy bevægelse og skubbelighed
@@ -120,7 +156,7 @@ public class EnemyAI : MonoBehaviour
     {
         moving = false;
         agent.enabled = false;
-        obstacle.enabled = true;
+        //obstacle.enabled = true;
     }
 
 
