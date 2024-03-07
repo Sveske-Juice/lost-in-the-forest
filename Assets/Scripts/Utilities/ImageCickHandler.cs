@@ -31,7 +31,6 @@ public class ImageCickHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log($"clicking {gameObject.name}");
         OnElementUp?.Invoke(this);
     }
 }

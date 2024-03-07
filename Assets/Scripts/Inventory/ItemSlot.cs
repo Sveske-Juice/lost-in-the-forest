@@ -8,10 +8,10 @@ using TMPro;
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private RawImage m_icon;
-    [SerializeField] private TextMeshProUGUI m_label; 
+    [SerializeField] private TextMeshProUGUI m_label;
     [SerializeField] private GameObject m_stackObj;
     [SerializeField] private TextMeshProUGUI m_stackLabel;
-    
+
 
     private GameObject tooltipPrefab, tooltip;
 
@@ -53,11 +53,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (!IsEmpty())
         {
-            Debug.Log("Enter");
             tooltip = Instantiate(tooltipPrefab, transform);
             tooltip.GetComponent<ToolTip>().set(Item);
         }
-       
     }
 
     public void OnPointerExit(PointerEventData eventData)
