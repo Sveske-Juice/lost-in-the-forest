@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using System;
 
 
@@ -9,6 +10,7 @@ public class InventorySystem : MonoBehaviour
     public event Action onInventoryChangedEvent;
 
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
+    public ItemScriptableObject[] startingItems;
     public List<InventoryItem> Inventory { get; private set; } = new();
     public GameObject tooltipPrefab;
 
@@ -17,8 +19,18 @@ public class InventorySystem : MonoBehaviour
 
     public bool stacking = true;
 
+    private void OnValidate()
+    {
+        if (startingItems != null)
+            Assert.IsTrue(inventorySize >= startingItems.Length, $"Can not hold that many starting items!");
+    }
+
     private void Awake()
     {
+        foreach (ItemScriptableObject item in startingItems)
+        {
+            Add(item);
+        }
     }
 
     public InventoryItem Get(ItemScriptableObject refenceData)

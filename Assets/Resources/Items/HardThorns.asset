@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: HardThorns
   m_EditorClassIdentifier: 
   activationMethod: 0
-  id: 
-  displayName: 
+  id: hard_thorns
+  displayName: Hard Thorns
   description: 
   itemStrategies: []
   uses: 1
   icon: {fileID: 0}
-  passiveModifiers: []
+  passiveModifiers:
+  - {fileID: 11400000, guid: c24b25a52e3eca6dda2e9064b718d7bd, type: 2}
+  - {fileID: 11400000, guid: 98905578ce797907b9e5fa1895538844, type: 2}
   level: 1
   maxLevel: 5
