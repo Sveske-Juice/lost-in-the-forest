@@ -83,12 +83,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 91bc66818595e43a8a3efef5100aad9b, type: 3}
+  m_Sprite: {fileID: 788324660, guid: 65808af45c44e3395a1eeedc534ce9d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.2, y: 3.2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -239,8 +239,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
-    newSize: {x: 3.2, y: 3.2}
+    oldSize: {x: 0.5, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -340,7 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems: []
   tooltipPrefab: {fileID: 0}
   inventorySize: 999999
   stacking: 1
@@ -388,7 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems: []
   tooltipPrefab: {fileID: 3432900237536628667, guid: f895f2888c582eb4ea0e84881373f239, type: 3}
   inventorySize: 8
   stacking: 0
