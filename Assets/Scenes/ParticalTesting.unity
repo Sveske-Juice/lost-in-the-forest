@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 983878307}
   - component: {fileID: 983878308}
   - component: {fileID: 983878309}
+  - component: {fileID: 983878310}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -401,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftAttack: {fileID: 11400000, guid: 435da973ef7bc0244af5cb783391d5c6, type: 2}
-  rightAttack: {fileID: 11400000, guid: 09c34b0949c56c846819570ebe9c5a07, type: 2}
+  rightAttack: {fileID: 11400000, guid: d703a1c347621a64e8a210eda0014781, type: 2}
 --- !u!114 &983878309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +419,7 @@ MonoBehaviour:
   intelligence: 1
   strength: 1
   attackSpeed: 0
+  thornsScale: 0
   attackSpeedToDelay:
     serializedVersion: 2
     m_Curve:
@@ -442,7 +444,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &983878310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983878303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3822c9226fc03d4b991fc65d1b18878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyCallZeroHealthOnce: 1
   maxHealth: 100
+  OnHealthZero:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2052232457
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +477,7 @@ GameObject:
   - component: {fileID: 2052232460}
   - component: {fileID: 2052232462}
   - component: {fileID: 2052232463}
+  - component: {fileID: 2052232464}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -604,7 +626,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40ed9af2af50fa4696ae023a4135705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 11400000, guid: 1f5e8073878ac5840928f241c7d9698e, type: 2}
+  moveSpeed: 0
+  attackRange: 0
+  attackDelay: 0
+  canMoveWhileAttacking: 0
+  strength: 1
+  thornsScale: 0
+--- !u!114 &2052232464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052232457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3822c9226fc03d4b991fc65d1b18878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlyCallZeroHealthOnce: 1
+  maxHealth: 100
+  OnHealthZero:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using System;
 
 
@@ -9,14 +10,27 @@ public class InventorySystem : MonoBehaviour
     public event Action onInventoryChangedEvent;
 
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
+    public ItemScriptableObject[] startingItems;
     public List<InventoryItem> Inventory { get; private set; } = new();
     public GameObject tooltipPrefab;
 
     public int inventorySize = 3;
     static public int currentInvenotorySize = 0;
 
+    public bool stacking = true;
+
+    private void OnValidate()
+    {
+        if (startingItems != null)
+            Assert.IsTrue(inventorySize >= startingItems.Length, $"Can not hold that many starting items!");
+    }
+
     private void Awake()
     {
+        foreach (ItemScriptableObject item in startingItems)
+        {
+            Add(item);
+        }
     }
 
     public InventoryItem Get(ItemScriptableObject refenceData)
@@ -33,10 +47,13 @@ public class InventorySystem : MonoBehaviour
     {
         if (m_itemDictionary.TryGetValue(refenceData, out InventoryItem value)) //Tjekker om item er i inventory
         {
-            value.AddToStack(); //Adder til en stack
-            onInventoryChangedEvent?.Invoke();
+            if (stacking)
+            {
+                value.AddToStack(); //Adder til en stack
+                onInventoryChangedEvent?.Invoke();
 
-            return true;
+                return true;
+            }
         }
         else if(inventorySize > currentInvenotorySize)// laver en ny item, og add til inventory
         {
@@ -50,12 +67,11 @@ public class InventorySystem : MonoBehaviour
             onInventoryChangedEvent?.Invoke();
 
             return true;
-        }   
+        }
         return false;
-        
     }
 
-    private UseModifierContext ModifierCtx(ItemScriptableObject item)
+    public UseModifierContext ModifierCtx(ItemScriptableObject item)
     {
         return new UseModifierContextBuilder()
             .WithItem(item)

@@ -6,9 +6,9 @@ using System;
 [Serializable]
 public class InventoryItem 
 {
-    public ItemScriptableObject data { get; private set; }
+    public ItemScriptableObject data;
     
-    public int stackSize { get; private set; }
+    public int stackSize;
 
     public InventoryItem(ItemScriptableObject source)
     {

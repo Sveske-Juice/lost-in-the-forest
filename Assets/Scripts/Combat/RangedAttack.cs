@@ -9,7 +9,6 @@ public class RangedAttack : MonoBehaviour
     [SerializeField] private float AttackUpTime;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] ParticleSystem onHitParticleSystem = default; // Particle system when the projectile hist
-    [SerializeField] ParticleSystem followParticleSystem = default; // ParticleSystem that follows projectile, make sure looping is enabled
 
     void Update()
     {
@@ -18,18 +17,6 @@ public class RangedAttack : MonoBehaviour
         if (AttackUpTime <= 0.0f)
         {
             Destroy(gameObject);
-        }
-    }
-
-    void Start()
-    {
-        if (followParticleSystem != null)
-        {
-            // Dont destroy this particle system
-            GameObject ps = StartParticleSystem(followParticleSystem, transform.position, duration: 1f);
-
-            // Sync position of ps with projectile
-            ps.transform.SetParent(transform);
         }
     }
 
