@@ -16,6 +16,7 @@ public class ItemScriptableObject : ScriptableObject
     [SerializeField] Modifier[] passiveModifiers;
     [SerializeField] int level = 1;
     [SerializeField] int maxLevel = 5;
+    [SerializeField] int cost = 5;
 
     public ItemActivationMethod ActivationMethod => activationMethod;
     public int Level => level;
@@ -26,6 +27,7 @@ public class ItemScriptableObject : ScriptableObject
     public Texture2D Icon => icon;
     public bool IsActive => itemStrategies != null && itemStrategies.Length > 0;
     public bool IsPassive => !IsActive;
+    public int Cost => cost;
 
     private void OnValidate()
     {

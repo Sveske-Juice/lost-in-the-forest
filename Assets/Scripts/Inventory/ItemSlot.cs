@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private RawImage m_icon;
     [SerializeField] private TextMeshProUGUI m_label;
@@ -40,26 +40,20 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     bool IsEmpty()
     {
-        if (InventorySystem.currentInvenotorySize != 0)
-        {
-            return false;
-        }
-        return true;
+        return InventorySystem.currentInvenotorySize == 0;
     }
 
 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!IsEmpty())
-        {
-            tooltip = Instantiate(tooltipPrefab, transform);
-            tooltip.GetComponent<ToolTip>().set(Item);
-        }
-    }
+        Debug.Log("enter");
+        if (tooltip != null)
+            Destroy(tooltip);
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Destroy(tooltip);
+        tooltip = Instantiate(tooltipPrefab, GameObject.FindObjectOfType<Canvas>().transform);
+        tooltip.transform.position = transform.position;
+        tooltip.GetComponent<ToolTip>().set(Item);
+        
     }
 }
