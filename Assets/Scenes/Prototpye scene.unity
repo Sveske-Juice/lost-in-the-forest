@@ -9280,11 +9280,6 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!95 &1071913550 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2325266415635678282, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
-  m_PrefabInstance: {fileID: 1352891468}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1151530622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9472,10 +9467,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9089287156659607920, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
-      propertyPath: movementAnimator
-      value: 
-      objectReference: {fileID: 1071913550}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
