@@ -61,6 +61,7 @@ public class InventorySystem : MonoBehaviour
         }
         else if(inventorySize > currentInvenotorySize)// laver en ny item, og add til inventory
         {
+            HandleConflictingItems(refenceData);
             InventoryItem newItem = new InventoryItem(refenceData);
             Inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
@@ -74,6 +75,31 @@ public class InventorySystem : MonoBehaviour
         return false;
     }
 
+    // Throws any items that are in conflict
+    private void HandleConflictingItems(ItemScriptableObject item)
+    {
+        foreach (ItemScriptableObject conflictingItem in item.ConflictingItems)
+        {
+            InventoryItem itemInInventory;
+            if (!m_itemDictionary.TryGetValue(conflictingItem, out itemInInventory))
+                continue; // Conflicting item not in inventory
+
+            // Trow conflicting item
+            ThrowItem(itemInInventory);
+        }
+    }
+
+    private void ThrowItem(InventoryItem item)
+    {
+        Assert.IsNotNull(item.data.PickupPrefab, $"No Pickup prefab set when trying to throw {item.data.DisplayName}");
+        Debug.Log($"Throwing {item.data.DisplayName}");
+
+        var pickup = Instantiate(item.data.PickupPrefab);
+        pickup.transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
+
+        Remove(item.data);
+    }
+
     public UseModifierContext ModifierCtx(ItemScriptableObject item)
     {
         return new UseModifierContextBuilder()
@@ -84,6 +110,7 @@ public class InventorySystem : MonoBehaviour
             .WithDamageReceiver(CombatPlayer.combatPlayer)
             .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
             .WithThornsReceiver(CombatPlayer.combatPlayer)
+            .WithAttackStrategyReceiver(CombatPlayer.combatPlayer.gameObject.GetComponent<PlayerAttack>())
             .Build();
     }
 

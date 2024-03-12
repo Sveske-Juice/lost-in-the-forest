@@ -3,7 +3,7 @@ using UnityEngine;
 // Dette script bliver brugt til at spawne playerens attack
 // -Morgan
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour, IAttackStrategyReceiver
 {
     private bool isAttacking = false;
     private float attackTime = 0;
@@ -40,6 +40,8 @@ public class PlayerAttack : MonoBehaviour
 
     void PhysicalAttack()
     {
+        if (leftAttack == null) return;
+
         AttackContextBuilder builder = new();
         AttackContext context = builder
             .WithOrigin(transform)
@@ -54,6 +56,8 @@ public class PlayerAttack : MonoBehaviour
 
     void RangeAttack()
     {
+        if (rightAttack == null) return;
+
         AttackContextBuilder builder = new();
         AttackContext context = builder
             .WithOrigin(transform)
@@ -65,20 +69,30 @@ public class PlayerAttack : MonoBehaviour
 
         rightAttack.Attack(context);
     }
-    /*
-    void OnDrawGizmos()
+
+    public void HotReloadRightHandStrategy(AttackStrategy strategy)
     {
-        if (!Application.isPlaying) return;
+        rightAttack = strategy;
+    }
 
-        Vector2 mousePos = Input.mousePosition;
-        Camera mainCam = Camera.main;
+    public void HotReloadLeftHandStrategy(AttackStrategy strategy)
+    {
+        leftAttack = strategy;
+    }
+    /*
+void OnDrawGizmos()
+{
+   if (!Application.isPlaying) return;
 
-        Vector3 dir = mainCam.ScreenToWorldPoint(mousePos) - transform.position;
-        dir.Normalize();
+   Vector2 mousePos = Input.mousePosition;
+   Camera mainCam = Camera.main;
 
-        Gizmos.DrawWireCube(transform.position, attackSize);
-        Gizmos.DrawLine(transform.position, transform.position + dir * attackDistance);
+   Vector3 dir = mainCam.ScreenToWorldPoint(mousePos) - transform.position;
+   dir.Normalize();
 
-        Gizmos.DrawWireCube(transform.position + dir * attackDistance, attackSize);
-    }*/
+   Gizmos.DrawWireCube(transform.position, attackSize);
+   Gizmos.DrawLine(transform.position, transform.position + dir * attackDistance);
+
+   Gizmos.DrawWireCube(transform.position + dir * attackDistance, attackSize);
+}*/
 }

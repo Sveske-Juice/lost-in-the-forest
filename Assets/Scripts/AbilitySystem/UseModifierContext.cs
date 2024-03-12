@@ -7,6 +7,7 @@ public class UseModifierContext
     public IDamageReceiver damageReceiver { get; private set; }
     public IMoveSpeedReceiver moveSpeedReceiver { get; private set; }
     public IThornsReceiver thornsReceiver { get; private set; }
+    public IAttackStrategyReceiver attackStrategyReciever { get; private set; }
 
     public UseModifierContext(
         ItemScriptableObject item,
@@ -15,7 +16,8 @@ public class UseModifierContext
         IAttackSpeedReceiver attackSpeedReceiver,
         IDamageReceiver damageReceiver,
         IMoveSpeedReceiver moveSpeedReceiver,
-        IThornsReceiver thornsReceiver
+        IThornsReceiver thornsReceiver,
+        IAttackStrategyReceiver attackStrategyReciever
     )
     {
         this.item = item;
@@ -25,6 +27,7 @@ public class UseModifierContext
         this.damageReceiver = damageReceiver;
         this.moveSpeedReceiver = moveSpeedReceiver;
         this.thornsReceiver = thornsReceiver;
+        this.attackStrategyReciever = attackStrategyReciever;
     }
 
     public override string ToString()
@@ -42,6 +45,7 @@ public class UseModifierContextBuilder
     private IDamageReceiver damageReceiver;
     private IMoveSpeedReceiver moveSpeedReceiver;
     private IThornsReceiver thornsReceiver;
+    private IAttackStrategyReceiver attackStrategyReciever;
 
     public UseModifierContextBuilder WithItem(
         ItemScriptableObject item
@@ -96,6 +100,14 @@ public class UseModifierContextBuilder
         return this;
     }
 
+    public UseModifierContextBuilder WithAttackStrategyReceiver(
+        IAttackStrategyReceiver attackStrategyReciever
+    )
+    {
+        this.attackStrategyReciever = attackStrategyReciever;
+        return this;
+    }
+
     public UseModifierContext Build()
     {
         return new UseModifierContext(
@@ -105,7 +117,8 @@ public class UseModifierContextBuilder
             attackSpeedReceiver,
             damageReceiver,
             moveSpeedReceiver,
-            thornsReceiver
+            thornsReceiver,
+            attackStrategyReciever
         );
     }
 }

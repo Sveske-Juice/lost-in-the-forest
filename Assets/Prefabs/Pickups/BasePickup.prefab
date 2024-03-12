@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasePickup
       objectReference: {fileID: 0}
+    - target: {fileID: 6200202506815709466, guid: e7a14b3e04827d245abca2f85ad0bed6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8237883326817876058, guid: e7a14b3e04827d245abca2f85ad0bed6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
