@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private RawImage m_icon;
     [SerializeField] private TextMeshProUGUI m_label;
@@ -47,13 +47,16 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("enter");
         if (tooltip != null)
             Destroy(tooltip);
 
         tooltip = Instantiate(tooltipPrefab, GameObject.FindObjectOfType<Canvas>().transform);
         tooltip.transform.position = transform.position;
         tooltip.GetComponent<ToolTip>().set(Item);
-        
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Destroy(tooltip);
     }
 }

@@ -18,7 +18,7 @@ public class ToolTip : MonoBehaviour, IPointerExitHandler
         title.text = item.data.DisplayName;
         description.text = item.data.Description;
         lvl.text = "lvl: " + item.data.Level.ToString();
-        
+
         if (cost != null)
             cost.text = item.data.Cost.ToString();
     }
