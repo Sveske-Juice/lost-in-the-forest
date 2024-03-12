@@ -28,6 +28,7 @@ public class ItemScriptableObject : ScriptableObject
     public string Description => description;
     public Texture2D Icon => icon;
     public bool IsActive => itemStrategies != null && itemStrategies.Length > 0;
+    public int Uses => uses;
     public bool IsPassive => !IsActive;
     public int Cost => cost;
     public ItemScriptableObject[] ConflictingItems => conflictingItems;

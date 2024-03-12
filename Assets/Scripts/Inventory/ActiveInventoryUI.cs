@@ -66,7 +66,9 @@ public class ActiveInventoryUI : MonoBehaviour
         if (slot.Item.data.ActivationMethod == ItemActivationMethod.INSTANT)
         {
             slot.Item.data.UseAbility(modCtx);
-            connectedInventory.Remove(slot.Item.data);
+
+            if (slot.Item.data.Uses <= 0)
+                connectedInventory.Remove(slot.Item.data);
         }
         else
         {
