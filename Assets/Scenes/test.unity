@@ -786,19 +786,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7297959258593926723, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
       propertyPath: m_Size.x
-      value: 0.3089608
+      value: 0.5656779
       objectReference: {fileID: 0}
     - target: {fileID: 7297959258593926723, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
       propertyPath: m_Size.y
-      value: 1.0034463
+      value: 0.8408581
       objectReference: {fileID: 0}
     - target: {fileID: 7297959258593926723, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
       propertyPath: m_Offset.x
-      value: -0.009236038
+      value: 0.00787878
       objectReference: {fileID: 0}
     - target: {fileID: 7297959258593926723, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
       propertyPath: m_Offset.y
-      value: -0.017544985
+      value: -0.18441153
       objectReference: {fileID: 0}
     - target: {fileID: 7297959258593926723, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
       propertyPath: m_LayerOverridePriority
