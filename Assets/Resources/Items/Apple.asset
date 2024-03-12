@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dca4beb08c955458731f4a1e23e3d3, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  id: apple
-  displayName: Apple
+  activationMethod: 0
+  id: potion
+  displayName: Potion
   description: A apple a day keeps doctor away
   itemStrategies:
   - {fileID: 11400000, guid: 866f9cb9d4b12576f88cd307c1dbccc8, type: 2}
   uses: 1
-  icon: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
+  icon: {fileID: 2800000, guid: 3c770d8c496bf224e95338742c876a76, type: 3}
   passiveModifiers: []
-  level: 1
+  level: 5
   maxLevel: 5

@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dca4beb08c955458731f4a1e23e3d3, type: 3}
   m_Name: HeavyHitter
   m_EditorClassIdentifier: 
+  activationMethod: 0
   id: heavy_hitter
   displayName: Heavy Hitter
   description: Risk it for the biscuit
   itemStrategies: []
   uses: 1
-  icon: {fileID: 0}
+  icon: {fileID: 2800000, guid: 915517668222420458053ce047e80f98, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: 7113ee4697d6268428051c202ca9eb17, type: 2}
   - {fileID: 11400000, guid: 2d5dffe5e8df5724c9f1d53d93222bb2, type: 2}
+  level: 1
+  maxLevel: 5
