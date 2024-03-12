@@ -9,8 +9,12 @@ using UnityEngine;
 
 public class TempMove : MonoBehaviour
 {
+    [SerializeField] private Animator movementAnimator;
+    private int moveXHash;
+    private int moveYHash;
+    private int movingHash;
+
     Rigidbody2D body;
-    Transform transform;
 
     float horizontal;
     float vertical;
@@ -19,8 +23,11 @@ public class TempMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveXHash = Animator.StringToHash("MoveX");
+        moveYHash = Animator.StringToHash("MoveY");
+        movingHash = Animator.StringToHash("IsMoving");
+
         body = GetComponent<Rigidbody2D>();
-        transform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -37,5 +44,11 @@ public class TempMove : MonoBehaviour
         velocity.Normalize();
         body.velocity = velocity * runSpeed;
 
+        float xScale = velocity.x >= 0 ? 1 : -1;
+        transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+
+        movementAnimator.SetFloat(moveXHash, velocity.x);
+        movementAnimator.SetFloat(moveYHash, velocity.y);
+        movementAnimator.SetBool(movingHash, velocity != Vector2.zero);
     }
 }

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7297959258593926723}
   - component: {fileID: 3153810980220846611}
   - component: {fileID: 2170804639958562090}
+  - component: {fileID: 2325266415635678282}
   m_Layer: 6
   m_Name: RealPlayer
   m_TagString: Player
@@ -83,12 +84,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 91bc66818595e43a8a3efef5100aad9b, type: 3}
+  m_Sprite: {fileID: 1256439755, guid: dff43d8602e85b979848a2b690778147, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.254902, y: 1.254902}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -239,8 +240,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.254902, y: 1.254902}
-    newSize: {x: 1.254902, y: 1.254902}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -296,6 +297,27 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &2325266415635678282
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779687772605887179}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67ec9929ff5ae1abebf7b6447616bd1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2177260456851028472
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isShop: 0
   startingItems:
   - {fileID: 11400000, guid: 6764bd2a6a9a75949a12468a27d4406b, type: 2}
   - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
@@ -391,6 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isShop: 0
   startingItems:
   - {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
   tooltipPrefab: {fileID: 3432900237536628667, guid: f895f2888c582eb4ea0e84881373f239, type: 3}
