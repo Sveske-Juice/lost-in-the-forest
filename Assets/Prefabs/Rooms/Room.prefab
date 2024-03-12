@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: name
       value: Door 3
       objectReference: {fileID: 0}
+    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5267736
@@ -304,6 +308,10 @@ PrefabInstance:
       propertyPath: name
       value: Door 1
       objectReference: {fileID: 0}
+    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: direction
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.4732265
@@ -396,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: name
       value: Door 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: direction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_LocalPosition.x

@@ -25,6 +25,8 @@ public class DoorManager : MonoBehaviour
     [SerializeField] private int doorLimitInRooms = 4;
     private int currentDoorsInRoom;
 
+    private List<Door> AllDoors = new List<Door>();
+
     private void Start()
     {
         UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
@@ -33,33 +35,79 @@ public class DoorManager : MonoBehaviour
 
     private void InitializeGeneration(int _maxRooms = 40)
     {
-        Debug.Log("Init start");
+        // Debug.Log("Init start");
         
         Room room = CreateRandomRoom(new Vector3(0,0,0));
-        RandomizeDoorStates(room);
+        ActivateRandomDoors(room);
 
         List<Door> enabledDoorsList = AddEnabledDoorsToList(room);
-        // Debug.Log("enabledDoorsList: " + enabledDoorsList.Count);
+        // Debug.Log("TotalDoorsList: " + room.doors.Count);
+        // Debug.Log("EnabledDoorsList: " + enabledDoorsList.Count);
+
+        // Debug.Log("Before shuffle:");
+        // Debug.Log(enabledDoorsList[0].name);
+        // Debug.Log(enabledDoorsList[1].name);
 
         while (enabledDoorsList.Count > 1)
         {
             ShuffleEnabledDoorsList(enabledDoorsList);
-            break;
+            Door startDoor = enabledDoorsList[0];
+
+            // Debug.Log("After shuffle:");
+            // Debug.Log(enabledDoorsList[0].name);
+            // Debug.Log(enabledDoorsList[1].name);
 
             float chanceForNewRoom = 1 - (currentRooms / _maxRooms);
 
-            float randomValue = UnityEngine.Random.value; // Random float [0.0; 1.0]
-            if (randomValue < chanceForNewRoom)
+            float randomValue = UnityEngine.Random.Range(0.0f, 1.0f);
+            if (randomValue < chanceForNewRoom)  // Create new room
             {
                 // Create a new room from a specific door
+                Room newRoom = CreateRandomRoom(startDoor.transform.position);
+
                 // Randomize door-states in new room
+                ActivateRandomDoors(newRoom);
+                List<Door> newEnabledDoorsList = AddEnabledDoorsToList(newRoom);
+                ShuffleEnabledDoorsList(newEnabledDoorsList);
+
+                Door connectionDoor = null;
+
+                foreach (Door door in newRoom.doors) {
+                    if (door.direction == startDoor.OppositeDirection())
+                    {
+                        connectionDoor = door;
+                        break;
+                    }
+                }
+                if (connectionDoor == null)
+                    Debug.LogError("oppositeDoor not found");
+                
+                if (connectionDoor.enabled == false)
+                {
+                    connectionDoor.enabled = true;
+                    connectionDoor.gameObject.SetActive(true);
+                }
+
                 // Connect the specific door to a random and enabled door in the new room
-                // Add the new enabled and connect door to the doorList
-                // Add one to currentRooms-count
-                // currentRooms++;
+                ConnectDoors(startDoor, connectionDoor);
             } 
+            // Not creating a new room; connecting existing door to another
             else 
             {
+                bool found = false;
+                foreach (Door door in AllDoors)
+                {
+                    if (door.direction == startDoor.OppositeDirection())
+                    {
+                        ConnectDoors(startDoor, door);
+                        found = true;
+                        break;
+                    }
+                }
+                if (found == false)
+                {
+                    Debug.LogError("The map is shit");
+                }
             }
         }
     }
@@ -76,6 +124,7 @@ public class DoorManager : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, roomPrefabList.Count);
             GameObject randomRoomPrefab = Instantiate(roomPrefabList[randomIndex], _spawnPosition, Quaternion.identity);
             Room randomRoomComponent = randomRoomPrefab.GetComponent<Room>();
+            currentRooms++;
             return randomRoomComponent;
         }
         else
@@ -86,16 +135,16 @@ public class DoorManager : MonoBehaviour
     }
 
     // Randomizes the states of each door in premade room (enabled/disabled)
-    private void RandomizeDoorStates(Room _targetRoom)
+    private void ActivateRandomDoors(Room _targetRoom)
     {
         // List<Door> DoorsInRoom = new List<Door>();
         // Debug.Log("doors.Count: " + _targetRoom.doors.Count);
-        Debug.Log("InitCDoors: " + currentDoorsInRoom);
+        // Debug.Log("InitCDoors: " + currentDoorsInRoom);
 
         foreach (Door door in _targetRoom.doors)
         {
             // Debug.Log("Inside foreach loop");
-            Debug.Log(door.name);
+            // Debug.Log(door.name);
 
             float chanceForEnablingDoor = 1 - ((float)currentDoorsInRoom / (float)doorLimitInRooms);
             // Debug.Log("ChanceForDoor: " + chanceForEnablingDoor);
@@ -114,7 +163,7 @@ public class DoorManager : MonoBehaviour
                 door.enabled = false;
                 door.gameObject.SetActive(false);
             }
-            Debug.Log("CurrDoors: " + currentDoorsInRoom);
+            // Debug.Log("CurrDoors: " + currentDoorsInRoom);
         }
     }
 
@@ -129,6 +178,7 @@ public class DoorManager : MonoBehaviour
             if (door.enabled)
                 enabledDoors.Add(door);
         }
+        AllDoors.AddRange(enabledDoors);
         return enabledDoors;
     }
 
@@ -149,8 +199,10 @@ public class DoorManager : MonoBehaviour
     }
 
     // Coonects _currentDoor in a room to _targetDoor in another room:
-    private void ConnectDoor(Door _currentDoor, Door _targetDoor)
+    private void ConnectDoors(Door _currentDoor, Door _targetDoor)
     {
+        _currentDoor.ConnectToDoor(_targetDoor);
+        _targetDoor.ConnectToDoor(_currentDoor);
     }
 
     // Picks a random (enabled and not connected to another door) door in a specific _targetRoom:
