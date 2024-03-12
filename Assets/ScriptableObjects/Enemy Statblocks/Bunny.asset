@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a226c24a43cfb440b2672ddf4fb0787, type: 3}
   m_Name: Bunny
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4
   attackRange: 1
   attackDelay: 1
   canMoveWhileAttacking: 1
+  hopMovement: 1
+  hopDelay: 0.1
   strength: 1
   health: 10
-  maxHealth: 10
+  maxHealth: 2
