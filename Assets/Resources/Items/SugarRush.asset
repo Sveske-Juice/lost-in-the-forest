@@ -23,3 +23,6 @@ MonoBehaviour:
   passiveModifiers: []
   level: 1
   maxLevel: 5
+  cost: 5
+  pickupPrefab: {fileID: 6953612231463815601, guid: 6828e941f78b2964ab89efdb88b0aebb, type: 3}
+  conflictingItems: []

@@ -18,11 +18,11 @@ MonoBehaviour:
   description: 
   itemStrategies: []
   uses: 1
-  icon: {fileID: 2800000, guid: 5e941c930c9bf43419697e2266aecb14, type: 3}
+  icon: {fileID: 2800000, guid: c78712ceb496a56c592fde4d44ed2039, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: 3c413cc999f87c772b73d1b2f72ab58e, type: 2}
   level: 1
   maxLevel: 1
   cost: 25
-  pickupPrefab: {fileID: 0}
+  pickupPrefab: {fileID: 3092424208540660403, guid: d58a1e826e40b571099ff501c75ad0bc, type: 3}
   conflictingItems: []

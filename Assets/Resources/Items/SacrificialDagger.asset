@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dca4beb08c955458731f4a1e23e3d3, type: 3}
   m_Name: SacrificialDagger
   m_EditorClassIdentifier: 
+  activationMethod: 0
   id: sacrificial_dagger
   displayName: Sacrificial Dagger
   description: Give your blood to the blood god
@@ -22,3 +23,6 @@ MonoBehaviour:
   passiveModifiers: []
   level: 1
   maxLevel: 5
+  cost: 5
+  pickupPrefab: {fileID: 2844638739156658138, guid: a129e15cb105893f0a5b6bd15747d791, type: 3}
+  conflictingItems: []

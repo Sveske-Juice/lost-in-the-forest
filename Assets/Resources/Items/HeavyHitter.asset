@@ -24,3 +24,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2d5dffe5e8df5724c9f1d53d93222bb2, type: 2}
   level: 1
   maxLevel: 5
+  cost: 5
+  pickupPrefab: {fileID: 7836981413552444844, guid: 4642e059fd4d5c2a5bfd1555b53183dd, type: 3}
+  conflictingItems: []
