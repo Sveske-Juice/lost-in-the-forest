@@ -33,4 +33,16 @@ public class CreditManager : MonoBehaviour
         OnCreditChange?.Invoke(Coins);
     }
 
+    public bool CanAfford(float price) => Coins >= price;
+
+    public bool Charge(int price)
+    {
+        // Can not afford
+        if (!CanAfford(price))
+            return false;
+
+        Coins -= price;
+        OnCreditChange?.Invoke(Coins);
+        return true;
+    }
 }

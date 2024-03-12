@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62dca4beb08c955458731f4a1e23e3d3, type: 3}
+  m_Name: NaturesBlessing
+  m_EditorClassIdentifier: 
+  activationMethod: 0
+  id: natures_blessing
+  displayName: Natures Blessing
+  description: Natures blessing is beutiful
+  itemStrategies: []
+  uses: 1
+  icon: {fileID: 2800000, guid: ac612c1ec37c3504fa6e0b0daa3457de, type: 3}
+  passiveModifiers:
+  - {fileID: 11400000, guid: ea2bf0545bd63894aaf15dae61cc1b6e, type: 2}
+  level: 1
+  maxLevel: 5

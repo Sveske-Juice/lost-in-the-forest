@@ -340,8 +340,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems: []
-  tooltipPrefab: {fileID: 0}
+  startingItems:
+  - {fileID: 11400000, guid: 6764bd2a6a9a75949a12468a27d4406b, type: 2}
+  - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
+  - {fileID: 11400000, guid: 8fa074f0a0f9c3d4c86535eead1b6cb5, type: 2}
+  tooltipPrefab: {fileID: 3432900237536628667, guid: f895f2888c582eb4ea0e84881373f239, type: 3}
   inventorySize: 999999
   stacking: 1
 --- !u!1 &2383324612331588295
@@ -388,7 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems: []
+  startingItems:
+  - {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
   tooltipPrefab: {fileID: 3432900237536628667, guid: f895f2888c582eb4ea0e84881373f239, type: 3}
   inventorySize: 8
   stacking: 0

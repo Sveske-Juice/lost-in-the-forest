@@ -38,24 +38,14 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         this.tooltipPrefab = _tooltipPrefab;
     }
 
-    bool IsEmpty()
-    {
-        if (InventorySystem.currentInvenotorySize != 0)
-        {
-            return false;
-        }
-        return true;
-    }
-
-
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!IsEmpty())
-        {
-            tooltip = Instantiate(tooltipPrefab, transform);
-            tooltip.GetComponent<ToolTip>().set(Item);
-        }
+        if (tooltip != null)
+            Destroy(tooltip);
+
+        tooltip = Instantiate(tooltipPrefab, GameObject.FindObjectOfType<Canvas>().transform);
+        tooltip.transform.position = transform.position;
+        tooltip.GetComponent<ToolTip>().set(Item);
     }
 
     public void OnPointerExit(PointerEventData eventData)

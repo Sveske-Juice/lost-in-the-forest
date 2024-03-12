@@ -1,15 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public GameObject player;
+    public int scene;
 
-
-    private void Awake()
+    void Awake()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(this);
     }
+
 }
