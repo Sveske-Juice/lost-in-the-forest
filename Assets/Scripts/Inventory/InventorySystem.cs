@@ -7,6 +7,8 @@ using System;
 
 public class InventorySystem : MonoBehaviour
 {
+    [SerializeField] bool isShop = false;
+
     public event Action onInventoryChangedEvent;
 
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
@@ -15,7 +17,9 @@ public class InventorySystem : MonoBehaviour
     public GameObject tooltipPrefab;
 
     public int inventorySize = 3;
-    static public int currentInvenotorySize = 0;
+    public int currentInvenotorySize => Inventory.Count;
+
+    public bool IsShop => isShop;
 
     public bool stacking = true;
 
@@ -60,7 +64,6 @@ public class InventorySystem : MonoBehaviour
             InventoryItem newItem = new InventoryItem(refenceData);
             Inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
-            currentInvenotorySize++;
 
             // Notify item thats its been acquired - apply passives etc.
             newItem.data.ItemAcquired(ModifierCtx(refenceData));
@@ -94,7 +97,6 @@ public class InventorySystem : MonoBehaviour
             {
                 Inventory.Remove(value);
                 m_itemDictionary.Remove(refenceData);
-                currentInvenotorySize--;
             }
 
             // remove passive

@@ -38,13 +38,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         this.tooltipPrefab = _tooltipPrefab;
     }
 
-    bool IsEmpty()
-    {
-        return InventorySystem.currentInvenotorySize == 0;
-    }
-
-
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (tooltip != null)

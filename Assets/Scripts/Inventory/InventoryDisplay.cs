@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -17,7 +18,13 @@ public class InventoryDisplay : MonoBehaviour
     [SerializeField]
     private InventorySystem connectedInventory;
 
+    [Header("Drag")]
+    [SerializeField]
+    private Color dragColor = new Color(1f, 1f, 1f, 0.75f);
+
     private GameObject ghostItem = null;
+
+    public bool acceptActives = true;
 
     private void OnEnable()
     {
@@ -39,6 +46,18 @@ public class InventoryDisplay : MonoBehaviour
     private void Update()
     {
         UpdateGhostItem();
+    }
+
+    public bool Add(ItemScriptableObject item)
+    {
+        // WARNING: god damn this code is shit
+        if (item.IsActive && !acceptActives)
+            return false;
+
+        if (!item.IsActive && acceptActives)
+            return false;
+
+        return connectedInventory.Add(item);
     }
 
     private void UpdateGhostItem()
@@ -92,6 +111,7 @@ public class InventoryDisplay : MonoBehaviour
 
         var img = ghostItem.AddComponent<RawImage>();
         img.texture = slot.Item.data.Icon;
+        img.color = dragColor;
     }
 
     private void ItemSlotClickUp(ImageCickHandler handler)
@@ -108,12 +128,40 @@ public class InventoryDisplay : MonoBehaviour
 
         foreach (var hit in raycastResults)
         {
+            // Check for sacrification
             Sacrificer sacrificer = hit.gameObject.GetComponent<Sacrificer>();
-            if (sacrificer == null) continue;
+            if (sacrificer != null && !connectedInventory.IsShop)
+            {
+                sacrificer.Sacrifice(slot.Item.data);
+                connectedInventory.Remove(slot.Item.data);
+                break;
+            }
 
-            sacrificer.Sacrifice(slot.Item.data);
-            connectedInventory.Remove(slot.Item.data);
-            break;
+            // Check if item dropped in other inventory
+            InventoryDisplay inventory = hit.gameObject.GetComponent<InventoryDisplay>();
+            if (inventory != null)
+            {
+                // Buy from shop
+                if (connectedInventory.IsShop)
+                {
+                    if (CreditManager.Instance.CanAfford(slot.Item.data.Cost))
+                    {
+                        Debug.Log($"Buying {slot.Item.data.DisplayName} for {slot.Item.data.Cost} to {inventory.name}");
+                        bool couldFit = inventory.Add(slot.Item.data);
+                        if (couldFit)
+                        {
+                            Assert.IsNotNull(CreditManager.Instance, "No credit manager to charge player!");
+                            CreditManager.Instance.Charge(slot.Item.data.Cost);
+                            connectedInventory.Remove(slot.Item.data);
+                        }
+                    }
+
+                }
+
+                // TODO: handle inventory to inventory transfer
+                // NOTE: check for item type; actives and passives can't be mixed in inventory
+                break;
+            }
         }
 
         Destroy(ghostItem);

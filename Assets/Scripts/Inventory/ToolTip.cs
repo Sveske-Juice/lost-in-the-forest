@@ -20,6 +20,10 @@ public class ToolTip : MonoBehaviour, IPointerExitHandler
         lvl.text = "lvl: " + item.data.Level.ToString();
 
         if (cost != null)
+        {
+            Color textColor = CreditManager.Instance.Coins >= item.data.Cost ? Color.green : Color.red;
             cost.text = item.data.Cost.ToString();
+            cost.color = textColor;
+        }
     }
 }
