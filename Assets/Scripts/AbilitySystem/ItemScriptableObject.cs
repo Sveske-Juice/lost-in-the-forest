@@ -52,6 +52,7 @@ public class ItemScriptableObject : ScriptableObject
 
     public bool UseAbility(UseModifierContext useItemContext)
     {
+        Debug.Log($"{DisplayName} {uses}");
         if (uses > 0)
         {
             for (int i = 0; i < itemStrategies.Length; i++)

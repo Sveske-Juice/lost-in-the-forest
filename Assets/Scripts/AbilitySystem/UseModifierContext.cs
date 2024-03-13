@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class UseModifierContext
 {
     public ItemScriptableObject item;
@@ -9,6 +11,8 @@ public class UseModifierContext
     public IThornsReceiver thornsReceiver { get; private set; }
     public IAttackStrategyReceiver attackStrategyReciever { get; private set; }
 
+    public AttackContext attackContext { get; private set; }
+
     public UseModifierContext(
         ItemScriptableObject item,
         IInstantHealthReceiver instantHealtReceiver,
@@ -17,7 +21,8 @@ public class UseModifierContext
         IDamageReceiver damageReceiver,
         IMoveSpeedReceiver moveSpeedReceiver,
         IThornsReceiver thornsReceiver,
-        IAttackStrategyReceiver attackStrategyReciever
+        IAttackStrategyReceiver attackStrategyReciever,
+        AttackContext attackContext
     )
     {
         this.item = item;
@@ -28,6 +33,8 @@ public class UseModifierContext
         this.moveSpeedReceiver = moveSpeedReceiver;
         this.thornsReceiver = thornsReceiver;
         this.attackStrategyReciever = attackStrategyReciever;
+
+        this.attackContext = attackContext;
     }
 
     public override string ToString()
@@ -46,12 +53,26 @@ public class UseModifierContextBuilder
     private IMoveSpeedReceiver moveSpeedReceiver;
     private IThornsReceiver thornsReceiver;
     private IAttackStrategyReceiver attackStrategyReciever;
+    private AttackContext attackContext;
 
     public UseModifierContextBuilder WithItem(
         ItemScriptableObject item
     )
     {  
         this.item = item; 
+        return this;
+    }
+
+    /// <summary>
+    /// Only required if the item being used has a <see cref="AttackItemStrategy"/>
+    /// ie. the item being used as an attack.
+    /// </summary>
+    /// <param name="attackContext"></param>
+    /// <returns></returns>
+    public UseModifierContextBuilder WithAttackContext(
+        AttackContext attackContext )
+    {
+        this.attackContext = attackContext;
         return this;
     }
     public UseModifierContextBuilder WithInstantHealthReceiver(
@@ -118,7 +139,8 @@ public class UseModifierContextBuilder
             damageReceiver,
             moveSpeedReceiver,
             thornsReceiver,
-            attackStrategyReciever
+            attackStrategyReciever,
+            attackContext
         );
     }
 }

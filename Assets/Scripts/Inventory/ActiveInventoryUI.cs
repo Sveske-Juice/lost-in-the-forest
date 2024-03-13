@@ -1,15 +1,64 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class ActiveInventoryUI : MonoBehaviour
 {
     [SerializeField] InventorySystem connectedInventory;
     public GameObject m_slotPrefab;
 
+    private bool waitingForTargetSelction = false;
+    private ItemSlot targetSelectionItem = null;
 
 
     void Start()
     {
         connectedInventory.onInventoryChangedEvent += OnUpdateInventory;
+    }
+
+    private void Update()
+    {
+        HandleTargetSelection();
+    }
+
+    private void HandleTargetSelection()
+    {
+        if (!waitingForTargetSelction) return;
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            waitingForTargetSelction = false;
+            Assert.IsTrue(targetSelectionItem.Item.data.ActivationMethod == ItemActivationMethod.TARGET_SELECTION);
+            Vector2 mouseWS = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            AttackContext attackCtx = new AttackContextBuilder()
+                .WithInitiator(CombatPlayer.combatPlayer)
+                .WithOrigin(CombatPlayer.combatPlayer.transform)
+                .WithPhysicalDamge(CombatPlayer.combatPlayer.GetPhysicalDamage())
+                .WithMagicalDamage(CombatPlayer.combatPlayer.GetMagicalDamage())
+                .WithAttackDir(new Vector3(mouseWS.x, mouseWS.y) - CombatPlayer.combatPlayer.transform.position)
+                .WithTarget(mouseWS)
+                .Build();
+
+
+            UseModifierContext modCtx = connectedInventory.ModifierCtx(targetSelectionItem.Item.data)
+                .WithAttackContext(attackCtx)
+                .Build();
+
+            targetSelectionItem.Item.data.UseAbility(modCtx);
+
+            if (targetSelectionItem.Item.data.Uses <= 0)
+                connectedInventory.Remove(targetSelectionItem.Item.data);
+
+            waitingForTargetSelction = false;
+            targetSelectionItem = null;
+        }
+
+        // Cancel item activiation
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            waitingForTargetSelction = false;
+            targetSelectionItem = null;
+        }
     }
 
     private void OnUpdateInventory()
@@ -21,8 +70,8 @@ public class ActiveInventoryUI : MonoBehaviour
 
             clickHandler.OnElementUp -= ItemSlotClick;
 
-        clickHandler.OnElementEnter -= OnItemSlotEnter;
-        clickHandler.OnElementExit -= OnItemSlotExit;
+            clickHandler.OnElementEnter -= OnItemSlotEnter;
+            clickHandler.OnElementExit -= OnItemSlotExit;
 
             Destroy(t.gameObject);
         }
@@ -60,7 +109,7 @@ public class ActiveInventoryUI : MonoBehaviour
     {
         ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
 
-        UseModifierContext modCtx = connectedInventory.ModifierCtx(slot.Item.data);
+        UseModifierContext modCtx = connectedInventory.ModifierCtx(slot.Item.data).Build();
 
         // Activate item
         if (slot.Item.data.ActivationMethod == ItemActivationMethod.INSTANT)
@@ -72,7 +121,8 @@ public class ActiveInventoryUI : MonoBehaviour
         }
         else
         {
-            // TODO: handle target method
+            waitingForTargetSelction = true;
+            targetSelectionItem = slot;
         }
     }
 

@@ -67,7 +67,7 @@ public class InventorySystem : MonoBehaviour
             m_itemDictionary.Add(refenceData, newItem);
 
             // Notify item thats its been acquired - apply passives etc.
-            newItem.data.ItemAcquired(ModifierCtx(refenceData));
+            newItem.data.ItemAcquired(ModifierCtx(refenceData).Build());
             onInventoryChangedEvent?.Invoke();
 
             return true;
@@ -100,7 +100,7 @@ public class InventorySystem : MonoBehaviour
         Remove(item.data);
     }
 
-    public UseModifierContext ModifierCtx(ItemScriptableObject item)
+    public UseModifierContextBuilder ModifierCtx(ItemScriptableObject item)
     {
         return new UseModifierContextBuilder()
             .WithItem(item)
@@ -110,9 +110,10 @@ public class InventorySystem : MonoBehaviour
             .WithDamageReceiver(CombatPlayer.combatPlayer)
             .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
             .WithThornsReceiver(CombatPlayer.combatPlayer)
-            .WithAttackStrategyReceiver(CombatPlayer.combatPlayer.gameObject.GetComponent<PlayerAttack>())
-            .Build();
+            .WithAttackStrategyReceiver(CombatPlayer.combatPlayer.gameObject.GetComponent<PlayerAttack>());
     }
+
+
 
     public void Remove(ItemScriptableObject refenceData) //Fjerner item fra inventory
     {
@@ -127,7 +128,7 @@ public class InventorySystem : MonoBehaviour
             }
 
             // remove passive
-            value.data.LoseItem(ModifierCtx(refenceData));
+            value.data.LoseItem(ModifierCtx(refenceData).Build());
 
             onInventoryChangedEvent?.Invoke();
         }
