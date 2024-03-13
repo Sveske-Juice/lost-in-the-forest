@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PickUpItemController : MonoBehaviour
 {
     [SerializeField] InventorySystem passiveInventory;
     [SerializeField] InventorySystem activeInventory;
+
+    public UnityEvent CoinPickup;
+    public UnityEvent ItemPickup;
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
@@ -31,6 +35,7 @@ public class PickUpItemController : MonoBehaviour
         {
             Debug.Log($"Acquired: {itemObject.ReferenceItem.DisplayName} (active: {itemObject.ReferenceItem.IsActive})");
             itemObject.PickedUp();
+            ItemPickup?.Invoke();
         }
     }
 
@@ -43,5 +48,7 @@ public class PickUpItemController : MonoBehaviour
         CreditManager.Instance.AddCoin(creditObject.Quantity);
 
         creditObject.PickedUp();
+
+        CoinPickup?.Invoke();
     }
 }
