@@ -16,10 +16,18 @@ PrefabInstance:
       propertyPath: referenceItem
       value: 
       objectReference: {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
+    - target: {fileID: 3406468358848486057, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_Name
+      value: SacraficialDagger
+      objectReference: {fileID: 0}
     - target: {fileID: 3770868058151039190, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
       propertyPath: m_Name
       value: SacraficialDagger
       objectReference: {fileID: 0}
+    - target: {fileID: 4110066766235614470, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b61695a4cfaac6e46851d2c08c78ef2a, type: 3}
     - target: {fileID: 6789407537985336813, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -60,6 +68,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7358239290296219647, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358239290296219647, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: referenceItem
+      value: 
+      objectReference: {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

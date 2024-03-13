@@ -5,6 +5,8 @@ public class ActiveInventoryUI : MonoBehaviour
     [SerializeField] InventorySystem connectedInventory;
     public GameObject m_slotPrefab;
 
+
+
     void Start()
     {
         connectedInventory.onInventoryChangedEvent += OnUpdateInventory;
@@ -43,6 +45,7 @@ public class ActiveInventoryUI : MonoBehaviour
 
         ItemSlot slot = obj.GetComponent<ItemSlot>();
         slot.Set(item);
+        slot.SetTooltip(connectedInventory.tooltipPrefab);
 
         // Setup click listener
         ImageCickHandler clickHandler = obj.AddComponent<ImageCickHandler>();
@@ -57,14 +60,20 @@ public class ActiveInventoryUI : MonoBehaviour
     {
         ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
 
-        UseModifierContext modifierContext = new UseModifierContextBuilder()
-            .WithInstantHealthReceiver(CombatPlayer.combatPlayer as IInstantHealthReceiver)
-            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer as IRegenerationReceiver)
-            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer as IAttackSpeedReceiver)
-            .WithDamageReceiver(CombatPlayer.combatPlayer as IDamageReceiver)
-            .Build();
+        UseModifierContext modCtx = connectedInventory.ModifierCtx(slot.Item.data);
 
-        slot.Item.data.UseAbility(modifierContext);
+        // Activate item
+        if (slot.Item.data.ActivationMethod == ItemActivationMethod.INSTANT)
+        {
+            slot.Item.data.UseAbility(modCtx);
+
+            if (slot.Item.data.Uses <= 0)
+                connectedInventory.Remove(slot.Item.data);
+        }
+        else
+        {
+            // TODO: handle target method
+        }
     }
 
     // TODO:: Markus, brug følgende to funktioner til at vise en item hover menu

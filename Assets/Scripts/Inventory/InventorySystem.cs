@@ -1,34 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using System;
 
-//Ændre InventoryTestItem til noget andet
 
 public class InventorySystem : MonoBehaviour
 {
+    [SerializeField] bool isShop = false;
+
     public event Action onInventoryChangedEvent;
-    private UseModifierContext modifierCtx;
 
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
+    public ItemScriptableObject[] startingItems;
     public List<InventoryItem> Inventory { get; private set; } = new();
+    public GameObject tooltipPrefab;
 
     public int inventorySize = 3;
-    public int currentInvenotorySize = 0;
+    public int currentInvenotorySize => Inventory.Count;
+
+    public bool IsShop => isShop;
+
+    public bool stacking = true;
+
+    private void OnValidate()
+    {
+        if (startingItems != null)
+            Assert.IsTrue(inventorySize >= startingItems.Length, $"Can not hold that many starting items!");
+    }
 
     private void Awake()
     {
-    }
-
-    private void Start()
-    {
-        modifierCtx = new UseModifierContextBuilder()
-            .WithInstantHealthReceiver(CombatPlayer.combatPlayer)
-            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer)
-            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer)
-            .WithDamageReceiver(CombatPlayer.combatPlayer)
-            .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
-            .Build();
+        foreach (ItemScriptableObject item in startingItems)
+        {
+            Add(item);
+        }
     }
 
     public InventoryItem Get(ItemScriptableObject refenceData)
@@ -45,26 +51,67 @@ public class InventorySystem : MonoBehaviour
     {
         if (m_itemDictionary.TryGetValue(refenceData, out InventoryItem value)) //Tjekker om item er i inventory
         {
-            value.AddToStack(); //Adder til en stack
-            onInventoryChangedEvent?.Invoke();
+            if (stacking)
+            {
+                value.AddToStack(); //Adder til en stack
+                onInventoryChangedEvent?.Invoke();
 
-            return true;
+                return true;
+            }
         }
         else if(inventorySize > currentInvenotorySize)// laver en ny item, og add til inventory
         {
+            HandleConflictingItems(refenceData);
             InventoryItem newItem = new InventoryItem(refenceData);
             Inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
-            currentInvenotorySize++;
 
             // Notify item thats its been acquired - apply passives etc.
-            newItem.data.ItemAcquired(modifierCtx);
+            newItem.data.ItemAcquired(ModifierCtx(refenceData));
             onInventoryChangedEvent?.Invoke();
 
             return true;
         }
         return false;
-        
+    }
+
+    // Throws any items that are in conflict
+    private void HandleConflictingItems(ItemScriptableObject item)
+    {
+        foreach (ItemScriptableObject conflictingItem in item.ConflictingItems)
+        {
+            InventoryItem itemInInventory;
+            if (!m_itemDictionary.TryGetValue(conflictingItem, out itemInInventory))
+                continue; // Conflicting item not in inventory
+
+            // Trow conflicting item
+            ThrowItem(itemInInventory);
+        }
+    }
+
+    private void ThrowItem(InventoryItem item)
+    {
+        Assert.IsNotNull(item.data.PickupPrefab, $"No Pickup prefab set when trying to throw {item.data.DisplayName}");
+        Debug.Log($"Throwing {item.data.DisplayName}");
+
+        var pickup = Instantiate(item.data.PickupPrefab);
+        pickup.transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
+
+        Remove(item.data);
+    }
+
+    public UseModifierContext ModifierCtx(ItemScriptableObject item)
+    {
+        return new UseModifierContextBuilder()
+            .WithItem(item)
+            .WithInstantHealthReceiver(CombatPlayer.combatPlayer)
+            .WithRegenerationHealthReceiver(CombatPlayer.combatPlayer)
+            .WithAttackSpeedReceiver(CombatPlayer.combatPlayer)
+            .WithDamageReceiver(CombatPlayer.combatPlayer)
+            .WithMoveSpeedReceiver(CombatPlayer.combatPlayer)
+            .WithThornsReceiver(CombatPlayer.combatPlayer)
+            .WithAttackStrategyReceiver(CombatPlayer.combatPlayer.gameObject.GetComponent<PlayerAttack>())
+            .Build();
     }
 
     public void Remove(ItemScriptableObject refenceData) //Fjerner item fra inventory
@@ -77,11 +124,10 @@ public class InventorySystem : MonoBehaviour
             {
                 Inventory.Remove(value);
                 m_itemDictionary.Remove(refenceData);
-                currentInvenotorySize--;
             }
 
             // remove passive
-            value.data.LoseItem(modifierCtx);
+            value.data.LoseItem(ModifierCtx(refenceData));
 
             onInventoryChangedEvent?.Invoke();
         }

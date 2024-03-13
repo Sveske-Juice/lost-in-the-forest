@@ -1,40 +1,59 @@
 public class UseModifierContext
 {
+    public ItemScriptableObject item;
     public IInstantHealthReceiver instantHealtReceiver { get; private set; }
     public IRegenerationReceiver regenerationReceiver { get; private set; }
     public IAttackSpeedReceiver attackSpeedReceiver { get; private set; }
     public IDamageReceiver damageReceiver { get; private set; }
     public IMoveSpeedReceiver moveSpeedReceiver { get; private set; }
+    public IThornsReceiver thornsReceiver { get; private set; }
+    public IAttackStrategyReceiver attackStrategyReciever { get; private set; }
 
     public UseModifierContext(
+        ItemScriptableObject item,
         IInstantHealthReceiver instantHealtReceiver,
         IRegenerationReceiver regenerationReceiver,
         IAttackSpeedReceiver attackSpeedReceiver,
         IDamageReceiver damageReceiver,
-        IMoveSpeedReceiver moveSpeedReceiver
+        IMoveSpeedReceiver moveSpeedReceiver,
+        IThornsReceiver thornsReceiver,
+        IAttackStrategyReceiver attackStrategyReciever
     )
     {
+        this.item = item;
         this.instantHealtReceiver = instantHealtReceiver;
         this.regenerationReceiver = regenerationReceiver;
         this.attackSpeedReceiver = attackSpeedReceiver;
         this.damageReceiver = damageReceiver;
         this.moveSpeedReceiver = moveSpeedReceiver;
+        this.thornsReceiver = thornsReceiver;
+        this.attackStrategyReciever = attackStrategyReciever;
     }
 
     public override string ToString()
     {
-        return $"{instantHealtReceiver}, {regenerationReceiver}, {attackSpeedReceiver},{damageReceiver}, {moveSpeedReceiver}";
+        return $"{instantHealtReceiver}, {regenerationReceiver}, {attackSpeedReceiver},{damageReceiver}, {moveSpeedReceiver}, {thornsReceiver}";
     }
 }
 
 public class UseModifierContextBuilder
 {
+    private ItemScriptableObject item;
     private IInstantHealthReceiver instantHealtReceiver;
     private IRegenerationReceiver regenerationReceiver;
     private IAttackSpeedReceiver attackSpeedReceiver;
     private IDamageReceiver damageReceiver;
     private IMoveSpeedReceiver moveSpeedReceiver;
+    private IThornsReceiver thornsReceiver;
+    private IAttackStrategyReceiver attackStrategyReciever;
 
+    public UseModifierContextBuilder WithItem(
+        ItemScriptableObject item
+    )
+    {  
+        this.item = item; 
+        return this;
+    }
     public UseModifierContextBuilder WithInstantHealthReceiver(
         IInstantHealthReceiver instantHealtReceiver
     )
@@ -73,14 +92,33 @@ public class UseModifierContextBuilder
         return this;
     }
 
+    public UseModifierContextBuilder WithThornsReceiver(
+        IThornsReceiver thornsReceiver
+    )
+    {
+        this.thornsReceiver = thornsReceiver;
+        return this;
+    }
+
+    public UseModifierContextBuilder WithAttackStrategyReceiver(
+        IAttackStrategyReceiver attackStrategyReciever
+    )
+    {
+        this.attackStrategyReciever = attackStrategyReciever;
+        return this;
+    }
+
     public UseModifierContext Build()
     {
         return new UseModifierContext(
+            item,
             instantHealtReceiver,
             regenerationReceiver,
             attackSpeedReceiver,
             damageReceiver,
-            moveSpeedReceiver
+            moveSpeedReceiver,
+            thornsReceiver,
+            attackStrategyReciever
         );
     }
 }

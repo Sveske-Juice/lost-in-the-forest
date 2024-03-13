@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8538e1ed4178e404eba0341bb40919cc, type: 3}
   m_Name: Spark
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 593997200621683044, guid: 698490b57e4006b4695f92e615aceebc, type: 3}
+  projectilePrefab: {fileID: 593997200621683044, guid: db8e9605660dea773b8ec1244d027bfd, type: 3}
   projectileSpeed: 1

@@ -6,9 +6,10 @@ using UnityEngine;
 
 public interface IDamageable
 {
+    public Transform Transform { get; }
     public int Health { get; }
 
-    public void TakeDamage(float _damage);
+    public void TakeDamage(float _damage, IDamageable initiator);
     public bool Heal(int _heal);
 }
 /*

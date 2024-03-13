@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62dca4beb08c955458731f4a1e23e3d3, type: 3}
+  m_Name: Gauntlet
+  m_EditorClassIdentifier: 
+  activationMethod: 0
+  id: default_gauntlet
+  displayName: Gauntlet
+  description: 
+  itemStrategies: []
+  uses: 1
+  icon: {fileID: 2800000, guid: c78712ceb496a56c592fde4d44ed2039, type: 3}
+  passiveModifiers:
+  - {fileID: 11400000, guid: 3c413cc999f87c772b73d1b2f72ab58e, type: 2}
+  level: 1
+  maxLevel: 1
+  cost: 25
+  pickupPrefab: {fileID: 3092424208540660403, guid: d58a1e826e40b571099ff501c75ad0bc, type: 3}
+  conflictingItems: []

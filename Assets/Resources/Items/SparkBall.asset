@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62dca4beb08c955458731f4a1e23e3d3, type: 3}
+  m_Name: SparkBall
+  m_EditorClassIdentifier: 
+  activationMethod: 0
+  id: spark_ball
+  displayName: Sparking Ball
+  description: 
+  itemStrategies: []
+  uses: 1
+  icon: {fileID: 2800000, guid: 9c941f3184aee274d9fb37326a6499f6, type: 3}
+  passiveModifiers:
+  - {fileID: 11400000, guid: 927ecd097e8889e819074abf48170c13, type: 2}
+  level: 1
+  maxLevel: 1
+  cost: 10
+  pickupPrefab: {fileID: 363264651576630662, guid: 65ddbd5b58ac118d8ab60c87ccfc70a9, type: 3}
+  conflictingItems:
+  - {fileID: 11400000, guid: 0cf2156f9084b2c2a9ba2750f4b75aa6, type: 2}
+  - {fileID: 11400000, guid: 2e09ebeaff716b7b783ed3e0787f71fd, type: 2}
+  - {fileID: 11400000, guid: b9bed76ea50678988b8a2ded0806fe98, type: 2}

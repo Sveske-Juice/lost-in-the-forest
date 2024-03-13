@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 [CreateAssetMenu (menuName = "Attacks/Box Cast Attack", fileName = "boxcastStrategy")]
 public class BoxcastStrategy : AttackStrategy
@@ -11,22 +13,26 @@ public class BoxcastStrategy : AttackStrategy
 
     public override void Attack(AttackContext _context)
     {
-        Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _context.origin.position;
+        Vector3 dir = _context.attackDir;
         dir.z = 0f;
         dir.Normalize();
 
         SpawnVisual(dir, _context);
 
-        RaycastHit2D hit = Physics2D.BoxCast(_context.origin.position, attackSize, 0f, dir, attackDistance, attackLayers);
-        if (hit.collider == null) return;
-
-        Debug.Log($"hit: {hit.collider.name}");
-        IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
-
-        // The hit object can be damaged
-        if (damageable != null)
+        //attackLayers |= LayerMask.NameToLayer(_context.player != null ? "Player" : "Enemy");
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(_context.origin.position, attackSize, 0f, dir, attackDistance, attackLayers);
+        foreach (var hit in hits)
         {
-            damageable.TakeDamage(_context.player.GetPhysicalDamage());
+            if (hit.transform == _context.initiator.Transform) continue;
+
+            Debug.Log($"hit: {hit.collider.name}");
+            IDamageable damageable = hit.collider.gameObject.GetComponent<IDamageable>();
+
+            // The hit object can be damaged
+            if (damageable != null)
+            {
+                damageable.TakeDamage(_context.physicalDamage, _context.initiator);
+            }
         }
     }
 

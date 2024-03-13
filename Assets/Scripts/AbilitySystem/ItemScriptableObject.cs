@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [CreateAssetMenu(fileName = "ItemScriptableObject", menuName = "ScriptableObjects/Item")]
 public class ItemScriptableObject : ScriptableObject
 {
+    [SerializeField] ItemActivationMethod activationMethod = ItemActivationMethod.INSTANT;
     [SerializeField] string id;
     [SerializeField] string displayName;
     [SerializeField]
@@ -12,13 +14,41 @@ public class ItemScriptableObject : ScriptableObject
     [SerializeField] int uses = 1;
     [SerializeField] Texture2D icon;
     [SerializeField] Modifier[] passiveModifiers;
+    [SerializeField] int level = 1;
+    [SerializeField] int maxLevel = 5;
+    [SerializeField] int cost = 5;
+    [SerializeField] GameObject pickupPrefab;
+    [SerializeField] ItemScriptableObject[] conflictingItems;
 
+    public ItemActivationMethod ActivationMethod => activationMethod;
+    public int Level => level;
+    public int MaxLevel => maxLevel;
     public string Id => id;
     public string DisplayName => displayName;
     public string Description => description;
     public Texture2D Icon => icon;
     public bool IsActive => itemStrategies != null && itemStrategies.Length > 0;
+    public int Uses => uses;
     public bool IsPassive => !IsActive;
+    public int Cost => cost;
+    public ItemScriptableObject[] ConflictingItems => conflictingItems;
+    public GameObject PickupPrefab => pickupPrefab;
+
+    private void OnValidate()
+    {
+        Assert.IsFalse(IsPassive && activationMethod == ItemActivationMethod.TARGET_SELECTION,
+            "Can not have passive items with target activation method");
+
+        if (string.IsNullOrEmpty(id))
+            Debug.LogWarning($"No id for set {this}!");
+    }
+
+    public void SetLevel(int _level)
+    {
+        this.level = _level;
+        if (_level > maxLevel)
+            this.level = maxLevel;
+    }
 
     public bool UseAbility(UseModifierContext useItemContext)
     {

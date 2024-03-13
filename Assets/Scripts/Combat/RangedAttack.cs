@@ -9,7 +9,6 @@ public class RangedAttack : MonoBehaviour
     [SerializeField] private float AttackUpTime;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] ParticleSystem onHitParticleSystem = default; // Particle system when the projectile hist
-    [SerializeField] ParticleSystem followParticleSystem = default; // ParticleSystem that follows projectile, make sure looping is enabled
 
     void Update()
     {
@@ -18,18 +17,6 @@ public class RangedAttack : MonoBehaviour
         if (AttackUpTime <= 0.0f)
         {
             Destroy(gameObject);
-        }
-    }
-
-    void Start()
-    {
-        if (followParticleSystem != null)
-        {
-            // Dont destroy this particle system
-            GameObject ps = StartParticleSystem(followParticleSystem, transform.position, duration: 1f);
-
-            // Sync position of ps with projectile
-            ps.transform.SetParent(transform);
         }
     }
 
@@ -47,7 +34,7 @@ public class RangedAttack : MonoBehaviour
         // Assuming you want to access the CombatPlayer's magical attack value, you need to reference it directly
         // For example, let's say CombatPlayer has a public property or field called 'MagicalAttack'
         float damage = CombatPlayer.combatPlayer.GetMagicalDamage();
-        damageable.TakeDamage(damage);
+        damageable.TakeDamage(damage, CombatPlayer.combatPlayer);
 
         Debug.Log($"Hit {collider.gameObject.name} with {damage} magical damage");
 

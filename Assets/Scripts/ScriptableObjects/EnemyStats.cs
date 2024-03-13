@@ -2,8 +2,6 @@
 // -Gabriel
 
 using UnityEngine;
-//  not being used due to the fact it didnt work with the ranged attack script
-// -Lukas (most up to date comment) 20-02-2024 
 [CreateAssetMenu(fileName = "New Enemy Statblock", menuName = "ScriptableObjects/Enemy Statblock")]
 public class EnemyStats : ScriptableObject
 {
@@ -13,6 +11,12 @@ public class EnemyStats : ScriptableObject
     [SerializeField] public float attackRange = 0;
     [SerializeField] public float attackDelay = 0;
     [SerializeField] public bool canMoveWhileAttacking = false;
+
+    [SerializeField]
+    public bool hopMovement = false;
+
+    [SerializeField]
+    public float hopDelay = 0;
 
 
     // Har givet Enemysne liv

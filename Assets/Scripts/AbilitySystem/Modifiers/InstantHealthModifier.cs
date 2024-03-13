@@ -10,17 +10,17 @@ public interface IInstantHealthReceiver
 public class InstantHealthModifier : Modifier
 {
     [SerializeField]
-    private int healing = 5;
+    private AnimationCurve healing;
 
     public override void Apply(UseModifierContext context)
     {
         Assert.IsNotNull(context.instantHealtReceiver, "Tried applying instant health modifier, but no receiver was passed!");
-        context.instantHealtReceiver.InstantHeal(healing);
+        context.instantHealtReceiver.InstantHeal((int)healing.Evaluate(context.item.Level));
     }
 
     public override void Unapply(UseModifierContext context)
     {
         Assert.IsNotNull(context.instantHealtReceiver, "Tried un-applying instant health modifier, but no receiver was passed!");
-        context.instantHealtReceiver.InstantHeal(-healing);
+        context.instantHealtReceiver.InstantHeal((int)-healing.Evaluate(context.item.Level));
     }
 }
