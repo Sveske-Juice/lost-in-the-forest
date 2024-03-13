@@ -9,7 +9,7 @@ public class DoorManager : MonoBehaviour
     public DoorManager Instance { get; private set; }
     public Room Create { get; private set; }
 
-    private void Awake()    
+    private void Awake()
     {
         if (Instance = null)
         {
@@ -30,16 +30,20 @@ public class DoorManager : MonoBehaviour
     private void Start()
     {
         UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
-        InitializeGeneration();
+        InitializeGeneration(10);
     }
 
     private void InitializeGeneration(int _maxRooms = 40)
     {
         // Debug.Log("Init start");
-        
-        Room room = CreateRandomRoom(new Vector3(0,0,0));
+
+        roomLimit = _maxRooms;
+
+        // Start room
+        Room room = CreateRandomRoom(new Vector3(0, 0, 0));
         ActivateRandomDoors(room);
 
+        //                            This adds the doors to AllDoors as well lmao
         List<Door> enabledDoorsList = AddEnabledDoorsToList(room);
         // Debug.Log("TotalDoorsList: " + room.doors.Count);
         // Debug.Log("EnabledDoorsList: " + enabledDoorsList.Count);
@@ -48,72 +52,130 @@ public class DoorManager : MonoBehaviour
         // Debug.Log(enabledDoorsList[0].name);
         // Debug.Log(enabledDoorsList[1].name);
 
-        while (enabledDoorsList.Count > 1)
+        while (AllDoors.Count > 1)
         {
-            ShuffleEnabledDoorsList(enabledDoorsList);
-            Door startDoor = enabledDoorsList[0];
+            ShuffleEnabledDoorsList(AllDoors);
+            Door startDoor = AllDoors[0];
 
             // Debug.Log("After shuffle:");
             // Debug.Log(enabledDoorsList[0].name);
             // Debug.Log(enabledDoorsList[1].name);
 
-            float chanceForNewRoom = 1 - (currentRooms / _maxRooms);
+            float chanceForNewRoom = 1.0f - ((float)currentRooms / (float)_maxRooms);
+
+            Debug.Log("Chance for new room: " + chanceForNewRoom);
 
             float randomValue = UnityEngine.Random.Range(0.0f, 1.0f);
             if (randomValue < chanceForNewRoom)  // Create new room
             {
-                // Create a new room from a specific door
-                Room newRoom = CreateRandomRoom(startDoor.transform.position);
-
-                // Randomize door-states in new room
-                ActivateRandomDoors(newRoom);
-                List<Door> newEnabledDoorsList = AddEnabledDoorsToList(newRoom);
-                ShuffleEnabledDoorsList(newEnabledDoorsList);
-
-                Door connectionDoor = null;
-
-                foreach (Door door in newRoom.doors) {
-                    if (door.direction == startDoor.OppositeDirection())
-                    {
-                        connectionDoor = door;
-                        break;
-                    }
-                }
-                if (connectionDoor == null)
-                    Debug.LogError("oppositeDoor not found");
-                
-                if (connectionDoor.enabled == false)
-                {
-                    connectionDoor.enabled = true;
-                    connectionDoor.gameObject.SetActive(true);
-                }
-
-                // Connect the specific door to a random and enabled door in the new room
-                ConnectDoors(startDoor, connectionDoor);
-            } 
+                GenerateRoom(startDoor);
+            }
             // Not creating a new room; connecting existing door to another
-            else 
+            else
             {
-                bool found = false;
-                foreach (Door door in AllDoors)
+                // bool found = false;
+                // foreach (Door door in AllDoors)
+                // {
+                //     if (door.direction == startDoor.OppositeDirection())
+                //     {
+                //         ConnectDoors(startDoor, door);
+                //         found = true;
+                //         break;
+                //     }
+                // }
+
+                Door door = FindDoorNotInRoom(startDoor.room, startDoor.OppositeDirection());
+                
+                if (door == false)
                 {
-                    if (door.direction == startDoor.OppositeDirection())
-                    {
-                        ConnectDoors(startDoor, door);
-                        found = true;
-                        break;
-                    }
-                }
-                if (found == false)
-                {
-                    Debug.LogError("The map is shit");
+                    // fuck itt, connect to a random door
+                    // ConnectDoors(startDoor, AllDoors[0]);
+                    GenerateRoom(startDoor);
+                    // Debug.LogError("The map is shit");
+                    // return;
+                } else {
+                    ConnectDoors(startDoor, door);
                 }
             }
         }
+
+        if (AllDoors.Count == 1)
+        { // 1 door left to connect
+            Room room_shadowed = CreateRandomRoom(Vector3.zero);
+
+            Door doorToConnect = null;
+            Door startDoor = AllDoors[0];
+
+            foreach (Door door in room_shadowed.doors)
+            {
+                if (door.direction == startDoor.OppositeDirection())
+                {
+                    door.enabled = true;
+                    door.gameObject.SetActive(true);
+
+                    doorToConnect = door;
+                }
+                else
+                {
+                    door.enabled = false;
+                    door.gameObject.SetActive(false);
+                }
+            }
+
+            room_shadowed.gameObject.transform.position = startDoor.gameObject.transform.position + (startDoor.gameObject.transform.position - doorToConnect.gameObject.transform.position);
+
+            ConnectDoors(doorToConnect, startDoor);
+
+            Debug.Log("Created boss room");
+        }
+    }
+
+    private Room GenerateRoom(Door startDoor)
+    {
+        // Create a new room from a specific door
+        Room newRoom = CreateRandomRoom(startDoor.transform.position);
+
+        // Randomize door-states in new room
+        ActivateRandomDoors(newRoom);
+        List<Door> newEnabledDoorsList = AddEnabledDoorsToList(newRoom);
+        ShuffleEnabledDoorsList(newEnabledDoorsList);
+
+        Door connectionDoor = null;
+
+        foreach (Door door in newRoom.doors)
+        {
+            if (door.direction == startDoor.OppositeDirection())
+            {
+                connectionDoor = door;
+                break;
+            }
+        }
+
+        if (connectionDoor == null)
+        {
+            // No other door that isnt connected has an opposite direction...
+            // TODO: Find out a waý to avoid this, or generate a new room when you cant find a door to connect
+            Debug.LogError("oppositeDoor not found");
+            return null;
+        }
+
+        if (connectionDoor.enabled == false)
+        {
+            connectionDoor.enabled = true;
+            connectionDoor.gameObject.SetActive(true);
+        }
+
+        // Connect the specific door to a random and enabled door in the new room
+        ConnectDoors(startDoor, connectionDoor);
+
+        // Move room so doors overlap
+        newRoom.gameObject.transform.position = startDoor.gameObject.transform.position + (startDoor.gameObject.transform.position - connectionDoor.gameObject.transform.position);
+
+        return newRoom;
     }
 
     [SerializeField] private string roomPrefabPath = "RoomPrefabs";
-    [SerializeField] private List<GameObject> roomPrefabList; 
+    [SerializeField] private List<GameObject> roomPrefabList;
 
     // Instantiates a random room-prefab with premade door-spawn-position
     private Room CreateRandomRoom(Vector3 _spawnPosition)
@@ -124,6 +186,14 @@ public class DoorManager : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, roomPrefabList.Count);
             GameObject randomRoomPrefab = Instantiate(roomPrefabList[randomIndex], _spawnPosition, Quaternion.identity);
             Room randomRoomComponent = randomRoomPrefab.GetComponent<Room>();
+
+            randomRoomComponent.setup();
+
+            foreach (Door door in randomRoomComponent.doors) {
+                door.room = randomRoomComponent;
+                door.setup();
+            }
+
             currentRooms++;
             return randomRoomComponent;
         }
@@ -146,12 +216,12 @@ public class DoorManager : MonoBehaviour
             // Debug.Log("Inside foreach loop");
             // Debug.Log(door.name);
 
-            float chanceForEnablingDoor = 1 - ((float)currentDoorsInRoom / (float)doorLimitInRooms);
+            float chanceForEnablingDoor = 1 - ((float)AllDoors.Count / (float)roomLimit);
             // Debug.Log("ChanceForDoor: " + chanceForEnablingDoor);
 
-            float randomValue = UnityEngine.Random.Range(0.0f,1.0f);
+            float randomValue = UnityEngine.Random.Range(0.0f, 1.0f);
             // Debug.Log("RandVal: " + randomValue);
-            
+
             if (randomValue < chanceForEnablingDoor)
             {
                 door.enabled = true;
@@ -178,7 +248,9 @@ public class DoorManager : MonoBehaviour
             if (door.enabled)
                 enabledDoors.Add(door);
         }
+        // lmao
         AllDoors.AddRange(enabledDoors);
+
         return enabledDoors;
     }
 
@@ -203,6 +275,9 @@ public class DoorManager : MonoBehaviour
     {
         _currentDoor.ConnectToDoor(_targetDoor);
         _targetDoor.ConnectToDoor(_currentDoor);
+
+        AllDoors.Remove(_targetDoor);
+        AllDoors.Remove(_currentDoor);
     }
 
     // Picks a random (enabled and not connected to another door) door in a specific _targetRoom:
@@ -212,7 +287,17 @@ public class DoorManager : MonoBehaviour
     }
 
     // Finds a random door from the list of doors that is not in the _targetRoom:
-    private void FindDoorNotInRoom(Room _targetRoom)   // Auuugh
+    private Door FindDoorNotInRoom(Room _targetRoom, Direction dir)   // Auuugh
     {
+        String roomId = _targetRoom.gameObject.name.Split(" ")[1];
+        foreach (Door door in AllDoors) {
+            String doorRoom = door.gameObject.name.Split(" ")[1].Split("_")[1];
+
+            if (doorRoom != roomId && door.direction == dir) {
+                return door;
+            }
+        }
+
+        return null;
     }
 }

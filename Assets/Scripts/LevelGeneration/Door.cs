@@ -8,14 +8,24 @@ public enum Direction {
 
 public class Door : MonoBehaviour
 {
-    public Room Room { get; private set; }
-    public Door ConnectedDoor { get; private set; }
+    public Room room = null;
+
+    [SerializeField]
+    private Door ConnectedDoor;
+
     public bool enabled = false;
     public Vector3 positionInRoom { get; private set; }
 
     public string name;
 
     public Direction direction;
+
+    public uint id = 0;
+
+    public void setup() {
+        id = (uint)Random.RandomRange(0, 99999999);
+        gameObject.name = "Door " + room.id + "_" + id;
+    }
 
     public Direction OppositeDirection()
     {
@@ -38,5 +48,9 @@ public class Door : MonoBehaviour
     public void ConnectToDoor(Door _targetDoor)
     {
         ConnectedDoor = _targetDoor;
+    }
+
+    public Door GetConnectedDoor() {
+        return ConnectedDoor;
     }
 }
