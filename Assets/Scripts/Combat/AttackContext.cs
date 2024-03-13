@@ -7,14 +7,16 @@ public class AttackContext
     public IDamageable initiator { get; private set; }
     public float physicalDamage { get; private set; }
     public float magicalDamage { get; private set; }
+    public Vector3 target {  get; private set; }
 
-    public AttackContext(Transform _origin, Vector3 _attackDir, IDamageable _initiator, float physicalDamage, float magicalDamage)
+    public AttackContext(Transform _origin, Vector3 _attackDir, IDamageable _initiator, float physicalDamage, float magicalDamage, Vector3 target)
     {
         this.origin = _origin;
         this.attackDir = _attackDir;
         this.initiator = _initiator;
         this.physicalDamage = physicalDamage;
         this.magicalDamage = magicalDamage;
+        this.target = target;
     }
 
 }
@@ -25,6 +27,7 @@ public class AttackContextBuilder
     private Vector3 attackDir;
     private IDamageable initiator;
     private float physicalDamage, magicalDamage;
+    private Vector3 target;
 
     public AttackContextBuilder WithOrigin(Transform origin)
     {
@@ -55,8 +58,13 @@ public class AttackContextBuilder
         return this;
     }
 
+    public AttackContextBuilder WithTarget(Vector3 target)
+    {
+        this.target = target;
+        return this;
+    }
     public AttackContext Build()
     {
-        return new AttackContext(origin, attackDir, initiator, physicalDamage, magicalDamage);
+        return new AttackContext(origin, attackDir, initiator, physicalDamage, magicalDamage, target);
     }
 }

@@ -19,6 +19,7 @@ public class ItemScriptableObject : ScriptableObject
     [SerializeField] int cost = 5;
     [SerializeField] GameObject pickupPrefab;
     [SerializeField] ItemScriptableObject[] conflictingItems;
+    [SerializeField] GameObject targetSelectionPrefab;
 
     public ItemActivationMethod ActivationMethod => activationMethod;
     public int Level => level;
@@ -33,6 +34,7 @@ public class ItemScriptableObject : ScriptableObject
     public int Cost => cost;
     public ItemScriptableObject[] ConflictingItems => conflictingItems;
     public GameObject PickupPrefab => pickupPrefab;
+    public GameObject TargetSelectionPrefab => targetSelectionPrefab;
 
     private void OnValidate()
     {
@@ -52,6 +54,7 @@ public class ItemScriptableObject : ScriptableObject
 
     public bool UseAbility(UseModifierContext useItemContext)
     {
+        Debug.Log($"{DisplayName} {uses}");
         if (uses > 0)
         {
             for (int i = 0; i < itemStrategies.Length; i++)

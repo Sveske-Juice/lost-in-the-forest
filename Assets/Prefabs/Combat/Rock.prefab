@@ -51,6 +51,7 @@ MonoBehaviour:
   AttackUpTime: 100
   rb: {fileID: 2516849174440841589}
   onHitParticleSystem: {fileID: 3914499571747287247, guid: 09ab6236393b43d41a699b2f26c39a64, type: 3}
+  onHitSfxClipName: RockAtk
 --- !u!50 &2516849174440841589
 Rigidbody2D:
   serializedVersion: 4

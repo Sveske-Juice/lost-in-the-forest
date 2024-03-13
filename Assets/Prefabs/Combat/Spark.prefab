@@ -51,6 +51,7 @@ MonoBehaviour:
   AttackUpTime: 100
   rb: {fileID: 2516849174440841589}
   onHitParticleSystem: {fileID: 3914499571747287247, guid: de67d8a4ff31336409b0a18a14332ae0, type: 3}
+  onHitSfxClipName: ElectricAtk
 --- !u!50 &2516849174440841589
 Rigidbody2D:
   serializedVersion: 4

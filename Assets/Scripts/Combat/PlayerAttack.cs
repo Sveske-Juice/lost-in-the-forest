@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // Dette script bliver brugt til at spawne playerens attack
 // -Morgan
@@ -13,7 +14,7 @@ public class PlayerAttack : MonoBehaviour, IAttackStrategyReceiver
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             if (!isAttacking)
             {
@@ -22,7 +23,7 @@ public class PlayerAttack : MonoBehaviour, IAttackStrategyReceiver
                 PhysicalAttack();
             }
         }
-        if (Input.GetMouseButtonDown(1)) {  
+        if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {  
             if (!isAttacking)
             {
                 isAttacking = true;
