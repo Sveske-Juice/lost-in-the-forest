@@ -51,6 +51,7 @@ MonoBehaviour:
   AttackUpTime: 100
   rb: {fileID: 2516849174440841589}
   onHitParticleSystem: {fileID: 3914499571747287247, guid: fe81a7b050b5a424d8407b5f1e15e459, type: 3}
+  onHitSfxClipName: FireAtk
 --- !u!50 &2516849174440841589
 Rigidbody2D:
   serializedVersion: 4
