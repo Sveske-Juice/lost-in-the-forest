@@ -17,6 +17,8 @@ public class HealthComponent : MonoBehaviour
 
     bool alreadyReachedZero = false;
 
+    public string sfxDamageClipName = "MiscDMG01";
+
     SpriteRenderer sr;
     private Color defaultColor;
 
@@ -69,6 +71,8 @@ public class HealthComponent : MonoBehaviour
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0f, GetMaxHealth());
         OnHealthChanged?.Invoke(CurrentHealth + damage, CurrentHealth);
         OnHealthChangeAtPos?.Invoke(transform.position, damage);
+
+        AudioManager.instance.PlayClip(sfxDamageClipName);
 
         if (CurrentHealth <= 0) {
             if (alreadyReachedZero && onlyCallZeroHealthOnce) return;
