@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -9,7 +8,7 @@ public class ActiveInventoryUI : MonoBehaviour
 
     private bool waitingForTargetSelction = false;
     private ItemSlot targetSelectionItem = null;
-
+    private GameObject targetSelectionObj = null;
 
     void Start()
     {
@@ -24,6 +23,12 @@ public class ActiveInventoryUI : MonoBehaviour
     private void HandleTargetSelection()
     {
         if (!waitingForTargetSelction) return;
+
+        if (targetSelectionObj != null)
+        {
+            targetSelectionObj.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetSelectionObj.transform.position = new Vector3(targetSelectionObj.transform.position.x, targetSelectionObj.transform.position.y, 0f);
+        }
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -51,6 +56,11 @@ public class ActiveInventoryUI : MonoBehaviour
 
             waitingForTargetSelction = false;
             targetSelectionItem = null;
+            if (targetSelectionObj != null)
+            {
+                Destroy(targetSelectionObj);
+                targetSelectionObj = null;
+            }
         }
 
         // Cancel item activiation
@@ -58,6 +68,12 @@ public class ActiveInventoryUI : MonoBehaviour
         {
             waitingForTargetSelction = false;
             targetSelectionItem = null;
+
+            if (targetSelectionObj != null)
+            {
+                Destroy(targetSelectionObj);
+                targetSelectionObj = null;
+            }
         }
     }
 
@@ -119,11 +135,26 @@ public class ActiveInventoryUI : MonoBehaviour
             if (slot.Item.data.Uses <= 0)
                 connectedInventory.Remove(slot.Item.data);
         }
-        else
+        else if (slot.Item.data.ActivationMethod == ItemActivationMethod.TARGET_SELECTION)
         {
-            waitingForTargetSelction = true;
+            // WARNING: this is really bad, i know ...:((
+            // it's only here because otherwise the target selection object would instantly
+            // be destroyed since OnMouseUp gets executed in same frame as item slot is clicked
+            Invoke(nameof(EnableTargetSelectionMode), 0.1f);
+
             targetSelectionItem = slot;
+
+            if (slot.Item.data.TargetSelectionPrefab != null)
+            {
+                targetSelectionObj = Instantiate(slot.Item.data.TargetSelectionPrefab);
+                targetSelectionObj.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
         }
+    }
+
+    void EnableTargetSelectionMode()
+    {
+        waitingForTargetSelction = true;
     }
 
     // TODO:: Markus, brug følgende to funktioner til at vise en item hover menu
