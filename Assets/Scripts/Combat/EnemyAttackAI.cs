@@ -1,24 +1,22 @@
-// Script for enemy bevægelses- og angrebsadfærd
-// Gør brug af et 2D NavMesh addon hentet fra https://github.com/h8man/NavMeshPlus
-// -Gabriel
-
 using UnityEngine;
-using UnityEngine.AI;
 
-public class HappyOSAttacks : MonoBehaviour
+public class EnemyAttackAI : MonoBehaviour
 {
     [SerializeField] private AttackStrategy[] attacks;
+    [SerializeField] private CombatEnemy combatEnemy;
+
     public EnemyStats enemyStats;
     float attackSeconds;
+
     private void Attack()
     {
         AttackContextBuilder builder = new();
         AttackContext context = builder
             .WithOrigin(transform)
-            .WithInitiator(GetComponent<CombatEnemy>())
+            .WithInitiator(combatEnemy)
             .WithAttackDir(CombatPlayer.combatPlayer.transform.position - transform.position)
-            .WithPhysicalDamge(GetComponent<EnemyAI>().enemyStats.strength)
-            .WithMagicalDamage(GetComponent<EnemyAI>().enemyStats.strength)
+            .WithPhysicalDamge(enemyStats.strength)
+            .WithMagicalDamage(enemyStats.strength)
             .Build();
 
         attacks[(int)Random.Range(0, attacks.Length - 1)].Attack(context);
@@ -32,6 +30,5 @@ public class HappyOSAttacks : MonoBehaviour
             Attack();
             attackSeconds = 0;
         }
-
     }
 }
