@@ -130,7 +130,7 @@ public class InventoryDisplay : MonoBehaviour
         {
             // Check for sacrification
             Sacrificer sacrificer = hit.gameObject.GetComponent<Sacrificer>();
-            if (sacrificer != null && !connectedInventory.IsShop)
+            if (sacrificer != null && !connectedInventory.IsShop && slot.Item.data.Level < slot.Item.data.MaxLevel)
             {
                 sacrificer.Sacrifice(slot.Item.data);
                 connectedInventory.Remove(slot.Item.data);

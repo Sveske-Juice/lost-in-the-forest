@@ -329,6 +329,8 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  sfxDamageClipName: MiscDMG01
+  sfxDeathClipName: MiscDMG01
 --- !u!95 &2325266415635678282
 Animator:
   serializedVersion: 5

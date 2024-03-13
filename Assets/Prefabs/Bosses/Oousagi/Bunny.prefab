@@ -363,6 +363,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  sfxDeathClipName: BunnyDMG
 --- !u!1001 &1902905468503755386
 PrefabInstance:
   m_ObjectHideFlags: 0
