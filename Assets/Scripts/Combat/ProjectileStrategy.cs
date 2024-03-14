@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "attackStrategy/projectile", fileName = "ProjectileStrategy")]
+[CreateAssetMenu(menuName = "Attacks/projectile", fileName = "ProjectileStrategy")]
 public class ProjectileStrategy : AttackStrategy
 {
     [SerializeField] private GameObject projectilePrefab;
