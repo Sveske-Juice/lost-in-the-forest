@@ -52,6 +52,11 @@ public class CurveFollower : MonoBehaviour
         }
     }
 
+    public static float FindInitialVelocityFromThrowDist(float throwDist, float angle, float gravity)
+    {
+        return Mathf.Sqrt((0.5f*throwDist * gravity)/(Mathf.Sin(2*angle)));
+    }
+
     public static float ThrowTime(float v0, float angle, float gravity)
     {
         return (2 * v0 * Mathf.Sin(angle))/(gravity);

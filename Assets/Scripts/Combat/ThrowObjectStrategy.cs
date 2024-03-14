@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Attacks/Throw Object Strategy", fileName = "throwobjectstrat")]
 public class ThrowObjectStrategy : AttackStrategy
 {
+    [SerializeField] private bool matchThrowDistToTarget = true;
+
     [SerializeField] private float throwForce = 1f;
     [SerializeField] private float throwAngle = 45f;
     [SerializeField] private float gravity = 9f;
@@ -26,12 +28,21 @@ public class ThrowObjectStrategy : AttackStrategy
 
         Vector2 throwVecForce = new Vector2(_context.attackDir.x, _context.attackDir.y).normalized * throwForce;
 
+
+        CurveFollower curveFollower = throwObj.GetComponent<CurveFollower>();
+
+        if (matchThrowDistToTarget)
+        {
+            float throwDist = Vector2.Distance(_context.origin.position, _context.target);
+            Debug.DrawLine(_context.origin.position, _context.target, Color.red, 5f);
+            float v0Force = CurveFollower.FindInitialVelocityFromThrowDist(throwDist, throwAngle * Mathf.Deg2Rad, gravity);
+            throwVecForce = throwVecForce.normalized * v0Force;
+        }
+
         // Match velocity to initator's if it can find it
         Rigidbody2D initiatorBody = _context.origin.gameObject.GetComponent<Rigidbody2D>();
         if (initiatorBody != null)
             throwVecForce = throwVecForce + initiatorBody.velocity;
-
-        CurveFollower curveFollower = throwObj.GetComponent<CurveFollower>();
 
         curveFollower.Init(throwRB, throwVecForce, throwAngle * Mathf.Deg2Rad, gravity, _context.initiator);
 
