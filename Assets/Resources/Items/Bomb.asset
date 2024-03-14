@@ -26,4 +26,4 @@ MonoBehaviour:
   cost: 15
   pickupPrefab: {fileID: 7035116416898313461, guid: 76d5e6db92051379e93f507e08f54612, type: 3}
   conflictingItems: []
-  targetSelectionPrefab: {fileID: 0}
+  targetSelectionPrefab: {fileID: 8612619927967272630, guid: 7fa54662b25f762b7afec6431fade369, type: 3}
