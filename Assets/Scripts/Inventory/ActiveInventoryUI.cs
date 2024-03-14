@@ -13,6 +13,8 @@ public class ActiveInventoryUI : MonoBehaviour
     void Start()
     {
         connectedInventory.onInventoryChangedEvent += OnUpdateInventory;
+
+        OnUpdateInventory();
     }
 
     private void Update()

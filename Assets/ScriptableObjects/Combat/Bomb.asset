@@ -17,5 +17,5 @@ MonoBehaviour:
   gravity: 9
   explosionRadius: 2
   damage: 5
-  impactPrefab: {fileID: 7098422817836053392, guid: 5c203a6c402f070a199394c7296620e8, type: 3}
+  impactPrefab: {fileID: 6378906334243653615, guid: 9419546a153efec0b9ebcef04343d723, type: 3}
   throwObjectPrefab: {fileID: 5753060928825641067, guid: 3dc24bc195b3f0a458757d98b3302bfc, type: 3}

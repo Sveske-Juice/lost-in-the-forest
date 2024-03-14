@@ -11,7 +11,7 @@ public class ItemScriptableObject : ScriptableObject
     [TextArea]
     string description;
     [SerializeField] ItemStrategy[] itemStrategies;
-    [SerializeField] int uses = 1;
+    [SerializeField] int useCount = 1;
     [SerializeField] Texture2D icon;
     [SerializeField] Modifier[] passiveModifiers;
     [SerializeField] int level = 1;
@@ -35,6 +35,13 @@ public class ItemScriptableObject : ScriptableObject
     public ItemScriptableObject[] ConflictingItems => conflictingItems;
     public GameObject PickupPrefab => pickupPrefab;
     public GameObject TargetSelectionPrefab => targetSelectionPrefab;
+
+    private int uses;
+
+    private void OnEnable()
+    {
+        uses = useCount;
+    }
 
     private void OnValidate()
     {

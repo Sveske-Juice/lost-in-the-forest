@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68f7b30d6c62f741adc1187aad07e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftAttack: {fileID: 11400000, guid: c8f156b5e456702409e078c1a4c29be1, type: 2}
+  leftAttack: {fileID: 0}
   rightAttack: {fileID: 0}
 --- !u!114 &6901276479905512921
 MonoBehaviour:
@@ -451,6 +451,7 @@ MonoBehaviour:
   isShop: 0
   startingItems:
   - {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
+  - {fileID: 11400000, guid: 94e52c79105af83eba6045f5ab905411, type: 2}
   tooltipPrefab: {fileID: 3432900237536628667, guid: f895f2888c582eb4ea0e84881373f239, type: 3}
   inventorySize: 8
   stacking: 0
