@@ -28,6 +28,10 @@ public class EnemyAI : MonoBehaviour
 
     float damage;
 
+    Animator animator;
+    int hopHash; // when hoppings is enabled
+    int moveHash; // when moving normally
+
     private void Start()
     {
         //Sætter startværdier
@@ -52,6 +56,10 @@ public class EnemyAI : MonoBehaviour
         obstacle = GetComponent<NavMeshObstacle>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        animator = GetComponent<Animator>();
+        hopHash = Animator.StringToHash("IsHopping");
+        moveHash = Animator.StringToHash("IsWalking");
     }
 
     private void Update()
@@ -69,6 +77,7 @@ public class EnemyAI : MonoBehaviour
                         agent.isStopped = false;
                         agent.SetDestination(target.position);
                         hasHopTarget = true;
+                        animator?.SetBool(hopHash, true);
                     }
 
                     if (hopSecondsDelayed >= hopDelay + 0.5)
@@ -76,6 +85,7 @@ public class EnemyAI : MonoBehaviour
                         agent.isStopped = true;
                         hopSecondsDelayed = 0;
                         hasHopTarget = false;
+                        animator?.SetBool(hopHash, false);
                     }
                 }
             }
@@ -124,6 +134,7 @@ public class EnemyAI : MonoBehaviour
         {
             agent.isStopped = false;
         }
+        animator?.SetBool(moveHash, true);
     }
 
     //Stopper enemy bevægelse og skubbelighed
@@ -131,6 +142,7 @@ public class EnemyAI : MonoBehaviour
     {
         moving = false;
         agent.isStopped = true;
+        animator?.SetBool(moveHash, false);
     }
 
 
