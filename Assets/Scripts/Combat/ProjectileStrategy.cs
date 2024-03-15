@@ -10,7 +10,7 @@ public class ProjectileStrategy : AttackStrategy
 
     public override void Attack(AttackContext _context)
     {
-        Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - _context.origin.position;
+        Vector3 dir = _context.attackDir;
         dir.z = 0;
         dir.Normalize();
 
@@ -19,5 +19,7 @@ public class ProjectileStrategy : AttackStrategy
 
         projectile.transform.up = dir;
         projectile.GetComponent<Rigidbody2D>().AddForce(dir * projectileSpeed);
+        RangedAttack rangeAttack = projectile.GetComponent<RangedAttack>();
+        rangeAttack.attackCtx = _context;
     }
 }
