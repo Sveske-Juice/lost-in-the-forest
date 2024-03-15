@@ -29,8 +29,6 @@ public class EnemyAI : MonoBehaviour
     float damage;
 
     Animator animator;
-    int hopHash; // when hoppings is enabled
-    int moveHash; // when moving normally
 
     public string hopId = "IsHopping";
     public string walkId = "IsWalking";
@@ -61,12 +59,11 @@ public class EnemyAI : MonoBehaviour
         agent.updateUpAxis = false;
 
         animator = GetComponent<Animator>();
-        hopHash = Animator.StringToHash(hopId);
-        moveHash = Animator.StringToHash(walkId);
     }
 
     private void Update()
     {
+        agent.speed = moveSpeed;
         //Moving state
         if (moving == true)
         {
@@ -80,7 +77,7 @@ public class EnemyAI : MonoBehaviour
                         agent.isStopped = false;
                         agent.SetDestination(target.position);
                         hasHopTarget = true;
-                        animator?.SetBool(hopHash, true);
+                        animator?.SetBool(hopId, true);
                     }
 
                     if (hopSecondsDelayed >= hopDelay + 0.5)
@@ -88,7 +85,7 @@ public class EnemyAI : MonoBehaviour
                         agent.isStopped = true;
                         hopSecondsDelayed = 0;
                         hasHopTarget = false;
-                        animator?.SetBool(hopHash, false);
+                        animator?.SetBool(hopId, false);
                     }
                 }
             }
@@ -112,6 +109,7 @@ public class EnemyAI : MonoBehaviour
             if (canMoveWhileAttacking != true)
             {
                 StopMovement();
+                animator?.SetBool(hopId, false);
             }
             
             //Håndterer tiden brugt i attacking state, og angriber hvis det når attackDelay
@@ -123,6 +121,7 @@ public class EnemyAI : MonoBehaviour
             if (!InAttackRange())
             {
                 StartMovement();
+                attacking = false;
             }
         }
     }
@@ -140,7 +139,7 @@ public class EnemyAI : MonoBehaviour
         {
             agent.isStopped = false;
         }
-        animator?.SetBool(moveHash, true);
+        animator?.SetBool(walkId, true);
     }
 
     //Stopper enemy bevægelse og skubbelighed
@@ -148,7 +147,7 @@ public class EnemyAI : MonoBehaviour
     {
         moving = false;
         agent.isStopped = true;
-        animator?.SetBool(moveHash, false);
+        animator?.SetBool(walkId, false);
     }
 
 
