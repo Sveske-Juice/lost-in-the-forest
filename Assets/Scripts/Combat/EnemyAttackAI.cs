@@ -25,10 +25,13 @@ public class EnemyAttackAI : MonoBehaviour
     private void Update()
     {
         attackSeconds += Time.deltaTime;
-        if (attackSeconds > enemyStats.attackDelay)
+        Debug.Log(DistToTarget());
+        if (attackSeconds > enemyStats.attackDelay && DistToTarget() <= enemyStats.attackRange)
         {
             Attack();
             attackSeconds = 0;
         }
     }
+
+    public float DistToTarget() => Vector2.Distance(transform.position, CombatPlayer.combatPlayer.transform.position);
 }
