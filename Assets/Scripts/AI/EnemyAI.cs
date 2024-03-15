@@ -27,7 +27,6 @@ public class EnemyAI : MonoBehaviour
     NavMeshObstacle obstacle;
 
     float damage;
-    [SerializeField] private AttackStrategy[] attacks;
 
     private void Start()
     {
@@ -106,7 +105,7 @@ public class EnemyAI : MonoBehaviour
             secondsDelayed += Time.deltaTime;
             if (secondsDelayed >= attackDelay)
             {
-                Attack();
+                // Attack();
             }
         }
     }
@@ -115,27 +114,6 @@ public class EnemyAI : MonoBehaviour
     {
         float distanceToTarget = Vector2.Distance(target.position, this.transform.position);
         return (distanceToTarget <= attackRange / 2) ;
-    }
-
-    private void Attack()
-    {
-        AttackContextBuilder builder = new();
-        AttackContext context = builder
-            .WithOrigin(transform)
-            .WithInitiator(GetComponent<CombatEnemy>())
-            .WithAttackDir(CombatPlayer.combatPlayer.transform.position -  transform.position)
-            .WithPhysicalDamge(enemyStats.strength)
-            .WithMagicalDamage(enemyStats.strength)
-            .Build();
-
-        attacks[(int)Random.Range(0, attacks.Length-1)].Attack(context);
-
-        attacking = false;
-        secondsDelayed = 0;
-        if (canAttack() != true)
-        {
-            StartMovement();
-        }
     }
 
     //Starter enemy bevægelse og skubbelighed
