@@ -30,8 +30,14 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
 
         m_stackLabel.text = item.stackSize.ToString();
-
     }
+
+    private void OnDestroy()
+    {
+        if (tooltip != null)
+            Destroy(tooltip);
+    }
+
 
     public void SetTooltip(GameObject _tooltipPrefab)
     {
