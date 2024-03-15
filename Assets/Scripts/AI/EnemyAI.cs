@@ -32,6 +32,9 @@ public class EnemyAI : MonoBehaviour
     int hopHash; // when hoppings is enabled
     int moveHash; // when moving normally
 
+    public string hopId = "IsHopping";
+    public string walkId = "IsWalking";
+
     private void Start()
     {
         //Sætter startværdier
@@ -58,8 +61,8 @@ public class EnemyAI : MonoBehaviour
         agent.updateUpAxis = false;
 
         animator = GetComponent<Animator>();
-        hopHash = Animator.StringToHash("IsHopping");
-        moveHash = Animator.StringToHash("IsWalking");
+        hopHash = Animator.StringToHash(hopId);
+        moveHash = Animator.StringToHash(walkId);
     }
 
     private void Update()
@@ -98,7 +101,7 @@ public class EnemyAI : MonoBehaviour
         
 
         //Aktiverer attacking state hvis target er halvvejs indenfor angrebsrækkeviden
-        if (canAttack() == true)
+        if (InAttackRange() == true)
         {
             attacking = true;
         }
@@ -117,13 +120,16 @@ public class EnemyAI : MonoBehaviour
             {
                 // Attack();
             }
+            if (!InAttackRange())
+            {
+                StartMovement();
+            }
         }
     }
 
-    private bool canAttack()
+    private bool InAttackRange()
     {
-        float distanceToTarget = Vector2.Distance(target.position, this.transform.position);
-        return (distanceToTarget <= attackRange / 2) ;
+        return Vector2.Distance(target.position, this.transform.position) <= enemyStats.attackRange;
     }
 
     //Starter enemy bevægelse og skubbelighed
