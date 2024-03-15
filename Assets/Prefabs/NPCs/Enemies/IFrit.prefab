@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Height
       value: 0.93
       objectReference: {fileID: 0}
+    - target: {fileID: 3463347096776804740, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5313954884973707505, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
       propertyPath: m_Sprite
       value: 
