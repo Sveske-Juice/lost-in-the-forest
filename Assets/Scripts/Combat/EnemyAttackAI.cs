@@ -10,6 +10,8 @@ public class EnemyAttackAI : MonoBehaviour
 
     private void Attack()
     {
+        if (attacks?.Length == 0) return;
+
         AttackContextBuilder builder = new();
         AttackContext context = builder
             .WithOrigin(transform)
@@ -25,7 +27,6 @@ public class EnemyAttackAI : MonoBehaviour
     private void Update()
     {
         attackSeconds += Time.deltaTime;
-        Debug.Log(DistToTarget());
         if (attackSeconds > enemyStats.attackDelay && DistToTarget() <= enemyStats.attackRange)
         {
             Attack();

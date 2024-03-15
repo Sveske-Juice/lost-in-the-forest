@@ -32681,6 +32681,7 @@ MonoBehaviour:
   canvas: {fileID: 1785396686}
   slotPrefab: {fileID: 376198888985821107, guid: 8c905da2ab12ae24e8bdf3e857e5a094, type: 3}
   connectedInventory: {fileID: 353453922}
+  dragAndDrop: 0
   dragColor: {r: 1, g: 1, b: 1, a: 0.75}
   acceptActives: 0
 --- !u!114 &2135313991

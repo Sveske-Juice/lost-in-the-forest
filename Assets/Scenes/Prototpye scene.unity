@@ -9332,6 +9332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5200239925235671653, guid: 218a7d8939ff58f409bd2ce153ab83ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9472,6 +9476,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
+--- !u!1001 &1356367722
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.35011
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.388979
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394204679769189642, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575818120901182106, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
+      propertyPath: m_Name
+      value: GreenSlime
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fd0e2b3fa487dec6962a3d4b15c4131, type: 3}
 --- !u!1 &1440238973
 GameObject:
   m_ObjectHideFlags: 0
@@ -12849,3 +12910,4 @@ SceneRoots:
   - {fileID: 79938362}
   - {fileID: 318140002}
   - {fileID: 43772865}
+  - {fileID: 1356367722}
