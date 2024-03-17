@@ -1,13 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class DoorManager : MonoBehaviour
 {
     public DoorManager Instance { get; private set; }
     public Room Create { get; private set; }
+
+    /// <summary>
+    /// Event with location of starting event.
+    /// Raised after all levels generated.
+    /// </summary>
+    public UnityEvent<Vector3> LevelGenerated;
 
     private void Awake()
     {
@@ -31,6 +39,21 @@ public class DoorManager : MonoBehaviour
     {
         UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
         InitializeGeneration(10);
+
+        // De-activate all rooms by default
+        GameObject startRoom = GameObject.FindObjectOfType<Room>().gameObject;
+
+        // FIXME: somehows AllDoors does not contain every room??
+        foreach (var room in GameObject.FindObjectsOfType<Room>().Select(r => r.gameObject))
+        {
+            room.SetActive(false);
+        }
+
+        // Activate first room
+        startRoom.SetActive(true);
+        // FIXME: AllDoors[0].room.gameObject.SetActive(true);
+
+        LevelGenerated?.Invoke(startRoom.transform.position);
     }
 
     private void InitializeGeneration(int _maxRooms = 40)
@@ -40,7 +63,7 @@ public class DoorManager : MonoBehaviour
         roomLimit = _maxRooms;
 
         // Start room
-        Room room = CreateRandomRoom(new Vector3(0, 0, 0));
+        Room room = CreateRandomRoom(Vector3.zero);
         ActivateRandomDoors(room);
 
         //                            This adds the doors to AllDoors as well lmao
@@ -170,6 +193,7 @@ public class DoorManager : MonoBehaviour
 
         // Move room so doors overlap
         newRoom.gameObject.transform.position = startDoor.gameObject.transform.position + (startDoor.gameObject.transform.position - connectionDoor.gameObject.transform.position);
+        newRoom.transform.position = new Vector3(newRoom.transform.position.x, newRoom.transform.position.y, z: 0f);
 
         return newRoom;
     }
@@ -195,6 +219,8 @@ public class DoorManager : MonoBehaviour
             }
 
             currentRooms++;
+
+
             return randomRoomComponent;
         }
         else
