@@ -291,7 +291,7 @@ public class DoorManager : MonoBehaviour
     {
         String roomId = _targetRoom.gameObject.name.Split(" ")[1];
         foreach (Door door in AllDoors) {
-            String doorRoom = door.gameObject.name.Split(" ")[1].Split("_")[1];
+            String doorRoom = door.gameObject.name.Split(" ")[1].Split("_")[0];
 
             if (doorRoom != roomId && door.direction == dir) {
                 return door;
