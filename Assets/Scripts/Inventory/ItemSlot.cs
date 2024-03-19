@@ -50,7 +50,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             Destroy(tooltip);
 
         tooltip = Instantiate(tooltipPrefab, GameObject.FindObjectOfType<Canvas>().transform);
-        tooltip.transform.position = transform.position;
+        tooltip.transform.position = transform.position + new Vector3(0, 135, 0);
         tooltip.GetComponent<ToolTip>().set(Item);
     }
 
