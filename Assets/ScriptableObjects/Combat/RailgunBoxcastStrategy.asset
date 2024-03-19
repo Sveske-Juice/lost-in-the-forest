@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518f288ecbf34da4cac3d57fd26b79cb, type: 3}
   m_Name: RailgunBoxcastStrategy
   m_EditorClassIdentifier: 
-  attackSize: {x: 1, y: 1}
+  attackTriggerRange: 5
+  attackSize: {x: 0.5, y: 2}
   attackDistance: 100
   visualAttack: {fileID: 0}
   offset: 1
   attackLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
+  attackMultiplier: 15
+  isPhysicle: 0

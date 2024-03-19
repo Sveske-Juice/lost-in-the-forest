@@ -17,9 +17,13 @@ MonoBehaviour:
   displayName: Sharp Vines
   description: temp
   itemStrategies: []
-  uses: 1
-  icon: {fileID: 0}
+  useCount: 1
+  icon: {fileID: 2800000, guid: 3713192e956919d43a3bdedbfd1ffaca, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: 52d67fcbe381e964fa0dc279e2f42383, type: 2}
   level: 1
   maxLevel: 5
+  cost: 5
+  pickupPrefab: {fileID: 1442134727460571172, guid: b4808c4fe9c61d24e85c6b50796a3cc5, type: 3}
+  conflictingItems: []
+  targetSelectionPrefab: {fileID: 0}
