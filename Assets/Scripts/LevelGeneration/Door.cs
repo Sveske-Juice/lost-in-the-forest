@@ -16,6 +16,8 @@ public class Door : MonoBehaviour
     public bool enabled = false;
     public Vector3 positionInRoom { get; private set; }
 
+    public bool TempDisabled = false;
+
     public string name;
 
     public Direction direction;
@@ -52,5 +54,13 @@ public class Door : MonoBehaviour
 
     public Door GetConnectedDoor() {
         return ConnectedDoor;
+    }
+
+    public void close() {
+        TempDisabled = true;
+    }
+
+    public void open() {
+        TempDisabled = false;
     }
 }
