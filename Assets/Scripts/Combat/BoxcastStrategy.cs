@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 [CreateAssetMenu (menuName = "Attacks/Box Cast Attack", fileName = "boxcastStrategy")]
 public class BoxcastStrategy : AttackStrategy
@@ -21,6 +19,7 @@ public class BoxcastStrategy : AttackStrategy
 
         //attackLayers |= LayerMask.NameToLayer(_context.player != null ? "Player" : "Enemy");
         RaycastHit2D[] hits = Physics2D.BoxCastAll(_context.origin.position, attackSize, 0f, dir, attackDistance, attackLayers);
+        Debug.DrawRay(_context.origin.position, dir * attackDistance + dir * attackSize.magnitude, Color.red, 5f);
         foreach (var hit in hits)
         {
             if (hit.transform == _context.initiator.Transform) continue;

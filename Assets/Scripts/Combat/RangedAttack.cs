@@ -9,7 +9,7 @@ public class RangedAttack : MonoBehaviour
     [SerializeField] private float AttackUpTime;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] ParticleSystem onHitParticleSystem = default; // Particle system when the projectile hist
-
+    public string onHitSfxClipName = "MiscDMG01";
     void Update()
     {
         AttackUpTime -= Time.deltaTime;
@@ -39,6 +39,7 @@ public class RangedAttack : MonoBehaviour
         Debug.Log($"Hit {collider.gameObject.name} with {damage} magical damage");
 
         StartParticleSystem(onHitParticleSystem, collider.transform.position, duration: 3f);
+        AudioManager.instance.PlayClip(onHitSfxClipName);
         Destroy(gameObject); // Destroy the projectile or attacker GameObject
     }
 

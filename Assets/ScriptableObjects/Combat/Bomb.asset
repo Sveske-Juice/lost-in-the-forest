@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327c620266567894d9aedf144ce10bbf, type: 3}
+  m_Name: Bomb
+  m_EditorClassIdentifier: 
+  throwForce: 3.33
+  throwAngle: 45
+  gravity: 9
+  explosionRadius: 2
+  damage: 5
+  impactPrefab: {fileID: 6378906334243653615, guid: 9419546a153efec0b9ebcef04343d723, type: 3}
+  throwObjectPrefab: {fileID: 5753060928825641067, guid: 3dc24bc195b3f0a458757d98b3302bfc, type: 3}

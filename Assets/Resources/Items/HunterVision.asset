@@ -18,8 +18,11 @@ MonoBehaviour:
   description: vison
   itemStrategies: []
   uses: 1
-  icon: {fileID: 0}
+  icon: {fileID: 2800000, guid: 51747bcbd6a6e3f48927db663d134e62, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: ca6cbc71f694b5f41b233253c0b7aec6, type: 2}
   level: 1
   maxLevel: 5
+  cost: 5
+  pickupPrefab: {fileID: 3117327670981623344, guid: f2c0f2a53fe13c34cb24ae42b20d08f9, type: 3}
+  conflictingItems: []

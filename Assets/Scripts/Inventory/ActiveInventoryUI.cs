@@ -1,15 +1,82 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class ActiveInventoryUI : MonoBehaviour
 {
     [SerializeField] InventorySystem connectedInventory;
     public GameObject m_slotPrefab;
 
-
+    private bool waitingForTargetSelction = false;
+    private ItemSlot targetSelectionItem = null;
+    private GameObject targetSelectionObj = null;
 
     void Start()
     {
         connectedInventory.onInventoryChangedEvent += OnUpdateInventory;
+
+        OnUpdateInventory();
+    }
+
+    private void Update()
+    {
+        HandleTargetSelection();
+    }
+
+    private void HandleTargetSelection()
+    {
+        if (!waitingForTargetSelction) return;
+
+        if (targetSelectionObj != null)
+        {
+            targetSelectionObj.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetSelectionObj.transform.position = new Vector3(targetSelectionObj.transform.position.x, targetSelectionObj.transform.position.y, 0f);
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            waitingForTargetSelction = false;
+            Assert.IsTrue(targetSelectionItem.Item.data.ActivationMethod == ItemActivationMethod.TARGET_SELECTION);
+            Vector2 mouseWS = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            AttackContext attackCtx = new AttackContextBuilder()
+                .WithInitiator(CombatPlayer.combatPlayer)
+                .WithOrigin(CombatPlayer.combatPlayer.transform)
+                .WithPhysicalDamge(CombatPlayer.combatPlayer.GetPhysicalDamage())
+                .WithMagicalDamage(CombatPlayer.combatPlayer.GetMagicalDamage())
+                .WithAttackDir(new Vector3(mouseWS.x, mouseWS.y) - CombatPlayer.combatPlayer.transform.position)
+                .WithTarget(mouseWS)
+                .Build();
+
+
+            UseModifierContext modCtx = connectedInventory.ModifierCtx(targetSelectionItem.Item.data)
+                .WithAttackContext(attackCtx)
+                .Build();
+
+            targetSelectionItem.Item.data.UseAbility(modCtx);
+
+            if (targetSelectionItem.Item.data.Uses <= 0)
+                connectedInventory.Remove(targetSelectionItem.Item.data);
+
+            waitingForTargetSelction = false;
+            targetSelectionItem = null;
+            if (targetSelectionObj != null)
+            {
+                Destroy(targetSelectionObj);
+                targetSelectionObj = null;
+            }
+        }
+
+        // Cancel item activiation
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            waitingForTargetSelction = false;
+            targetSelectionItem = null;
+
+            if (targetSelectionObj != null)
+            {
+                Destroy(targetSelectionObj);
+                targetSelectionObj = null;
+            }
+        }
     }
 
     private void OnUpdateInventory()
@@ -21,8 +88,8 @@ public class ActiveInventoryUI : MonoBehaviour
 
             clickHandler.OnElementUp -= ItemSlotClick;
 
-        clickHandler.OnElementEnter -= OnItemSlotEnter;
-        clickHandler.OnElementExit -= OnItemSlotExit;
+            clickHandler.OnElementEnter -= OnItemSlotEnter;
+            clickHandler.OnElementExit -= OnItemSlotExit;
 
             Destroy(t.gameObject);
         }
@@ -60,7 +127,7 @@ public class ActiveInventoryUI : MonoBehaviour
     {
         ItemSlot slot = imageElement.gameObject.GetComponent<ItemSlot>();
 
-        UseModifierContext modCtx = connectedInventory.ModifierCtx(slot.Item.data);
+        UseModifierContext modCtx = connectedInventory.ModifierCtx(slot.Item.data).Build();
 
         // Activate item
         if (slot.Item.data.ActivationMethod == ItemActivationMethod.INSTANT)
@@ -70,10 +137,26 @@ public class ActiveInventoryUI : MonoBehaviour
             if (slot.Item.data.Uses <= 0)
                 connectedInventory.Remove(slot.Item.data);
         }
-        else
+        else if (slot.Item.data.ActivationMethod == ItemActivationMethod.TARGET_SELECTION)
         {
-            // TODO: handle target method
+            // WARNING: this is really bad, i know ...:((
+            // it's only here because otherwise the target selection object would instantly
+            // be destroyed since OnMouseUp gets executed in same frame as item slot is clicked
+            Invoke(nameof(EnableTargetSelectionMode), 0.1f);
+
+            targetSelectionItem = slot;
+
+            if (slot.Item.data.TargetSelectionPrefab != null)
+            {
+                targetSelectionObj = Instantiate(slot.Item.data.TargetSelectionPrefab);
+                targetSelectionObj.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
         }
+    }
+
+    void EnableTargetSelectionMode()
+    {
+        waitingForTargetSelction = true;
     }
 
     // TODO:: Markus, brug følgende to funktioner til at vise en item hover menu

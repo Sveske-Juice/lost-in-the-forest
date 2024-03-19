@@ -329,6 +329,8 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  sfxDamageClipName: MiscDMG01
+  sfxDeathClipName: MiscDMG01
 --- !u!95 &2325266415635678282
 Animator:
   serializedVersion: 5
@@ -449,6 +451,7 @@ MonoBehaviour:
   isShop: 0
   startingItems:
   - {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
+  - {fileID: 11400000, guid: 94e52c79105af83eba6045f5ab905411, type: 2}
   tooltipPrefab: {fileID: 3432900237536628667, guid: f895f2888c582eb4ea0e84881373f239, type: 3}
   inventorySize: 8
   stacking: 0
