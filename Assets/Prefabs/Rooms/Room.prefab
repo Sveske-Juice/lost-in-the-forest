@@ -101,7 +101,8 @@ MonoBehaviour:
   - {fileID: 2865401828478549261}
   - {fileID: 1119518938454186197}
   - {fileID: 1971696442672069683}
-  spawners: []
+  spawners:
+  - {fileID: 7741340148455177896}
   id: 0
 --- !u!212 &500992027018594421
 SpriteRenderer:
