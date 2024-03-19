@@ -9,15 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a226c24a43cfb440b2672ddf4fb0787, type: 3}
-  m_Name: HappyOS
+  m_Script: {fileID: 11500000, guid: 8538e1ed4178e404eba0341bb40919cc, type: 3}
+  m_Name: ScytheThrow
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  attackRange: 3
-  attackDelay: 0.5
-  canMoveWhileAttacking: 1
-  hopMovement: 0
-  hopDelay: 0
-  strength: 10
-  health: 100
-  maxHealth: 100
+  projectilePrefab: {fileID: 9114863473724604076, guid: 2535092c5cc88eb428cb186100664465, type: 3}
+  projectileSpeed: 20

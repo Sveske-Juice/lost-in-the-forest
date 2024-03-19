@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class EnemyAttackAI : MonoBehaviour
@@ -8,10 +9,14 @@ public class EnemyAttackAI : MonoBehaviour
     public EnemyStats enemyStats;
     float attackSeconds;
 
-    private void Attack()
+    private void RandomAttack(AttackStrategy[] strategies)
     {
-        if (attacks?.Length == 0) return;
+        if (strategies?.Length == 0) return;
+        Attack(strategies[(int)Random.Range(0, strategies.Length)]);
+    }
 
+    private void Attack(AttackStrategy strategy)
+    {
         AttackContextBuilder builder = new();
         AttackContext context = builder
             .WithOrigin(transform)
@@ -21,17 +26,20 @@ public class EnemyAttackAI : MonoBehaviour
             .WithMagicalDamage(enemyStats.strength)
             .Build();
 
-        attacks[(int)Random.Range(0, attacks.Length - 1)].Attack(context);
+        strategy.Attack(context);
     }
 
     private void Update()
     {
         attackSeconds += Time.deltaTime;
-        if (attackSeconds > enemyStats.attackDelay && DistToTarget() <= enemyStats.attackRange)
-        {
-            Attack();
-            attackSeconds = 0;
-        }
+        if (attackSeconds < enemyStats.attackDelay)
+            return;
+
+        float distToTarget = DistToTarget();
+        AttackStrategy[] attacksInRange = attacks.Where(a => distToTarget <= a.AttackTriggerRange).ToArray();
+
+        RandomAttack(attacksInRange);
+        attackSeconds = 0;
     }
 
     public float DistToTarget() => Vector2.Distance(transform.position, CombatPlayer.combatPlayer.transform.position);

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8538e1ed4178e404eba0341bb40919cc, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
+  attackTriggerRange: 10
   projectilePrefab: {fileID: 593997200621683044, guid: 4fbbb2397152ddf4e81369377af2b271, type: 3}
   projectileSpeed: 1

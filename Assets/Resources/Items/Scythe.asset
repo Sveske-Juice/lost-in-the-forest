@@ -18,7 +18,7 @@ MonoBehaviour:
   description: teeest
   itemStrategies:
   - {fileID: 11400000, guid: cf9f1e4053bd50943ad98fdf3cb514df, type: 2}
-  uses: 0
+  useCount: 1
   icon: {fileID: 2800000, guid: 8a098c4266692234b8ab0435b44d4658, type: 3}
   passiveModifiers: []
   level: 1
@@ -26,4 +26,4 @@ MonoBehaviour:
   cost: 10
   pickupPrefab: {fileID: 516316699537422111, guid: 05f3161f75e38ab46973fb7c57091a33, type: 3}
   conflictingItems: []
-  targetSelectionPrefab: {fileID: 8612619927967272630, guid: 7fa54662b25f762b7afec6431fade369, type: 3}
+  targetSelectionPrefab: {fileID: 4659520272104514884, guid: df37a3c48f3574f979f90ca4a33eb0d4, type: 3}
