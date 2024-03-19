@@ -265,9 +265,9 @@ TextureImporter:
       name: minecart_6
       rect:
         serializedVersion: 2
-        x: 9
+        x: 97
         y: 50
-        width: 62
+        width: 43
         height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -286,48 +286,6 @@ TextureImporter:
       name: minecart_7
       rect:
         serializedVersion: 2
-        x: 97
-        y: 50
-        width: 43
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: feba1ba6be81b2343a3ca02934927b9f
-      internalID: -1649404596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: minecart_8
-      rect:
-        serializedVersion: 2
-        x: 177
-        y: 50
-        width: 43
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9db2ebd64ca0c2541b7e9ee264772e17
-      internalID: -470106870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: minecart_9
-      rect:
-        serializedVersion: 2
         x: 9
         y: 2
         width: 62
@@ -339,50 +297,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36c4866065060d14bb5cad30f4d54e60
-      internalID: -691631071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: minecart_10
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 2
-        width: 62
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 995d7c2f2b1b3304b86eaf6e2d3045a4
-      internalID: 940906834
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: minecart_11
-      rect:
-        serializedVersion: 2
-        x: 169
-        y: 2
-        width: 62
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42266a59b3d0e3c4bbaaa7658cade999
-      internalID: -625331216
+      spriteID: feba1ba6be81b2343a3ca02934927b9f
+      internalID: -1649404596
       vertices: []
       indices: 
       edges: []
@@ -400,16 +316,12 @@ TextureImporter:
     nameFileIdTable:
       minecart_0: -2065250585
       minecart_1: -1742843910
-      minecart_10: 940906834
-      minecart_11: -625331216
       minecart_2: 1700513133
       minecart_3: -749093904
       minecart_4: -1023117413
       minecart_5: -906068463
       minecart_6: -457593458
       minecart_7: -1649404596
-      minecart_8: -470106870
-      minecart_9: -691631071
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
