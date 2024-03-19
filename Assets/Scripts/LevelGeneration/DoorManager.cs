@@ -30,14 +30,14 @@ public class DoorManager : MonoBehaviour
     private void Start()
     {
         UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
-        InitializeGeneration(10);
+        InitializeGeneration(roomLimit);
     }
 
     private void InitializeGeneration(int _maxRooms = 40)
     {
         // Debug.Log("Init start");
 
-        roomLimit = _maxRooms;
+        // roomLimit = _maxRooms;
 
         // Start room
         Room room = CreateRandomRoom(new Vector3(0, 0, 0));
