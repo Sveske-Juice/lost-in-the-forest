@@ -5,6 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] public List<Door> doors;
+    public List<EnemySpawner> spawners;
 
     public uint id = 0;
 
