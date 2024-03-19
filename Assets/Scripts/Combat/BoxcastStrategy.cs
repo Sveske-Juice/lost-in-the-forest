@@ -8,6 +8,8 @@ public class BoxcastStrategy : AttackStrategy
     [SerializeField] private GameObject visualAttack;
     [SerializeField] private float offset = 1.0f;
     [SerializeField] private LayerMask attackLayers;
+    [SerializeField] private float attackMultiplier = 1.0f;
+    [SerializeField] private bool isPhysicle = true;
 
     public override void Attack(AttackContext _context)
     {
@@ -29,8 +31,11 @@ public class BoxcastStrategy : AttackStrategy
 
             // The hit object can be damaged
             if (damageable != null)
-            {
-                damageable.TakeDamage(_context.physicalDamage, _context.initiator);
+            {  
+                if (isPhysicle)
+                    damageable.TakeDamage(_context.physicalDamage*attackMultiplier, _context.initiator);
+                else
+                    damageable.TakeDamage(_context.magicalDamage*attackMultiplier, _context.initiator);
             }
         }
     }

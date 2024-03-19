@@ -52,6 +52,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Railgun
       objectReference: {fileID: 0}
+    - target: {fileID: 4110066766235614470, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 453d47c9384e62046958d3743a14edde, type: 3}
+    - target: {fileID: 7358239290296219647, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358239290296219647, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
       propertyPath: referenceItem
       value: 
