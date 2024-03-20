@@ -347,8 +347,11 @@ MonoBehaviour:
   doorLimitInRooms: 4
   roomPrefabPath: RoomPrefabs
   roomPrefabList:
-  - {fileID: 6379303163047264909, guid: 6f6cb8ce55a56a61e9b08bc589d5e3c2, type: 3}
   - {fileID: 6379303163047264909, guid: ecbd786034b461f47bae4bd4412b1461, type: 3}
+  - {fileID: 6379303163047264909, guid: 6f6cb8ce55a56a61e9b08bc589d5e3c2, type: 3}
+  - {fileID: 6379303163047264909, guid: ff125cbb16f9e1dc5b65512ba983fb1f, type: 3}
+  - {fileID: 6379303163047264909, guid: 1ec8e3334e0384e8c9e1266e296b22d9, type: 3}
+  - {fileID: 6379303163047264909, guid: e46c4d7fdf42c12aabef9285317d34c8, type: 3}
 --- !u!4 &298219723
 Transform:
   m_ObjectHideFlags: 0
