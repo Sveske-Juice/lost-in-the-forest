@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefb271b0178f9f43b3df1e8008f425a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referenceItem: {fileID: 11400000, guid: 60193e8aacbfb884ebf3a53ca0a16ed6, type: 2}
+  referenceItem: {fileID: 11400000, guid: 6764bd2a6a9a75949a12468a27d4406b, type: 2}
   OnPickup:
     m_PersistentCalls:
       m_Calls: []
@@ -656,6 +656,7 @@ GameObject:
   - component: {fileID: 1433556951}
   - component: {fileID: 1433556950}
   - component: {fileID: 1433556949}
+  - component: {fileID: 1433556953}
   m_Layer: 5
   m_Name: HotbarPassive
   m_TagString: Untagged
@@ -757,6 +758,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433556947}
   m_CullTransparentMesh: 1
+--- !u!114 &1433556953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433556947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97158ed85961f2a8382ddb6dfcecf479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedInventory: {fileID: 1826103530}
+  m_slotPrefab: {fileID: 2113059507739751554, guid: 673d6ebdf844da44797b90b137ad04b6, type: 3}
 --- !u!1 &1458838475
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +1005,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1826103530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6897987584117062413, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
+  m_PrefabInstance: {fileID: 1443063281305953055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e14813b925947942b436353a8c66339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2045426549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefb271b0178f9f43b3df1e8008f425a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referenceItem: {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
+  referenceItem: {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
   OnPickup:
     m_PersistentCalls:
       m_Calls: []
