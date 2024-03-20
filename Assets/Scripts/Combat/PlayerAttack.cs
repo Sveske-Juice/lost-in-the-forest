@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour, IAttackStrategyReceiver
                 PhysicalAttack();
             }
         }
-        if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {  
+        if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {
             if (!isAttacking)
             {
                 isAttacking = true;

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83fdea5c0a85944587b10100aba9f55, type: 3}
   m_Name: ScytheItemAttackStrat
   m_EditorClassIdentifier: 
-  attack: {fileID: 11400000, guid: 435da973ef7bc0244af5cb783391d5c6, type: 2}
+  attack: {fileID: 11400000, guid: 1db7fb3d85e210144aee7df3e5514549, type: 2}

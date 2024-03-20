@@ -10,6 +10,9 @@ public class RangedAttack : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] ParticleSystem onHitParticleSystem = default; // Particle system when the projectile hist
     public string onHitSfxClipName = "MiscDMG01";
+
+    public AttackContext attackCtx;
+
     void Update()
     {
         AttackUpTime -= Time.deltaTime;
@@ -22,18 +25,18 @@ public class RangedAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        // Ignore player for now
-        if (collider.gameObject.CompareTag("Player")) return;
-
         // Check if the collision is with a GameObject that implements IDamageable
         IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
 
         // No damagable object was hit
         if (damageable == null) return;
 
+        // Ignore self damage
+        if (damageable == attackCtx.initiator) return;
+
         // Assuming you want to access the CombatPlayer's magical attack value, you need to reference it directly
         // For example, let's say CombatPlayer has a public property or field called 'MagicalAttack'
-        float damage = CombatPlayer.combatPlayer.GetMagicalDamage();
+        float damage = attackCtx.magicalDamage;
         damageable.TakeDamage(damage, CombatPlayer.combatPlayer);
 
         Debug.Log($"Hit {collider.gameObject.name} with {damage} magical damage");

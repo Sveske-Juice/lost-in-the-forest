@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class ScriptedEvent : MonoBehaviour
 {
     protected BoxCollider2D triggerField;
     [SerializeField] protected Animation introAnimation;
+
+    public UnityEvent OnTrigger;
     protected abstract IEnumerator PlayEvent();
 
     protected virtual IEnumerator IntroAnimation()
@@ -20,6 +23,7 @@ public abstract class ScriptedEvent : MonoBehaviour
         {
             print("event");
             StartCoroutine(PlayEvent());
+            OnTrigger?.Invoke();
         }
     }
 }

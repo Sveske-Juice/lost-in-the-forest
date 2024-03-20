@@ -27,7 +27,11 @@ public class EnemyAI : MonoBehaviour
     NavMeshObstacle obstacle;
 
     float damage;
-    [SerializeField] private AttackStrategy[] attacks;
+
+    Animator animator;
+
+    public string hopId = "IsHopping";
+    public string walkId = "IsWalking";
 
     private void Start()
     {
@@ -53,10 +57,13 @@ public class EnemyAI : MonoBehaviour
         obstacle = GetComponent<NavMeshObstacle>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        agent.speed = moveSpeed;
         //Moving state
         if (moving == true)
         {
@@ -70,6 +77,7 @@ public class EnemyAI : MonoBehaviour
                         agent.isStopped = false;
                         agent.SetDestination(target.position);
                         hasHopTarget = true;
+                        animator?.SetBool(hopId, true);
                     }
 
                     if (hopSecondsDelayed >= hopDelay + 0.5)
@@ -77,6 +85,7 @@ public class EnemyAI : MonoBehaviour
                         agent.isStopped = true;
                         hopSecondsDelayed = 0;
                         hasHopTarget = false;
+                        animator?.SetBool(hopId, false);
                     }
                 }
             }
@@ -89,7 +98,7 @@ public class EnemyAI : MonoBehaviour
         
 
         //Aktiverer attacking state hvis target er halvvejs indenfor angrebsrækkeviden
-        if (canAttack() == true)
+        if (InAttackRange() == true)
         {
             attacking = true;
         }
@@ -100,42 +109,26 @@ public class EnemyAI : MonoBehaviour
             if (canMoveWhileAttacking != true)
             {
                 StopMovement();
+                animator?.SetBool(hopId, false);
             }
             
             //Håndterer tiden brugt i attacking state, og angriber hvis det når attackDelay
             secondsDelayed += Time.deltaTime;
             if (secondsDelayed >= attackDelay)
             {
-                Attack();
+                // Attack();
+            }
+            if (!InAttackRange())
+            {
+                StartMovement();
+                attacking = false;
             }
         }
     }
 
-    private bool canAttack()
+    private bool InAttackRange()
     {
-        float distanceToTarget = Vector2.Distance(target.position, this.transform.position);
-        return (distanceToTarget <= attackRange / 2) ;
-    }
-
-    private void Attack()
-    {
-        AttackContextBuilder builder = new();
-        AttackContext context = builder
-            .WithOrigin(transform)
-            .WithInitiator(GetComponent<CombatEnemy>())
-            .WithAttackDir(CombatPlayer.combatPlayer.transform.position -  transform.position)
-            .WithPhysicalDamge(enemyStats.strength)
-            .WithMagicalDamage(enemyStats.strength)
-            .Build();
-
-        attacks[(int)Random.Range(0, attacks.Length-1)].Attack(context);
-
-        attacking = false;
-        secondsDelayed = 0;
-        if (canAttack() != true)
-        {
-            StartMovement();
-        }
+        return Vector2.Distance(target.position, this.transform.position) <= enemyStats.attackRange;
     }
 
     //Starter enemy bevægelse og skubbelighed
@@ -146,6 +139,7 @@ public class EnemyAI : MonoBehaviour
         {
             agent.isStopped = false;
         }
+        animator?.SetBool(walkId, true);
     }
 
     //Stopper enemy bevægelse og skubbelighed
@@ -153,6 +147,7 @@ public class EnemyAI : MonoBehaviour
     {
         moving = false;
         agent.isStopped = true;
+        animator?.SetBool(walkId, false);
     }
 
 

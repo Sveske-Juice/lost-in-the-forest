@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4270900121535730317
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112398899870671942, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406468358848486057, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_Name
+      value: SharpVines
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110066766235614470, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3713192e956919d43a3bdedbfd1ffaca, type: 3}
+    - target: {fileID: 7358239290296219647, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358239290296219647, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: referenceItem
+      value: 
+      objectReference: {fileID: 11400000, guid: acfe73c1a9dd5f84589dda8b33d6cdc8, type: 2}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 9081501661419853497}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DestroyNow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Destroy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687362146035542651, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+--- !u!114 &9081501661419853497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4990745595955348532, guid: 9a119f303b0dc0f21b9c87394bab86db, type: 3}
+  m_PrefabInstance: {fileID: 4270900121535730317}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84bfe2f320bb240a967a620cde65c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

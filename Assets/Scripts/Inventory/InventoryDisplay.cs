@@ -20,6 +20,9 @@ public class InventoryDisplay : MonoBehaviour
 
     [Header("Drag")]
     [SerializeField]
+    private bool dragAndDrop = true;
+
+    [SerializeField]
     private Color dragColor = new Color(1f, 1f, 1f, 0.75f);
 
     private GameObject ghostItem = null;
@@ -105,6 +108,8 @@ public class InventoryDisplay : MonoBehaviour
 
     private void ItemSlotClickDown(ImageCickHandler handler)
     {
+        if (!dragAndDrop) return;
+
         ItemSlot slot = handler.gameObject.GetComponent<ItemSlot>();
         ghostItem = new GameObject($"Ghost Item {slot.Item.data.DisplayName}");
         ghostItem.transform.SetParent(canvas);
