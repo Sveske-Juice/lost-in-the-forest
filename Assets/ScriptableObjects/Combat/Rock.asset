@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   attackTriggerRange: 10
-  projectilePrefab: {fileID: 593997200621683044, guid: 4fbbb2397152ddf4e81369377af2b271, type: 3}
-  projectileSpeed: 1
+  bulletSequence:
+  - Arc: 0
+    Amount: 1
+    Speed: 0
+    bulletPrefab: {fileID: 593997200621683044, guid: 4fbbb2397152ddf4e81369377af2b271, type: 3}
+    Burst: 0
+    BurstDelay: 0

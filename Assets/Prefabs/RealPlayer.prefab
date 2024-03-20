@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 3153810980220846611}
   - component: {fileID: 2170804639958562090}
   - component: {fileID: 2325266415635678282}
+  - component: {fileID: 7693232770506996071}
   m_Layer: 6
   m_Name: RealPlayer
   m_TagString: Player
@@ -352,6 +353,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7693232770506996071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779687772605887179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a92c7316d70cdc4dbb3d23eedc08d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBetweenBulletSequences: 0.1
 --- !u!1 &2177260456851028472
 GameObject:
   m_ObjectHideFlags: 0
