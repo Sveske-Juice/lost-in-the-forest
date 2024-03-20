@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class DoorManager : MonoBehaviour
 {
     public DoorManager Instance { get; private set; }
     public Room Create { get; private set; }
+
+    // First room passed as argument
+    public UnityEvent<Vector3> LevelGenerated;
 
     private void Awake()
     {
@@ -31,6 +35,16 @@ public class DoorManager : MonoBehaviour
     {
         UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
         InitializeGeneration(roomLimit);
+
+        var startRoom = GameObject.FindObjectOfType<Room>().gameObject;
+
+        foreach (var room in GameObject.FindObjectsByType<Room>(FindObjectsSortMode.None))
+        {
+            room.gameObject.SetActive(false);
+        }
+
+        startRoom.SetActive(true);
+        LevelGenerated?.Invoke(startRoom.transform.position);
     }
 
     private void InitializeGeneration(int _maxRooms = 40)
