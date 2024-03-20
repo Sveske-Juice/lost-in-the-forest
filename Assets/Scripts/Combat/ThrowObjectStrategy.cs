@@ -25,6 +25,8 @@ public class ThrowObjectStrategy : AttackStrategy
         throwObj.transform.position = _context.origin.position;
 
         Rigidbody2D throwRB = throwObj.GetComponent<Rigidbody2D>();
+        if (throwRB == null)
+            Debug.LogWarning($"{throwObjectPrefab.name} does not have a rigidbody!");
 
         Vector2 throwVecForce = new Vector2(_context.attackDir.x, _context.attackDir.y).normalized * throwForce;
 
