@@ -347,6 +347,7 @@ MonoBehaviour:
   doorLimitInRooms: 4
   roomPrefabPath: RoomPrefabs
   roomPrefabList:
+  - {fileID: 6379303163047264909, guid: 6f6cb8ce55a56a61e9b08bc589d5e3c2, type: 3}
   - {fileID: 6379303163047264909, guid: ecbd786034b461f47bae4bd4412b1461, type: 3}
 --- !u!4 &298219723
 Transform:
