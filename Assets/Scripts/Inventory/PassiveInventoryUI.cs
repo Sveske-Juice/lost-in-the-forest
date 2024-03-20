@@ -44,7 +44,7 @@ public class PassiveInventoryUI : MonoBehaviour
         obj.transform.SetParent(transform, false);
 
         ItemSlot slot = obj.GetComponent<ItemSlot>();
-        slot.Set(passive);
+        slot.Set(passive);  
         slot.SetTooltip(connectedInventory.tooltipPrefab);
 
         // Setup click listener
