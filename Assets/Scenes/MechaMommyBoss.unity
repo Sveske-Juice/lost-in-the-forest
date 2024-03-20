@@ -9668,6 +9668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RealPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 2170804639958562090, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
+      propertyPath: maxHealth
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 5986536342874594355, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.04
@@ -17641,6 +17645,7 @@ MonoBehaviour:
   attacks:
   - {fileID: 11400000, guid: a173cb4ac3512214fabdb278c5cc72bb, type: 2}
   - {fileID: 11400000, guid: a5d0937293431e64d9fca9a150c2ce9c, type: 2}
+  - {fileID: 11400000, guid: 9ae382cfe88c8d44595cde03ac564250, type: 2}
   combatEnemy: {fileID: 1930848443}
   enemyStats: {fileID: 11400000, guid: 23ced23b1f32d35488ad7ffb5db6cb63, type: 2}
 --- !u!114 &1930848443
@@ -17703,7 +17708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a92c7316d70cdc4dbb3d23eedc08d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBetweenBulletSequences: 0.1
+  delayBetweenBulletSequences: 0.25
 --- !u!213 &1954345887
 Sprite:
   m_ObjectHideFlags: 0
