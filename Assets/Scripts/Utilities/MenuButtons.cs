@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScene : MonoBehaviour
+public class MenuButtons : MonoBehaviour
 {
+    private ItemSaveLoad itemSaveLoad = new ItemSaveLoad();
     public void sceneChanger(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
-        GameManager.instance.scene = sceneID;
+    }
+
+    public void closeGame()
+    {
+        itemSaveLoad.SaveItems();
+        Application.Quit();
     }
 
 }

@@ -6,8 +6,7 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
-    public int scene;
+    private ItemSaveLoad itemSaveLoad = new ItemSaveLoad();
 
     void Awake()
     {
@@ -19,6 +18,11 @@ public class GameManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
+    }
+
+    private void OnApplicationQuit()
+    {
+        itemSaveLoad.SaveItems();
     }
 
 }
