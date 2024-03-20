@@ -13931,8 +13931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59bb9875f7cab305ada219e0e2ab5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnVariations:
-  - enemies: []
+  seed: 6969
+  variation:
+    enemies: []
 --- !u!1 &6379303163047264909
 GameObject:
   m_ObjectHideFlags: 0
@@ -13960,7 +13961,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5671472917258456451}
@@ -18052,9 +18053,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7850764292638451534}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03244444, y: -0.0296, z: 0}
-  m_LocalScale: {x: 0.11111112, y: 0.2, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3502515933555604461}

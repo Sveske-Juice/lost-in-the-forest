@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class Room : MonoBehaviour
 {
     [SerializeField] public List<Door> doors;
-    public List<EnemySpawner> spawners;
 
     public uint id = 0;
 
@@ -28,8 +27,6 @@ public class Room : MonoBehaviour
                     doo.close();
                 }
             }
-
-            // todo: do logic for enemenemienies
         }
     }
 }
