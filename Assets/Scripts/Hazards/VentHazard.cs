@@ -20,6 +20,6 @@ public class VentHazard : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Instantiate(steamCloud, transform.position, Quaternion.identity);
+        Destroy(Instantiate(steamCloud, transform.position, Quaternion.identity), 10f);
     }
 }
