@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   attackTriggerRange: 10
-  projectilePrefab: {fileID: 593997200621683044, guid: 5b0263e9ac0e62d4ea338af992544ca1, type: 3}
-  projectileSpeed: 1
+  bulletSequence:
+  - Arc: 0
+    Amount: 1
+    Speed: 1
+    bulletPrefab: {fileID: 593997200621683044, guid: 5b0263e9ac0e62d4ea338af992544ca1, type: 3}
+    Burst: 0
+    BurstDelay: 0
