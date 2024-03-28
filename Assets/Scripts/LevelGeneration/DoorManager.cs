@@ -34,9 +34,7 @@ public class DoorManager : MonoBehaviour
     private void Start()
     {
         UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
-        InitializeGeneration(roomLimit);
-
-        var startRoom = GameObject.FindObjectOfType<Room>().gameObject;
+        var startRoom = InitializeGeneration(roomLimit).gameObject;
 
         foreach (var room in GameObject.FindObjectsByType<Room>(FindObjectsSortMode.None))
         {
@@ -47,14 +45,14 @@ public class DoorManager : MonoBehaviour
         LevelGenerated?.Invoke(startRoom.transform.position);
     }
 
-    private void InitializeGeneration(int _maxRooms = 40)
+    private Room InitializeGeneration(int _maxRooms = 40)
     {
         // Debug.Log("Init start");
 
         // roomLimit = _maxRooms;
 
         // Start room
-        Room room = CreateRandomRoom(new Vector3(0, 0, 0));
+        Room room = Instantiate(startRoom).GetComponent<Room>();
         ActivateRandomDoors(room);
 
         //                            This adds the doors to AllDoors as well lmao
@@ -106,7 +104,7 @@ public class DoorManager : MonoBehaviour
                     // ConnectDoors(startDoor, AllDoors[0]);
                     GenerateRoom(startDoor);
                     Debug.LogError("The map is shit");
-                    return;
+                    return room;
                 } else {
                     ConnectDoors(startDoor, door);
                 }
@@ -142,6 +140,7 @@ public class DoorManager : MonoBehaviour
 
             Debug.Log("Created boss room");
         }
+        return room;
     }
 
     private Room GenerateRoom(Door startDoor)
@@ -190,6 +189,7 @@ public class DoorManager : MonoBehaviour
 
     [SerializeField] private string roomPrefabPath = "RoomPrefabs";
     [SerializeField] private List<GameObject> roomPrefabList;
+    [SerializeField] private GameObject startRoom;
 
     // Instantiates a random room-prefab with premade door-spawn-position
     private Room CreateRandomRoom(Vector3 _spawnPosition)

@@ -352,6 +352,7 @@ MonoBehaviour:
   - {fileID: 6379303163047264909, guid: ff125cbb16f9e1dc5b65512ba983fb1f, type: 3}
   - {fileID: 6379303163047264909, guid: 1ec8e3334e0384e8c9e1266e296b22d9, type: 3}
   - {fileID: 6379303163047264909, guid: e46c4d7fdf42c12aabef9285317d34c8, type: 3}
+  startRoom: {fileID: 6379303163047264909, guid: e74e15d56046a2d40b248aa0d593254d, type: 3}
 --- !u!4 &298219723
 Transform:
   m_ObjectHideFlags: 0
