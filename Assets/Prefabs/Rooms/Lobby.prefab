@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59bb9875f7cab305ada219e0e2ab5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnVariations:
-  - enemies: []
+  seed: 6969
+  variation:
+    enemies: []
 --- !u!1 &6379303163047264909
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +59,7 @@ GameObject:
   - component: {fileID: 7183625007614499635}
   - component: {fileID: 500992027018594421}
   m_Layer: 0
-  m_Name: Room
+  m_Name: Lobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,8 +102,6 @@ MonoBehaviour:
   - {fileID: 2865401828478549261}
   - {fileID: 1119518938454186197}
   - {fileID: 1971696442672069683}
-  spawners:
-  - {fileID: 7741340148455177896}
   id: 0
   OnRoomEntered:
     m_PersistentCalls:
@@ -148,7 +147,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: -7656697386457067451, guid: 49ebf7de40457d84495983a6734b2c68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -172,6 +171,10 @@ PrefabInstance:
       propertyPath: name
       value: Door 2
       objectReference: {fileID: 0}
+    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 7183625007614499635}
     - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: direction
       value: 1
@@ -278,6 +281,10 @@ PrefabInstance:
       value: Door 3
       objectReference: {fileID: 0}
     - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 7183625007614499635}
+    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: direction
       value: 3
       objectReference: {fileID: 0}
@@ -383,6 +390,10 @@ PrefabInstance:
       value: Door 1
       objectReference: {fileID: 0}
     - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 7183625007614499635}
+    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: direction
       value: 0
       objectReference: {fileID: 0}
@@ -487,6 +498,10 @@ PrefabInstance:
       propertyPath: name
       value: Door 0
       objectReference: {fileID: 0}
+    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 7183625007614499635}
     - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: direction
       value: 2

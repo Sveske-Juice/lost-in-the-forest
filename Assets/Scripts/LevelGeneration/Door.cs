@@ -63,4 +63,20 @@ public class Door : MonoBehaviour
     public void open() {
         TempDisabled = false;
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log($"hit {collider.name}");;
+        if (!collider.CompareTag("Player")) return;
+
+        // go to connected room
+        if (this.ConnectedDoor == null)
+        {
+            Debug.LogError("We fucked up. Why dis mf door not connected!?");
+            return;
+        }
+        room.gameObject.SetActive(false);
+        collider.transform.position = this.ConnectedDoor.transform.position + this.ConnectedDoor.transform.right * 2f;
+        this.ConnectedDoor.room.gameObject.SetActive(true);
+    }
 }
