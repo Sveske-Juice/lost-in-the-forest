@@ -100,13 +100,13 @@ public class DoorManager : MonoBehaviour
 
                 Door door = FindDoorNotInRoom(startDoor.room, startDoor.OppositeDirection());
                 
-                if (door == false)
+                if (door == null)
                 {
                     // fuck itt, connect to a random door
                     // ConnectDoors(startDoor, AllDoors[0]);
                     GenerateRoom(startDoor);
-                    // Debug.LogError("The map is shit");
-                    // return;
+                    Debug.LogError("The map is shit");
+                    return;
                 } else {
                     ConnectDoors(startDoor, door);
                 }
