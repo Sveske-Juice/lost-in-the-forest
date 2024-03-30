@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum Direction { 
     North, South, East, West
@@ -8,6 +9,9 @@ public enum Direction {
 
 public class Door : MonoBehaviour
 {
+    // Previous room and next room. Invoked right after switch
+    public static event Action<Room, Room> LevelSwitched;
+
     public Room room = null;
 
     [SerializeField]
@@ -25,7 +29,7 @@ public class Door : MonoBehaviour
     public uint id = 0;
 
     public void setup() {
-        id = (uint)Random.RandomRange(0, 99999999);
+        id = (uint)UnityEngine.Random.RandomRange(0, 99999999);
         gameObject.name = "Door " + room.id + "_" + id;
     }
 
@@ -78,5 +82,7 @@ public class Door : MonoBehaviour
         room.gameObject.SetActive(false);
         collider.transform.position = this.ConnectedDoor.transform.position + this.ConnectedDoor.transform.right * 2f;
         this.ConnectedDoor.room.gameObject.SetActive(true);
+
+        LevelSwitched?.Invoke(this.room, this.ConnectedDoor.room);
     }
 }

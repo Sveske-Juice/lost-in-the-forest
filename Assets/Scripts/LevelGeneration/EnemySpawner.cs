@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [System.Serializable]
 public struct EnemySpawn
@@ -38,6 +39,15 @@ public class EnemySpawner : MonoBehaviour
 
             GameObject enemy = Instantiate(spawn.prefab, transform.root);
             enemy.transform.localScale = spawn.prefab.transform.localScale;
+            NavMeshHit closestHit;
+            if (NavMesh.SamplePosition(transform.root.position, out closestHit, 500, NavMesh.AllAreas))
+            {
+                enemy.transform.position = closestHit.position;
+            }
+            else
+            {
+                Debug.LogError("Sampling enemy pos on nav mesh failed");
+            }
         }
     }
 
