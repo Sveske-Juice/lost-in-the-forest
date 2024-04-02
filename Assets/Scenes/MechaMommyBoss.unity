@@ -9672,6 +9672,18 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100000
       objectReference: {fileID: 0}
+    - target: {fileID: 2170804639958562090, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
+      propertyPath: sfxDamageClipName
+      value: MiscDMG01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170804639958562090, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
+      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170804639958562090, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
+      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5986536342874594355, guid: cf4b2855c9962fc8196854c48df8b143, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.04
