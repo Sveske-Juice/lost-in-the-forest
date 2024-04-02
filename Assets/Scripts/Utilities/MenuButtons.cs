@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(ItemSaveLoad))]
 public class MenuButtons : MonoBehaviour
 {
-    private ItemSaveLoad itemSaveLoad = new ItemSaveLoad();
+    private ItemSaveLoad itemSaveLoad;
+
+    private void OnEnable()
+    {
+        itemSaveLoad = GetComponent<ItemSaveLoad>();
+    }
+
     public void sceneChanger(int sceneID)
     {
         SceneManager.LoadScene(sceneID);

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+[RequireComponent(typeof(ItemSaveLoad))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private ItemSaveLoad itemSaveLoad = new ItemSaveLoad();
+    private ItemSaveLoad itemSaveLoad;
 
     void Awake()
     {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        itemSaveLoad = GetComponent<ItemSaveLoad>();
         DontDestroyOnLoad(this);
     }
 
