@@ -17,7 +17,7 @@ MonoBehaviour:
   displayName: Sparking Ball
   description: 
   itemStrategies: []
-  uses: 1
+  useCount: 1
   icon: {fileID: 2800000, guid: 9c941f3184aee274d9fb37326a6499f6, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: 927ecd097e8889e819074abf48170c13, type: 2}
@@ -29,3 +29,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0cf2156f9084b2c2a9ba2750f4b75aa6, type: 2}
   - {fileID: 11400000, guid: 2e09ebeaff716b7b783ed3e0787f71fd, type: 2}
   - {fileID: 11400000, guid: b9bed76ea50678988b8a2ded0806fe98, type: 2}
+  - {fileID: 11400000, guid: 57ce020ab043c9d948b418a97e07d849, type: 2}
+  - {fileID: 11400000, guid: e065e2fe92f07c407a8ceed34741e226, type: 2}
+  - {fileID: 11400000, guid: 048390c9f0c472054af14eb1d4cf3f69, type: 2}
+  - {fileID: 11400000, guid: 8522a7fff573c4a4bb59c5714ccbf283, type: 2}
+  targetSelectionPrefab: {fileID: 0}

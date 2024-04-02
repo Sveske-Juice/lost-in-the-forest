@@ -20,7 +20,6 @@ public class BulletSpawner : MonoBehaviour
         foreach (BulletPattern bulletPattern in bulletSequence)
         {
             float stepSize = bulletPattern.Arc / ((float)bulletPattern.Amount);
-            
             for (int i = 0; i < bulletPattern.Amount; i++)
             {
                 Vector2 bulletDir = rotate(facingDir, stepSize * i + stepSize / 2f - bulletPattern.Arc / 2f);

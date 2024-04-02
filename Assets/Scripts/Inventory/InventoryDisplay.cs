@@ -167,6 +167,7 @@ public class InventoryDisplay : MonoBehaviour
                             Assert.IsNotNull(CreditManager.Instance, "No credit manager to charge player!");
                             CreditManager.Instance.Charge(slot.Item.data.Cost);
                             connectedInventory.Remove(slot.Item.data);
+                            slot.Item.data.ItemAcquired(connectedInventory.ModifierCtx(slot.Item.data).Build());
                         }
                     }
 

@@ -13,7 +13,7 @@ public class InventorySystem : MonoBehaviour
 
     private Dictionary<ItemScriptableObject, InventoryItem> m_itemDictionary = new();
     public ItemScriptableObject[] startingItems;
-    public List<InventoryItem> Inventory { get; private set; } = new();
+    public List<InventoryItem> Inventory = new();
     public GameObject tooltipPrefab;
 
     public int inventorySize = 3;
@@ -61,7 +61,10 @@ public class InventorySystem : MonoBehaviour
         }
         else if(inventorySize > currentInvenotorySize)// laver en ny item, og add til inventory
         {
-            HandleConflictingItems(refenceData);
+            // Shop can contain conflicting items, others can not
+            if (!isShop)
+                HandleConflictingItems(refenceData);
+
             InventoryItem newItem = new InventoryItem(refenceData);
             Inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);

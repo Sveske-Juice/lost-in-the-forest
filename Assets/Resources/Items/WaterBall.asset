@@ -17,7 +17,7 @@ MonoBehaviour:
   displayName: Water Splash
   description: 
   itemStrategies: []
-  uses: 1
+  useCount: 1
   icon: {fileID: 2800000, guid: 8b08b01c2a5f44146a5b9cde732bd617, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: 4b1cd051c98034de9b9b8865e158f370, type: 2}
@@ -29,3 +29,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9bed76ea50678988b8a2ded0806fe98, type: 2}
   - {fileID: 11400000, guid: 0cf2156f9084b2c2a9ba2750f4b75aa6, type: 2}
   - {fileID: 11400000, guid: edb0a509b19bff0c386e13c8a8d72731, type: 2}
+  - {fileID: 11400000, guid: 57ce020ab043c9d948b418a97e07d849, type: 2}
+  - {fileID: 11400000, guid: e065e2fe92f07c407a8ceed34741e226, type: 2}
+  - {fileID: 11400000, guid: 048390c9f0c472054af14eb1d4cf3f69, type: 2}
+  - {fileID: 11400000, guid: 8522a7fff573c4a4bb59c5714ccbf283, type: 2}
+  targetSelectionPrefab: {fileID: 0}

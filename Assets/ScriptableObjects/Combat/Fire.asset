@@ -16,7 +16,7 @@ MonoBehaviour:
   bulletSequence:
   - Arc: 0
     Amount: 1
-    Speed: 0
+    Speed: 1
     bulletPrefab: {fileID: 593997200621683044, guid: cbe65c25d16830d42877a5df71b81a97, type: 3}
     Burst: 0
     BurstDelay: 0
