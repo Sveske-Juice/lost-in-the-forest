@@ -29,7 +29,7 @@ public class InventoryDisplay : MonoBehaviour
 
     public bool acceptActives = true;
 
-    [SerializeField] private bool invertElevation = false;
+    [SerializeField] private Vector3 toolTipOffset = Vector3.zero;
 
     private void OnEnable()
     {
@@ -106,8 +106,7 @@ public class InventoryDisplay : MonoBehaviour
         slot.Set(item);
         slot.SetTooltip(connectedInventory.tooltipPrefab);
 
-        if (invertElevation)
-            slot.elevation *= -1;
+        slot.offset += toolTipOffset;
 
         // Setup click listener
         ImageCickHandler clickHandler = obj.AddComponent<ImageCickHandler>();

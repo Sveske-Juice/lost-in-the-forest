@@ -381,7 +381,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
   - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
   - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
-  tooltipPrefab: {fileID: 3432900237536628667, guid: f250dad2f78205e489eb5663ace8a753, type: 3}
+  tooltipPrefab: {fileID: 3432900237536628667, guid: f501235cfce1b1fcda63a3ec48d21d0a, type: 3}
   inventorySize: 50
   stacking: 1
 --- !u!114 &190040145
@@ -403,7 +403,7 @@ MonoBehaviour:
   dragAndDrop: 1
   dragColor: {r: 1, g: 1, b: 1, a: 0.75}
   acceptActives: 1
-  invertElevation: 0
+  toolTipOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &190040146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
   dragAndDrop: 1
   dragColor: {r: 1, g: 1, b: 1, a: 0.75}
   acceptActives: 1
-  invertElevation: 0
+  toolTipOffset: {x: 100, y: -200, z: 0}
 --- !u!114 &221859852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,6 +1371,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1342032708}
+    - target: {fileID: 3145825998003641781, guid: 64417c6395b9f76bfbe9efc716894962, type: 3}
+      propertyPath: toolTipOffset.y
+      value: -200
+      objectReference: {fileID: 0}
     - target: {fileID: 3145825998003641781, guid: 64417c6395b9f76bfbe9efc716894962, type: 3}
       propertyPath: connectedInventory
       value: 
@@ -2408,7 +2412,7 @@ MonoBehaviour:
   dragAndDrop: 1
   dragColor: {r: 1, g: 1, b: 1, a: 0.75}
   acceptActives: 0
-  invertElevation: 0
+  toolTipOffset: {x: 100, y: -200, z: 0}
 --- !u!114 &1843471793
 MonoBehaviour:
   m_ObjectHideFlags: 0
