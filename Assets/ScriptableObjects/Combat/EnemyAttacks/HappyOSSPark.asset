@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTriggerRange: 10
   bulletSequence:
-  - Arc: 50
-    Amount: 5
+  - Arc: 75
+    Amount: 3
     Speed: 0.5
     bulletPrefab: {fileID: 593997200621683044, guid: db8e9605660dea773b8ec1244d027bfd, type: 3}
     Burst: 0
     BurstDelay: 0.1
-  - Arc: -50
-    Amount: 5
+  - Arc: -75
+    Amount: 3
     Speed: 0.5
     bulletPrefab: {fileID: 593997200621683044, guid: db8e9605660dea773b8ec1244d027bfd, type: 3}
     Burst: 0
