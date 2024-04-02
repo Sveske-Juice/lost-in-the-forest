@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 2569231449283111420}
   - component: {fileID: 6815686886354234543}
   - component: {fileID: 4442021706598882835}
+  - component: {fileID: 9047698121286961608}
   m_Layer: 5
   m_Name: Tooltip
   m_TagString: Untagged
@@ -227,6 +228,20 @@ MonoBehaviour:
   description: {fileID: 2801829900355980657}
   lvl: {fileID: 3074809733330417629}
   cost: {fileID: 0}
+--- !u!114 &9047698121286961608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432900237536628667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 20
+  image: {fileID: 6815686886354234543}
 --- !u!1 &4724072178319596262
 GameObject:
   m_ObjectHideFlags: 0
