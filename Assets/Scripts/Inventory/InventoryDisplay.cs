@@ -29,6 +29,8 @@ public class InventoryDisplay : MonoBehaviour
 
     public bool acceptActives = true;
 
+    [SerializeField] private bool invertElevation = false;
+
     private void OnEnable()
     {
         connectedInventory.onInventoryChangedEvent += UpdateUI;
@@ -44,6 +46,11 @@ public class InventoryDisplay : MonoBehaviour
         // Somehow menu was disabled while dragging item
         if (ghostItem != null)
             Destroy(ghostItem);
+
+        for (int i = 0; i < itemSlotsParent.childCount; i++)
+        {
+            Destroy(itemSlotsParent.GetChild(i).gameObject);
+        }
     }
 
     private void Update()
@@ -98,6 +105,9 @@ public class InventoryDisplay : MonoBehaviour
         ItemSlot slot = obj.GetComponent<ItemSlot>();
         slot.Set(item);
         slot.SetTooltip(connectedInventory.tooltipPrefab);
+
+        if (invertElevation)
+            slot.elevation *= -1;
 
         // Setup click listener
         ImageCickHandler clickHandler = obj.AddComponent<ImageCickHandler>();

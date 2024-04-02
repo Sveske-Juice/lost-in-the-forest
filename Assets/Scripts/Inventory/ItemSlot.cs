@@ -12,6 +12,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private GameObject m_stackObj;
     [SerializeField] private TextMeshProUGUI m_stackLabel;
 
+    public float elevation = 100;
 
     private GameObject tooltipPrefab, tooltip;
 
@@ -50,7 +51,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             Destroy(tooltip);
 
         tooltip = Instantiate(tooltipPrefab, GameObject.FindObjectOfType<Canvas>().transform);
-        tooltip.transform.position = transform.position + new Vector3(0, 135, 0);
+        tooltip.transform.position = transform.position + new Vector3(0, elevation, 0);
         tooltip.GetComponent<ToolTip>().set(Item);
     }
 
