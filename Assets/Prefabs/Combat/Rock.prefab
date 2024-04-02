@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0873fcd8b9e23914ba7c65b74095d95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackUpTime: 100
+  AttackUpTime: 10
   rb: {fileID: 2516849174440841589}
   onHitParticleSystem: {fileID: 3914499571747287247, guid: 09ab6236393b43d41a699b2f26c39a64, type: 3}
   onHitSfxClipName: RockAtk
