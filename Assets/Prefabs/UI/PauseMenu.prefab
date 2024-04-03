@@ -834,7 +834,7 @@ MonoBehaviour:
   dragAndDrop: 0
   dragColor: {r: 1, g: 1, b: 1, a: 0.75}
   acceptActives: 0
-  invertElevation: 1
+  toolTipOffset: {x: 0, y: -200, z: 0}
 --- !u!114 &2277320284515222519
 MonoBehaviour:
   m_ObjectHideFlags: 0
