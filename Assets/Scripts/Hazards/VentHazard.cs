@@ -6,20 +6,17 @@ public class VentHazard : MonoBehaviour
 {
     BoxCollider2D coll;
     public GameObject steamCloud;
-    // Start is called before the first frame update
+
     void Start()
     {
         coll = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.CompareTag("Player"))
+            return;
+
         Destroy(Instantiate(steamCloud, transform.position, Quaternion.identity), 10f);
     }
 }
