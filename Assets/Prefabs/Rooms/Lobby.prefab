@@ -9788,7 +9788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_Name
-      value: Door (1)
+      value: ForestDoor
       objectReference: {fileID: 0}
     - target: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_IsActive
@@ -9897,7 +9897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_Name
-      value: Door
+      value: ManorDoor
       objectReference: {fileID: 0}
     - target: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_IsActive
