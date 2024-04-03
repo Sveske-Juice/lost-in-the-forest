@@ -86,6 +86,11 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
+    public void SetAnimationBool(string boolName)
+    {
+        GetComponent<Animator>().SetBool(boolName, true);
+    }
+
     public void SimpleKill()
     {
         Destroy(gameObject);

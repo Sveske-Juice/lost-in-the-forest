@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OousagiSpawner : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class OousagiSpawner : MonoBehaviour
     float angle;
     [HideInInspector] public int spawnedBunnies;
     public int requiredBunnies;
+    public int bunnyKilled = 0;
+
+    public UnityEvent OnAllBunniesKilled;
 
     void Awake()
     {
@@ -22,7 +26,9 @@ public class OousagiSpawner : MonoBehaviour
         while (true && spawnedBunnies < requiredBunnies)
         {
             CalcSpawnPosition();
-            Instantiate(bunny, spawnPos, Quaternion.identity);
+            var go = Instantiate(bunny, spawnPos, Quaternion.identity);
+            HealthComponent bunnyHc = go.GetComponent<HealthComponent>();
+            bunnyHc.OnHealthZero.AddListener(BunnyKilled);
             spawnedBunnies++;
             spawnCooldown = spawnCooldown * 0.99f;
             yield return new WaitForSeconds(spawnCooldown);
@@ -39,5 +45,13 @@ public class OousagiSpawner : MonoBehaviour
     {
         CalcSpawnPosition();
         StartCoroutine(SpawnBunny());
+    }
+
+    private void BunnyKilled()
+    {
+        if (++bunnyKilled > requiredBunnies)
+        {
+            OnAllBunniesKilled?.Invoke();
+        }
     }
 }

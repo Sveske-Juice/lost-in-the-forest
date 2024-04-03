@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518f288ecbf34da4cac3d57fd26b79cb, type: 3}
   m_Name: GauntletPunch
   m_EditorClassIdentifier: 
-  attackSize: {x: 1, y: 2}
-  attackDistance: 5
+  attackTriggerRange: 5
+  attackSize: {x: 0.25, y: 0.5}
+  attackDistance: 2
   visualAttack: {fileID: 3747340943631670403, guid: d8a575a7be99fe712b2ea93a99988d71, type: 3}
   offset: 1
   attackLayers:
     serializedVersion: 2
     m_Bits: 192
+  attackMultiplier: 1
+  isPhysicle: 1
