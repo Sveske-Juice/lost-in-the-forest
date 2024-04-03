@@ -28,6 +28,8 @@ public class TempMove : MonoBehaviour
         movingHash = Animator.StringToHash("IsMoving");
 
         body = GetComponent<Rigidbody2D>();
+
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame

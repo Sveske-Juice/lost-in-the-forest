@@ -61,16 +61,18 @@ public class InventorySystem : MonoBehaviour
         }
         else if(inventorySize > currentInvenotorySize)// laver en ny item, og add til inventory
         {
-            // Shop can contain conflicting items, others can not
-            if (!isShop)
-                HandleConflictingItems(refenceData);
-
             InventoryItem newItem = new InventoryItem(refenceData);
             Inventory.Add(newItem);
             m_itemDictionary.Add(refenceData, newItem);
 
-            // Notify item thats its been acquired - apply passives etc.
-            newItem.data.ItemAcquired(ModifierCtx(refenceData).Build());
+            // Shop can contain conflicting items, others can not
+            if (!isShop)
+            {
+                HandleConflictingItems(refenceData);
+                // Notify item thats its been acquired - apply passives etc.
+                newItem.data.ItemAcquired(ModifierCtx(refenceData).Build());
+            }
+
             onInventoryChangedEvent?.Invoke();
 
             return true;

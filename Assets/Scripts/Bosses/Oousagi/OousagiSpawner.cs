@@ -49,7 +49,7 @@ public class OousagiSpawner : MonoBehaviour
 
     private void BunnyKilled()
     {
-        if (++bunnyKilled > requiredBunnies)
+        if (++bunnyKilled >= requiredBunnies)
         {
             OnAllBunniesKilled?.Invoke();
         }

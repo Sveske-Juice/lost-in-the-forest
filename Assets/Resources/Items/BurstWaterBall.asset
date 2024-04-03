@@ -20,7 +20,7 @@ MonoBehaviour:
   useCount: 1
   icon: {fileID: 2800000, guid: 7ffd8e8332b6e22fa99dbd3ea6c9bb2b, type: 3}
   passiveModifiers:
-  - {fileID: 11400000, guid: 4b1cd051c98034de9b9b8865e158f370, type: 2}
+  - {fileID: 11400000, guid: 4077b2d218a3b0b87bb117d90202f625, type: 2}
   level: 1
   maxLevel: 1
   cost: 10
