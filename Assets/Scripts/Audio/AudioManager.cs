@@ -32,8 +32,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        //Play("Main_Theme");
-        PlayClip("Magical_Forest_1");
+
     }
 
     // Play Audio clip
