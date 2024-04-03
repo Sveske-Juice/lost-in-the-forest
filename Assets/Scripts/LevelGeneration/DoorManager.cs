@@ -31,9 +31,18 @@ public class DoorManager : MonoBehaviour
 
     private List<Door> AllDoors = new List<Door>();
 
+    public List<int> SeedList = new List<int>();
+
     private void Start()
     {
         UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
+
+        if (SeedList.Count > 0) { // We running a fixed seed
+            int randomValue = UnityEngine.Random.Range(0, SeedList.Count);
+
+            UnityEngine.Random.InitState(SeedList[randomValue]);
+        }
+        
         var startRoom = InitializeGeneration(roomLimit).gameObject;
 
         foreach (var room in GameObject.FindObjectsByType<Room>(FindObjectsSortMode.None))

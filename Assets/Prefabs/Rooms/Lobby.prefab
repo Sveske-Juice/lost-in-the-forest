@@ -9714,54 +9714,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3255044048882488973}
     m_Modifications:
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0000000074506
-      objectReference: {fileID: 0}
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: name
-      value: Door 1
-      objectReference: {fileID: 0}
     - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: room
       value: 
       objectReference: {fileID: 7183625007614499635}
-    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: direction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3114740791760273558, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Size.y
-      value: 1.968555
-      objectReference: {fileID: 0}
-    - target: {fileID: 3114740791760273558, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.09849715
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.89
@@ -9802,25 +9758,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 7934471967622666001, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7934471967622666001, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Color.g
-      value: 0.6226415
-      objectReference: {fileID: 0}
-    - target: {fileID: 7934471967622666001, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Color.r
-      value: 0.075693704
-      objectReference: {fileID: 0}
     - target: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_Name
       value: ForestDoor
-      objectReference: {fileID: 0}
-    - target: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9851,50 +9791,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3255044048882488973}
     m_Modifications:
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 129858750793632378, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: name
-      value: Door 0
-      objectReference: {fileID: 0}
     - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: room
       value: 
       objectReference: {fileID: 7183625007614499635}
-    - target: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: direction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3114740791760273558, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Size.y
-      value: 1.9357226
-      objectReference: {fileID: 0}
-    - target: {fileID: 3114740791760273558, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.12312138
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.05
@@ -9935,25 +9835,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 7934471967622666001, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Color.b
-      value: 0.5754717
-      objectReference: {fileID: 0}
-    - target: {fileID: 7934471967622666001, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7934471967622666001, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_Color.r
-      value: 0.49865687
-      objectReference: {fileID: 0}
     - target: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_Name
       value: ManorDoor
-      objectReference: {fileID: 0}
-    - target: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
