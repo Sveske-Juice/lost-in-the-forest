@@ -15,7 +15,7 @@ MonoBehaviour:
   attackTriggerRange: 5
   attackSize: {x: 0.5, y: 2}
   attackDistance: 100
-  visualAttack: {fileID: 0}
+  visualAttack: {fileID: 593997200621683044, guid: 06dab8c919481bf439edd218319eec42, type: 3}
   offset: 1
   attackLayers:
     serializedVersion: 2

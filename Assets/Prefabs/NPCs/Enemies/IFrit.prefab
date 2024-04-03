@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IFrit
       objectReference: {fileID: 0}
+    - target: {fileID: 677009075490659109, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 856793050435433653, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
