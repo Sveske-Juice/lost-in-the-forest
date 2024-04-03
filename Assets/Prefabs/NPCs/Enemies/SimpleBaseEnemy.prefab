@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8022669622541837129}
   - component: {fileID: 3463347096776804740}
   - component: {fileID: 7149371736103549619}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SimpleBaseEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,6 +174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 0}
+  hopId: IsHopping
+  walkId: IsWalking
 --- !u!114 &8022669622541837129
 MonoBehaviour:
   m_ObjectHideFlags: 0
