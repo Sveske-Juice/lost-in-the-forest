@@ -53,7 +53,7 @@ public class CombatPlayer
         Assert.IsNotNull(healthComponent);
 
         if (combatPlayer != null && combatPlayer != this)
-            Destroy(this);
+            Destroy(gameObject);
         else
             combatPlayer = this;
     }

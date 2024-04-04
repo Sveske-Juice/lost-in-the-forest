@@ -1,9 +1,36 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu Instance;
+
     public GameObject pausemenu;
     public GameObject shopMenu;
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(this.transform.root.gameObject);
+            return;
+        }
+        Instance = this;
+
+        SceneManager.sceneLoaded += SceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= SceneLoaded;
+    }
+
+    private void SceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        pausemenu.SetActive(false);
+        shopMenu.SetActive(false);
+    }
 
     void Update()
     {

@@ -14,4 +14,9 @@ public class PlayerSpawner : MonoBehaviour
 
         player.gameObject.SetActive(true);
     }
+
+    public void SpawnAtZero()
+    {
+        SpawnAt(Vector3.zero);
+    }
 }
