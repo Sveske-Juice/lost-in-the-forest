@@ -14,7 +14,7 @@ public class Room : MonoBehaviour
     public bool isCleared = false;
 
     public void setup() {
-        id = (uint)Random.RandomRange(0, 99999999);
+        id = (uint)UnityEngine.Random.RandomRange(0, 99999999);
         gameObject.name = "Room " + id;
     }
 

@@ -33,14 +33,27 @@ public class DoorManager : MonoBehaviour
 
     public List<int> SeedList = new List<int>();
 
+    private int CurrentSeed = -1;
+
+    public GameObject BossRoomPrefabThingForWhenTheBossRoomSpawns = null;
+
     private void Start()
     {
-        UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
+        // CurrentSeed = System.DateTime.Now.Millisecond;
+
+    CurrentSeed =
+        (int)(System.DateTime.UtcNow - new System.DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+        
+        Debug.Log("CURRENT FUCKIG TIME;: " + CurrentSeed);
+
+        UnityEngine.Random.InitState(CurrentSeed);
 
         if (SeedList.Count > 0) { // We running a fixed seed
             int randomValue = UnityEngine.Random.Range(0, SeedList.Count);
 
-            UnityEngine.Random.InitState(SeedList[randomValue]);
+            CurrentSeed = SeedList[randomValue];
+
+            UnityEngine.Random.InitState(CurrentSeed);
         }
         
         var startRoom = InitializeGeneration(roomLimit).gameObject;
@@ -113,16 +126,25 @@ public class DoorManager : MonoBehaviour
                     // ConnectDoors(startDoor, AllDoors[0]);
                     GenerateRoom(startDoor);
                     Debug.LogError("The map is shit");
+                    // Debug.Break();
                     return room;
+
+                    // Shit is fucked, fuck this shit
+                    // break;
                 } else {
                     ConnectDoors(startDoor, door);
                 }
             }
         }
 
+        Debug.Log("Finished generating map. AllDoors.Count = " + AllDoors.Count);
+
         if (AllDoors.Count == 1)
         { // 1 door left to connect
-            Room room_shadowed = CreateRandomRoom(Vector3.zero);
+            // Room room_shadowed = CreateRandomRoom(Vector3.zero);
+
+            GameObject bossRoom = Instantiate(BossRoomPrefabThingForWhenTheBossRoomSpawns, Vector3.zero, Quaternion.identity);
+            Room room_shadowed = bossRoom.GetComponent<Room>();
 
             Door doorToConnect = null;
             Door startDoor = AllDoors[0];
@@ -147,7 +169,11 @@ public class DoorManager : MonoBehaviour
 
             ConnectDoors(doorToConnect, startDoor);
 
+            room_shadowed.gameObject.name = "Boss room >:)";
+
             Debug.Log("Created boss room");
+            Debug.Log("CurrentSeed: " + CurrentSeed);
+            // Debug.Break();
         }
         return room;
     }
@@ -175,10 +201,11 @@ public class DoorManager : MonoBehaviour
 
         if (connectionDoor == null)
         {
+            connectionDoor = newRoom.doors[0];
             // No other door that isnt connected has an opposite direction...
             // TODO: Find out a waý to avoid this, or generate a new room when you cant find a door to connect
-            Debug.LogError("oppositeDoor not found");
-            return null;
+            // Debug.LogError("oppositeDoor not found");
+            // return null;
         }
 
         if (connectionDoor.enabled == false)
@@ -279,13 +306,12 @@ public class DoorManager : MonoBehaviour
     // Shuffles the enabled doors added to list in AddEnabledDoorsToList
     private void ShuffleEnabledDoorsList(List<Door> _doorList)
     {
-        System.Random rng = new System.Random();
-
         int n = _doorList.Count;
         while (n > 1)
         {
             n--;
-            int k = rng.Next(n + 1);
+            // int k = rng.Next(n + 1);
+            int k = UnityEngine.Random.RandomRange(0, n+1);
             Door value = _doorList[k];
             _doorList[k] = _doorList[n];
             _doorList[n] = value;
@@ -315,7 +341,7 @@ public class DoorManager : MonoBehaviour
         foreach (Door door in AllDoors) {
             String doorRoom = door.gameObject.name.Split(" ")[1].Split("_")[0];
 
-            if (doorRoom != roomId && door.direction == dir) {
+            if (doorRoom != roomId) {
                 return door;
             }
         }

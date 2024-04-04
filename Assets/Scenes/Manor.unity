@@ -170,7 +170,8 @@ MonoBehaviour:
         m_CallState: 2
   roomLimit: 40
   doorLimitInRooms: 4
-  SeedList: 
+  SeedList: 9be00e66cde00e6617e10e6689e10e66c4e10e66dee10e66c0e20e66
+  BossRoomPrefabThingForWhenTheBossRoomSpawns: {fileID: 0}
   roomPrefabPath: RoomPrefabs
   roomPrefabList:
   - {fileID: 6379303163047264909, guid: bcc76adaaa7dd52ceb96d809e2113abb, type: 3}

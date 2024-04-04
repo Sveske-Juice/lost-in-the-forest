@@ -25,7 +25,9 @@ public class EnemySpawner : MonoBehaviour
 	private EnemySpawnVariation variation;
 
 	public void Awake() {
-        UnityEngine.Random.InitState(seed);
+		// get this fucking piece of shit out of here you mother fucker is breaking my fucking
+		// level generatiopn piece of shit FUICL
+        // UnityEngine.Random.InitState(seed);
 	}
 
     public void SpawnEnemies()
