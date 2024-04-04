@@ -57,9 +57,11 @@ public class DoorManager : MonoBehaviour
         }
         
         var startRoom = InitializeGeneration(roomLimit).gameObject;
-
-        foreach (var room in GameObject.FindObjectsByType<Room>(FindObjectsSortMode.None))
+        var rooms = GameObject.FindObjectsByType<Room>(FindObjectsSortMode.None);
+        // Debug.LogWarning($"room couint: {rooms.Length}");
+        foreach (var room in rooms)
         {
+            // Debug.Log($"Disabling {room.name}");
             room.gameObject.SetActive(false);
         }
 
@@ -144,12 +146,18 @@ public class DoorManager : MonoBehaviour
             // Room room_shadowed = CreateRandomRoom(Vector3.zero);
 
             GameObject bossRoom = Instantiate(BossRoomPrefabThingForWhenTheBossRoomSpawns, Vector3.zero, Quaternion.identity);
+
+            // idk for some reason bunny boss DOESN*T FUCKING WORK IF ITS NOT IN ZERO! @The_Olivier wtf
+            bossRoom.transform.position = Vector3.zero;
             Room room_shadowed = bossRoom.GetComponent<Room>();
 
-            Door doorToConnect = null;
             Door startDoor = AllDoors[0];
 
-            foreach (Door door in room_shadowed.doors)
+            // Connect to first boss room door
+            room_shadowed.doors[0].enabled = true;
+            room_shadowed.doors[0].gameObject.SetActive(true);
+            Door doorToConnect = room_shadowed.doors[0];
+            /* foreach (Door door in room_shadowed.doors)
             {
                 if (door.direction == startDoor.OppositeDirection())
                 {
@@ -163,9 +171,10 @@ public class DoorManager : MonoBehaviour
                     door.enabled = false;
                     door.gameObject.SetActive(false);
                 }
-            }
+            } */
 
-            room_shadowed.gameObject.transform.position = startDoor.gameObject.transform.position + (startDoor.gameObject.transform.position - doorToConnect.gameObject.transform.position);
+            // moved to zero...
+            // room_shadowed.gameObject.transform.position = startDoor.gameObject.transform.position + (startDoor.gameObject.transform.position - doorToConnect.gameObject.transform.position);
 
             ConnectDoors(doorToConnect, startDoor);
 

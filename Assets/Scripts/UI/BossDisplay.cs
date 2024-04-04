@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,21 @@ public class BossDisplay : MonoBehaviour
 {
     public float timeToTemple = 10f;
     public GameObject content;
+
+    private void Awake()
+    {
+        BossKilledNotifier.BossKilled += BossKilled;
+    }
+
+    private void OnDestroy()
+    {
+        BossKilledNotifier.BossKilled -= BossKilled;
+    }
+
+    private void BossKilled()
+    {
+        UpdateUI(true);
+    }
 
     public void UpdateUI(bool enabled)
     {
@@ -20,6 +36,7 @@ public class BossDisplay : MonoBehaviour
     IEnumerator LoadTemple()
     {
         yield return new WaitForSeconds(timeToTemple);
-            SceneManager.LoadScene(1);
+        UpdateUI(false);
+        SceneManager.LoadScene(1);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class OousagiSpawner : MonoBehaviour
+public class OousagiSpawner : BossKilledNotifier
 {
     [SerializeField] GameObject bunny;
     Vector2 centre;
@@ -23,7 +23,8 @@ public class OousagiSpawner : MonoBehaviour
 
     IEnumerator SpawnBunny()
     {
-        while (true && spawnedBunnies < requiredBunnies)
+        // hehe :P
+        while ((!(!true)) && spawnedBunnies < requiredBunnies)
         {
             CalcSpawnPosition();
             var go = Instantiate(bunny, spawnPos, Quaternion.identity);
@@ -52,6 +53,7 @@ public class OousagiSpawner : MonoBehaviour
         if (++bunnyKilled >= requiredBunnies)
         {
             OnAllBunniesKilled?.Invoke();
+            this.RaiseBossKilled();
         }
     }
 }
