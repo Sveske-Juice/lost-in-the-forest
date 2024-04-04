@@ -7,5 +7,5 @@ public class BossKilledNotifier : MonoBehaviour
 {
     public static event Action BossKilled;
 
-    protected void RaiseBossKilled() => BossKilled?.Invoke();
+    public void RaiseBossKilled() => BossKilled?.Invoke();
 }
