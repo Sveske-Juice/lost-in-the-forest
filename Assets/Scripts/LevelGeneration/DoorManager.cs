@@ -61,7 +61,7 @@ public class DoorManager : MonoBehaviour
         // roomLimit = _maxRooms;
 
         // Start room
-        Room room = Instantiate(startRoom).GetComponent<Room>();
+        Room room = CreateRandomRoom(Vector3.zero);
         ActivateRandomDoors(room);
 
         //                            This adds the doors to AllDoors as well lmao
@@ -198,7 +198,6 @@ public class DoorManager : MonoBehaviour
 
     [SerializeField] private string roomPrefabPath = "RoomPrefabs";
     [SerializeField] private List<GameObject> roomPrefabList;
-    [SerializeField] private GameObject startRoom;
 
     // Instantiates a random room-prefab with premade door-spawn-position
     private Room CreateRandomRoom(Vector3 _spawnPosition)

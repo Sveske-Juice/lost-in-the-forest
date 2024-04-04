@@ -9,10 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 3e35d10a64f189b42a462a0d82458ed2
   - enabled: 1
-    path: Assets/Scenes/LevelGenTest.unity
+    path: Assets/Scenes/Temple.unity
     guid: 1067bd326cbffcb49810daa2ab4d7034
   - enabled: 1
     path: Assets/Scenes/SettingsMenu.unity
     guid: ef557032f23d0d54ca53050269e277a8
+  - enabled: 1
+    path: Assets/Scenes/Forest.unity
+    guid: 7213bbb904626f627bba47e1922bc3ec
+  - enabled: 1
+    path: Assets/Scenes/Manor.unity
+    guid: 853a51ae1eac686cdb81dd34c7d929af
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: acbd351f0443a94d7827b5b3184327c8, type: 2}

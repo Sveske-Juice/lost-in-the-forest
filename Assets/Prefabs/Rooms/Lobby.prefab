@@ -9718,6 +9718,10 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 7183625007614499635}
+    - target: {fileID: 7139150333416449425, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: SceneName
+      value: Forest
+      objectReference: {fileID: 0}
     - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.89
@@ -9762,17 +9766,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForestDoor
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1749329709237582336, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2893755346593418207}
   m_SourcePrefab: {fileID: 100100000, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
 --- !u!114 &2865401828478549261 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
   m_PrefabInstance: {fileID: 2469019026618628907}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6889703527363193080}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed6227b9a1fae6e409c41136534147c9, type: 3}
@@ -9783,6 +9791,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
   m_PrefabInstance: {fileID: 2469019026618628907}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6889703527363193080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+  m_PrefabInstance: {fileID: 2469019026618628907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2893755346593418207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889703527363193080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad028a1ff1d06ffb8048409098064ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: Forest
 --- !u!1001 &4036188665544208632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9795,6 +9821,10 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 7183625007614499635}
+    - target: {fileID: 7139150333416449425, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      propertyPath: SceneName
+      value: Manor
+      objectReference: {fileID: 0}
     - target: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.05
@@ -9839,22 +9869,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManorDoor
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1749329709237582336, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1471163369393907772}
   m_SourcePrefab: {fileID: 100100000, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
 --- !u!114 &4432430738507773662 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 396392019942917670, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
   m_PrefabInstance: {fileID: 4036188665544208632}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5034460708088963883}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed6227b9a1fae6e409c41136534147c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5034460708088963883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9069848757099926483, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
+  m_PrefabInstance: {fileID: 4036188665544208632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1471163369393907772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034460708088963883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad028a1ff1d06ffb8048409098064ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: Manor
 --- !u!4 &5851537126066878643 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7581733245318957131, guid: 5be0f810817ca3d4ca4b9310537e3b91, type: 3}
