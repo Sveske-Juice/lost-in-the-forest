@@ -15,11 +15,15 @@ public class GameOver : MonoBehaviour
     private IEnumerator GameOverRoutine()
     {
         content.SetActive(true);
+        CombatPlayer.combatPlayer.GetComponent<SpriteRenderer>().enabled = false;
+        CombatPlayer.combatPlayer.GetComponent<TempMove>().enabled = false;
         Time.timeScale = 0f;
 
         yield return new WaitForSeconds(timeToTemple);
 
         content.SetActive(false);
+        CombatPlayer.combatPlayer.GetComponent<SpriteRenderer>().enabled = true;
+        CombatPlayer.combatPlayer.GetComponent<TempMove>().enabled = true;
         CombatPlayer.combatPlayer.GetComponent<HealthComponent>().SimpleKill();
 
         // reset game
