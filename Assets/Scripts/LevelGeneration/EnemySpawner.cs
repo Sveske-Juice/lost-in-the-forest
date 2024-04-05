@@ -40,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
             if (spawn.probability < rng) continue;
 
             GameObject enemy = Instantiate(spawn.prefab, transform.root);
+            enemy.transform.position = transform.position;
             enemy.transform.localScale = spawn.prefab.transform.localScale;
             NavMeshHit closestHit;
             if (NavMesh.SamplePosition(transform.root.position, out closestHit, 500, NavMesh.AllAreas))
