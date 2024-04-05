@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518f288ecbf34da4cac3d57fd26b79cb, type: 3}
   m_Name: SlimeAttack
   m_EditorClassIdentifier: 
+  attackTriggerRange: 5
   attackSize: {x: 0.2, y: 0.2}
-  attackDistance: 0.4
+  attackDistance: 0.8
   visualAttack: {fileID: 0}
   offset: 0
   attackLayers:
     serializedVersion: 2
     m_Bits: 64
+  attackMultiplier: 1
+  isPhysicle: 1
