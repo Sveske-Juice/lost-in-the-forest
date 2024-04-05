@@ -1,9 +1,9 @@
 ![](Assets/Sprites/Cover_art.png)
 
 ## Controls
-LMB - physical attack
-RMB - magical attack
-ESC - pause menu
+LMB - physical attack \
+RMB - magical attack \
+ESC - pause menu \
 B - shop
 
 # Play
