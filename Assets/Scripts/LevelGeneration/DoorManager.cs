@@ -71,7 +71,7 @@ public class DoorManager : MonoBehaviour
         {
             spawner.SpawnEnemies();
         }
-        LevelGenerated?.Invoke(startRoom.transform.position);
+        LevelGenerated?.Invoke(startRoom.GetComponent<Room>().doors[0].transform.position);
     }
 
     private Room InitializeGeneration(int _maxRooms = 40)
