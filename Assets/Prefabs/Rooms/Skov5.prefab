@@ -138158,8 +138158,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7146054032203934414, guid: 3f62f85a13260444286eb3d2118a2e19, type: 3}
       propertyPath: m_Name
-      value: WolfPack (1)
+      value: bladet
       objectReference: {fileID: 0}
+    - target: {fileID: 7805753171390233449, guid: 3f62f85a13260444286eb3d2118a2e19, type: 3}
+      propertyPath: variation.enemies.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 535719944380588495, guid: 04f8191008cb7cfb08fa1db2ee009667, type: 3}
+    - target: {fileID: 7805753171390233449, guid: 3f62f85a13260444286eb3d2118a2e19, type: 3}
+      propertyPath: variation.enemies.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 8673940811538014248, guid: 6c60e34f172089548ae727112112b831, type: 3}
+    - target: {fileID: 7805753171390233449, guid: 3f62f85a13260444286eb3d2118a2e19, type: 3}
+      propertyPath: variation.enemies.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 9163418305249214254, guid: d974202dbe160db4fb5a722d0ceab0e4, type: 3}
     - target: {fileID: 8516517164726919827, guid: 3f62f85a13260444286eb3d2118a2e19, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.54266

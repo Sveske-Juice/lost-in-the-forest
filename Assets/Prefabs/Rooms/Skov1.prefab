@@ -52202,6 +52202,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5483260145683021858, guid: 96cc257c8b739ef4bb1f49300f7b9816, type: 3}
       propertyPath: variation.enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483260145683021858, guid: 96cc257c8b739ef4bb1f49300f7b9816, type: 3}
+      propertyPath: variation.enemies.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 8277038857331960791, guid: 39d77ecd189453243a2fbffad4e4faff, type: 3}
+    - target: {fileID: 5483260145683021858, guid: 96cc257c8b739ef4bb1f49300f7b9816, type: 3}
+      propertyPath: variation.enemies.Array.data[0].probability
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483260145683021858, guid: 96cc257c8b739ef4bb1f49300f7b9816, type: 3}
+      propertyPath: variation.enemies.Array.data[1].probability
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6231662569992034776, guid: 96cc257c8b739ef4bb1f49300f7b9816, type: 3}
