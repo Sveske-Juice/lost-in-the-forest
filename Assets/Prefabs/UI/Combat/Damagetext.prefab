@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 4902519588403066003, guid: ea58c0ce89061d889b68cee82dd642e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea58c0ce89061d889b68cee82dd642e7, type: 2}
+  m_sharedMaterial: {fileID: 4902519588403066003, guid: ea58c0ce89061d889b68cee82dd642e7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -166,12 +166,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  _SortingLayer: 0
-  _SortingLayerID: 0
-  _SortingOrder: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 7222092683653398669}
   m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
 --- !u!111 &16422562547101465
 Animation:
   m_ObjectHideFlags: 0
@@ -261,5 +261,5 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   critColor: {r: 0.8792453, g: 0.7859257, b: 0.27704516, a: 1}
   superCritColor: {r: 0.83396226, g: 0.11801341, b: 0.11801341, a: 1}
-  critThreshold: 2
-  superCritThreshold: 4
+  critThreshold: 6
+  superCritThreshold: 15
