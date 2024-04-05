@@ -17,9 +17,13 @@ MonoBehaviour:
   displayName: Bare feet one with nature
   description: temp
   itemStrategies: []
-  uses: 1
-  icon: {fileID: 0}
+  useCount: 1
+  icon: {fileID: 2800000, guid: ac612c1ec37c3504fa6e0b0daa3457de, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: 4f49022c0a8e0f3418a819fcfdd0a35c, type: 2}
   level: 1
   maxLevel: 5
+  cost: 5
+  pickupPrefab: {fileID: 0}
+  conflictingItems: []
+  targetSelectionPrefab: {fileID: 0}

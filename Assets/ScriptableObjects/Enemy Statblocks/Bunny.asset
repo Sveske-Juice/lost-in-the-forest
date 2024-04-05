@@ -15,9 +15,9 @@ MonoBehaviour:
   moveSpeed: 4
   attackRange: 1
   attackDelay: 1
-  canMoveWhileAttacking: 1
+  canMoveWhileAttacking: 0
   hopMovement: 1
-  hopDelay: 0.1
+  hopDelay: 0.5
   strength: 1
   health: 10
   maxHealth: 2
