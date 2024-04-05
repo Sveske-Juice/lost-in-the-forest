@@ -50,7 +50,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (tooltip != null)
             Destroy(tooltip);
 
-        tooltip = Instantiate(tooltipPrefab, GameObject.FindObjectOfType<Canvas>().transform);
+        // This ispretty bad lmfao
+        tooltip = Instantiate(tooltipPrefab, GameObject.FindWithTag("UICanvas").transform);
         tooltip.transform.position = transform.position + offset;
         tooltip.GetComponent<ToolTip>().set(Item);
     }

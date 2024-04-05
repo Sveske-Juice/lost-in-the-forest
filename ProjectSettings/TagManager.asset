@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerAttack
   - Collectable
+  - UICanvas
   layers:
   - Default
   - TransparentFX

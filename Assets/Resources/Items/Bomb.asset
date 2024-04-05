@@ -18,7 +18,7 @@ MonoBehaviour:
   description: 
   itemStrategies:
   - {fileID: 11400000, guid: f902de2622cd1fabeae040ef6c00486d, type: 2}
-  useCount: 10
+  useCount: 1
   icon: {fileID: 2800000, guid: 19cb5840b20a53145a2542cfc90ef7bc, type: 3}
   passiveModifiers: []
   level: 1

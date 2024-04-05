@@ -704,7 +704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1443963376492273599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1129,18 +1129,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShop: 1
   startingItems:
-  - {fileID: 11400000, guid: cfbd1bb6f4475ee40acc0e6d5eb95720, type: 2}
+  - {fileID: 11400000, guid: 77045a590ddaf69489bbfed6f08918c4, type: 2}
+  - {fileID: 11400000, guid: 94e52c79105af83eba6045f5ab905411, type: 2}
   - {fileID: 11400000, guid: 57ce020ab043c9d948b418a97e07d849, type: 2}
-  - {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
-  - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
-  - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
-  - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
-  - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
   - {fileID: 11400000, guid: e065e2fe92f07c407a8ceed34741e226, type: 2}
   - {fileID: 11400000, guid: 048390c9f0c472054af14eb1d4cf3f69, type: 2}
   - {fileID: 11400000, guid: 8522a7fff573c4a4bb59c5714ccbf283, type: 2}
-  - {fileID: 11400000, guid: baebdd7d85849b549885441104e1c9de, type: 2}
+  - {fileID: 11400000, guid: 6764bd2a6a9a75949a12468a27d4406b, type: 2}
+  - {fileID: 11400000, guid: b5ec98c45fa63eb609a0472d0ceddb6b, type: 2}
+  - {fileID: 11400000, guid: cfbd1bb6f4475ee40acc0e6d5eb95720, type: 2}
+  - {fileID: 11400000, guid: 8fa074f0a0f9c3d4c86535eead1b6cb5, type: 2}
+  - {fileID: 11400000, guid: 2c5e9dd2357204a4ea9e941b52e09924, type: 2}
+  - {fileID: 11400000, guid: 7b150397c7e5af54f9bf3261adb52a04, type: 2}
   - {fileID: 11400000, guid: 97dbe0d1ea0c3d04ea7d6653af782c9d, type: 2}
+  - {fileID: 11400000, guid: 362f78c067e8f7541a4073fa58d71801, type: 2}
+  - {fileID: 11400000, guid: 60193e8aacbfb884ebf3a53ca0a16ed6, type: 2}
+  - {fileID: 11400000, guid: f9a2c9c04382fb745a6bc485d7a1fa7e, type: 2}
+  - {fileID: 11400000, guid: b9bed76ea50678988b8a2ded0806fe98, type: 2}
+  - {fileID: 11400000, guid: e0ff9e1aa8c443544ab066e61afb570a, type: 2}
+  - {fileID: 11400000, guid: baebdd7d85849b549885441104e1c9de, type: 2}
+  - {fileID: 11400000, guid: acfe73c1a9dd5f84589dda8b33d6cdc8, type: 2}
+  - {fileID: 11400000, guid: edb0a509b19bff0c386e13c8a8d72731, type: 2}
+  - {fileID: 11400000, guid: d398625b9b243714b976cb1c8ed27c01, type: 2}
+  - {fileID: 11400000, guid: 08e5b26a5b929044a857e66df87abcae, type: 2}
+  - {fileID: 11400000, guid: 7a85914923160504db179d202124f831, type: 2}
+  - {fileID: 11400000, guid: 2e09ebeaff716b7b783ed3e0787f71fd, type: 2}
   Inventory: []
   tooltipPrefab: {fileID: 3432900237536628667, guid: f501235cfce1b1fcda63a3ec48d21d0a, type: 3}
   inventorySize: 50
