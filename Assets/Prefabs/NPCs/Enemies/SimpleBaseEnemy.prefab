@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8022669622541837129}
   - component: {fileID: 3463347096776804740}
   - component: {fileID: 7149371736103549619}
+  - component: {fileID: 2411483747688476437}
   m_Layer: 7
   m_Name: SimpleBaseEnemy
   m_TagString: Untagged
@@ -246,3 +247,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2411483747688476437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677009075490659109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2870bfd3c55bf439d411168c488126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropOnDestroy: 1
+  drops:
+  - drop: {fileID: 8612619927967272630, guid: 7fa54662b25f762b7afec6431fade369, type: 3}
+    dropChance: 1

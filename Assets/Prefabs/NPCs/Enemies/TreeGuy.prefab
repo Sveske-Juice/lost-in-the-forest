@@ -52,6 +52,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.data[1].drop
+      value: 
+      objectReference: {fileID: 8612619927967272630, guid: 7fa54662b25f762b7afec6431fade369, type: 3}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.data[2].drop
+      value: 
+      objectReference: {fileID: 8612619927967272630, guid: 7fa54662b25f762b7afec6431fade369, type: 3}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.data[3].drop
+      value: 
+      objectReference: {fileID: 8612619927967272630, guid: 7fa54662b25f762b7afec6431fade369, type: 3}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.data[4].drop
+      value: 
+      objectReference: {fileID: 8612619927967272630, guid: 7fa54662b25f762b7afec6431fade369, type: 3}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.data[1].dropChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.data[2].dropChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.data[3].dropChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411483747688476437, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
+      propertyPath: drops.Array.data[4].dropChance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2450917802105417301, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
       propertyPath: enemyStats
       value: 
@@ -183,6 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7414588358042838444}
+  moveThreshold: 1
+  invert: 0
 --- !u!212 &7414588358042838444 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5313954884973707505, guid: 768a1e7073a357858b72182ff1cd24af, type: 3}
