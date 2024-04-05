@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTriggerRange: 10
   bulletSequence:
-  - Arc: 70
+  - Arc: 22.6
     Amount: 5
-    Speed: 0.5
+    Speed: 0.16
     bulletPrefab: {fileID: 593997200621683044, guid: cbe65c25d16830d42877a5df71b81a97, type: 3}
     Burst: 1
     BurstDelay: 0.1
