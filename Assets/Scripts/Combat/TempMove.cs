@@ -49,6 +49,9 @@ public class TempMove : MonoBehaviour
         float xScale = velocity.x >= 0 ? 1 : -1;
         transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
 
+        // dont flip player canvas (healthbar)
+        GetComponentInChildren<Canvas>().transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+
         movementAnimator.SetFloat(moveXHash, velocity.x);
         movementAnimator.SetFloat(moveYHash, velocity.y);
         movementAnimator.SetBool(movingHash, velocity != Vector2.zero);
