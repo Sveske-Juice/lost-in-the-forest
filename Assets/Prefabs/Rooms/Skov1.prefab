@@ -52200,6 +52200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeGuyPack
       objectReference: {fileID: 0}
+    - target: {fileID: 5483260145683021858, guid: 96cc257c8b739ef4bb1f49300f7b9816, type: 3}
+      propertyPath: variation.enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6231662569992034776, guid: 96cc257c8b739ef4bb1f49300f7b9816, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.81

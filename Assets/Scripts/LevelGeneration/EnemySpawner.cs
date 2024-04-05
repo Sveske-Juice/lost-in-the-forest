@@ -28,7 +28,20 @@ public class EnemySpawner : MonoBehaviour
 		// get this fucking piece of shit out of here you mother fucker is breaking my fucking
 		// level generatiopn piece of shit FUICL
         // UnityEngine.Random.InitState(seed);
+        Door.LevelSwitched += LevelSwitched;
 	}
+
+    void OnDestroy()
+    {
+        Door.LevelSwitched -= LevelSwitched;
+    }
+
+    private void LevelSwitched(Room room1, Room room2)
+    {
+        // lol this bad
+        if (room2 == transform.parent.GetComponent<Room>())
+            SpawnEnemies();
+    }
 
     public void SpawnEnemies()
     {
@@ -41,8 +54,9 @@ public class EnemySpawner : MonoBehaviour
 
             GameObject enemy = Instantiate(spawn.prefab, transform.root);
             enemy.transform.position = transform.position;
+            enemy.transform.rotation = Quaternion.identity;
             enemy.transform.localScale = spawn.prefab.transform.localScale;
-            NavMeshHit closestHit;
+            /* NavMeshHit closestHit;
             if (NavMesh.SamplePosition(transform.root.position, out closestHit, 500, NavMesh.AllAreas))
             {
                 enemy.transform.position = closestHit.position;
@@ -50,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
             else
             {
                 Debug.LogError("Sampling enemy pos on nav mesh failed");
-            }
+            } */
         }
     }
 

@@ -66,6 +66,11 @@ public class DoorManager : MonoBehaviour
         }
 
         startRoom.SetActive(true);
+        // spawn all in start room
+        foreach (var spawner in startRoom.GetComponentsInChildren<EnemySpawner>())
+        {
+            spawner.SpawnEnemies();
+        }
         LevelGenerated?.Invoke(startRoom.transform.position);
     }
 
