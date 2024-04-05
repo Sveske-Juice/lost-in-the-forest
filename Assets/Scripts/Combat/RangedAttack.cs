@@ -41,7 +41,10 @@ public class RangedAttack : MonoBehaviour
 
         Debug.Log($"Hit {collider.gameObject.name} with {damage} magical damage");
 
-        StartParticleSystem(onHitParticleSystem, collider.transform.position, duration: 3f);
+        if (onHitParticleSystem != null)
+        {
+            StartParticleSystem(onHitParticleSystem, collider.transform.position, duration: 3f);
+        }
         AudioManager.instance.PlayClip(onHitSfxClipName);
         Destroy(gameObject); // Destroy the projectile or attacker GameObject
     }
