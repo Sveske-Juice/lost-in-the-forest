@@ -33,7 +33,8 @@ public class InventorySystem : MonoBehaviour
     {
         foreach (ItemScriptableObject item in startingItems)
         {
-            Add(item);
+            if (item != null) 
+                Add(item);
         }
     }
 
