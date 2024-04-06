@@ -7,4 +7,9 @@ ESC - pause menu \
 B - shop
 
 # Play
-See itch page: https://sveske-juice.itch.io/lost-in-the-forest
+* See itch page: https://sveske-juice.itch.io/lost-in-the-forest
+* Or download from releases
+
+# Develop
+* Clone repository
+* Open with Unity Editor version `2023.2.11f1`
