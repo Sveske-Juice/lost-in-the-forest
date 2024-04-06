@@ -19,7 +19,7 @@ public class CombatPlayer
     public static CombatPlayer combatPlayer { get; private set; }
 
     [SerializeField]
-    private float speed;
+    public float speed = 5f;
 
     [SerializeField]
     private float intelligence;

@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 0
   id: burst_rock_ball
   displayName: Burst Rock Ball
-  description: 
+  description: Whats better than shooting one projectile?.. shooting more
   itemStrategies: []
   useCount: 1
   icon: {fileID: 2800000, guid: c0361a487c0f67d5db6676652cfd44e2, type: 3}

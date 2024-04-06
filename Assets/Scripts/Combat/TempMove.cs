@@ -19,10 +19,13 @@ public class TempMove : MonoBehaviour
     float horizontal;
     float vertical;
 
-    public float runSpeed = 5.0f;
+    private CombatPlayer combatPlayer;
+
+    public float runSpeed => combatPlayer.speed;
     // Start is called before the first frame update
     void Start()
     {
+        combatPlayer = GetComponent<CombatPlayer>();
         moveXHash = Animator.StringToHash("MoveX");
         moveYHash = Animator.StringToHash("MoveY");
         movingHash = Animator.StringToHash("IsMoving");

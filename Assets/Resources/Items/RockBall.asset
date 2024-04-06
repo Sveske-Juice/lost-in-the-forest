@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 0
   id: rock_ball
   displayName: Throwing Rock
-  description: 
+  description: Rock and Stone brotha!
   itemStrategies: []
   useCount: 1
   icon: {fileID: 2800000, guid: b8e335fab1ac90a469ac3b22e38fe569, type: 3}

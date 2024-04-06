@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 1
   id: scythe
   displayName: Scythe
-  description: teeest
+  description: Throw sharp things around like you're playing dodgeball!
   itemStrategies:
   - {fileID: 11400000, guid: cf9f1e4053bd50943ad98fdf3cb514df, type: 2}
   useCount: 1

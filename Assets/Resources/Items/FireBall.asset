@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 0
   id: fire_ball
   displayName: Fire Ball
-  description: 
+  description: A warm rock
   itemStrategies: []
   useCount: 1
   icon: {fileID: 2800000, guid: 516ac8819f6c1ed499cefb2407bd1a89, type: 3}

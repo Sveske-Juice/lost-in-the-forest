@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 0
   id: burst_fire_ball
   displayName: Burst Fire Ball
-  description: 
+  description: Whats better than shooting one projectile?.. shooting more
   itemStrategies: []
   useCount: 1
   icon: {fileID: 2800000, guid: acc81236b18aee64aa0b9672f08aee80, type: 3}

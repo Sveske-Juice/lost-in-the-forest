@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 1
   id: bomb
   displayName: Bomb
-  description: 
+  description: Goes Kaboom...
   itemStrategies:
   - {fileID: 11400000, guid: f902de2622cd1fabeae040ef6c00486d, type: 2}
   useCount: 1

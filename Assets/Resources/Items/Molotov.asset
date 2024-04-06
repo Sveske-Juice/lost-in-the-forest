@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 1
   id: molotov
   displayName: Molotov
-  description: 
+  description: A cocktail that bursts into flames!
   itemStrategies:
   - {fileID: 11400000, guid: fc53bad86288bd14c831253fec81fc9e, type: 2}
   useCount: 1

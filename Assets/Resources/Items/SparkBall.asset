@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 0
   id: spark_ball
   displayName: Sparking Ball
-  description: 
+  description: Ride the lightning!
   itemStrategies: []
   useCount: 1
   icon: {fileID: 2800000, guid: 9c941f3184aee274d9fb37326a6499f6, type: 3}

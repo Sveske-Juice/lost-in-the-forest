@@ -15,7 +15,7 @@ MonoBehaviour:
   activationMethod: 0
   id: water_ball
   displayName: Water Splash
-  description: 
+  description: Splashy water
   itemStrategies: []
   useCount: 1
   icon: {fileID: 2800000, guid: 8b08b01c2a5f44146a5b9cde732bd617, type: 3}

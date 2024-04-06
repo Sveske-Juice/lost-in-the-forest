@@ -15,9 +15,9 @@ MonoBehaviour:
   activationMethod: 0
   id: default_gauntlet
   displayName: Gauntlet
-  description: 
+  description: Powerful glove
   itemStrategies: []
-  uses: 1
+  useCount: 1
   icon: {fileID: 2800000, guid: c78712ceb496a56c592fde4d44ed2039, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: 3c413cc999f87c772b73d1b2f72ab58e, type: 2}
@@ -26,3 +26,4 @@ MonoBehaviour:
   cost: 25
   pickupPrefab: {fileID: 3092424208540660403, guid: d58a1e826e40b571099ff501c75ad0bc, type: 3}
   conflictingItems: []
+  targetSelectionPrefab: {fileID: 0}

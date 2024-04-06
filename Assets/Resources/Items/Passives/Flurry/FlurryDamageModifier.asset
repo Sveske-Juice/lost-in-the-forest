@@ -12,5 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2431b1bd934fb4f4ab1d0c7d2f2815a5, type: 3}
   m_Name: FlurryDamageModifier
   m_EditorClassIdentifier: 
-  magicDmg: 10
-  physicialDmg: 10
+  magicDmg:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: 3
+      outSlope: 3
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 5
+      value: 15
+      inSlope: 3
+      outSlope: 3
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  physicialDmg:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: 3
+      outSlope: 3
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 5
+      value: 15
+      inSlope: 3
+      outSlope: 3
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

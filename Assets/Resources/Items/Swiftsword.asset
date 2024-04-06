@@ -15,9 +15,9 @@ MonoBehaviour:
   activationMethod: 0
   id: swiftsword
   displayName: Swiftsword
-  description: speedy sword
+  description: A speedy sword even though you have a gaunlet!
   itemStrategies: []
-  uses: 1
+  useCount: 1
   icon: {fileID: 2800000, guid: 69458038caf3ccd46930e9779415ad1c, type: 3}
   passiveModifiers:
   - {fileID: 11400000, guid: ec788fe6f661d14488b62840b848d116, type: 2}
@@ -26,3 +26,4 @@ MonoBehaviour:
   cost: 5
   pickupPrefab: {fileID: 3556976425873585770, guid: b1155b6c1e4d44b8ba0580ddd6439b3c, type: 3}
   conflictingItems: []
+  targetSelectionPrefab: {fileID: 0}
